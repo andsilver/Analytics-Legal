@@ -11,5 +11,9 @@
 // about supported directives.
 //
 //= require template/jquery.min
+//= require template/popper.min
+//= require template/bootstrap.min
+//= require template/waves
 //= require template/jquery.slimscroll
+//= require template/jquery.scrollTo.min
 //= require_tree .
