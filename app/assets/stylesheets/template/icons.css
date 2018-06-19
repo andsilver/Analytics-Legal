@@ -13,8 +13,8 @@ File: Icons
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url("../fonts/fontawesome-webfont.eot?v=4.7.0");
-  src: url("../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("../fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("../fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("../fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
+  src: url("/assets/fonts/fontawesome-webfont.eot?v=4.7.0");
+  src: url("/assets/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("/assets/fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("/assets/fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("/assets/fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("/assets/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -3056,8 +3056,8 @@ File: Icons
 /* MaterialDesignIcons.com */
 @font-face {
   font-family: "Material Design Icons";
-  src: url("../fonts/materialdesignicons-webfont.eot?v=2.0.46");
-  src: url("../fonts/materialdesignicons-webfont.eot?#iefix&v=2.0.46") format("embedded-opentype"), url("../fonts/materialdesignicons-webfont.woff2?v=2.0.46") format("woff2"), url("../fonts/materialdesignicons-webfont.woff?v=2.0.46") format("woff"), url("../fonts/materialdesignicons-webfont.ttf?v=2.0.46") format("truetype"), url("../fonts/materialdesignicons-webfont.svg?v=2.0.46#materialdesigniconsregular") format("svg");
+  src: url("/assets/fonts/materialdesignicons-webfont.eot?v=2.0.46");
+  src: url("/assets/fonts/materialdesignicons-webfont.eot?#iefix&v=2.0.46") format("embedded-opentype"), url("/assets/fonts/materialdesignicons-webfont.woff2?v=2.0.46") format("woff2"), url("/assets/fonts/materialdesignicons-webfont.woff?v=2.0.46") format("woff"), url("/assets/fonts/materialdesignicons-webfont.ttf?v=2.0.46") format("truetype"), url("/assets/fonts/materialdesignicons-webfont.svg?v=2.0.46#materialdesigniconsregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -11518,8 +11518,8 @@ File: Icons
 */
 @font-face {
   font-family: "Ionicons";
-  src: url("../fonts/ionicons.eot?v=1.5.0");
-  src: url("../fonts/ionicons.eot?v=1.5.0#iefix") format("embedded-opentype"), url("../fonts/ionicons.ttf?v=1.5.0") format("truetype"), url("../fonts/ionicons.woff?v=1.5.0") format("woff"), url("../fonts/ionicons.svg?v=1.5.0#Ionicons") format("svg");
+  src: url("/assets/fonts/ionicons.eot?v=1.5.0");
+  src: url("/assets/fonts/ionicons.eot?v=1.5.0#iefix") format("embedded-opentype"), url("/assets/fonts/ionicons.ttf?v=1.5.0") format("truetype"), url("/assets/fonts/ionicons.woff?v=1.5.0") format("woff"), url("/assets/fonts/ionicons.svg?v=1.5.0#Ionicons") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -14615,8 +14615,8 @@ File: Icons
 
 @font-face {
   font-family: 'themify';
-  src: url("../fonts/themify.eot?-fvbane");
-  src: url("../fonts/themify.eot?#iefix-fvbane") format("embedded-opentype"), url("../fonts/themify.woff?-fvbane") format("woff"), url("../fonts/themify.ttf?-fvbane") format("truetype"), url("../fonts/themify.svg?-fvbane#themify") format("svg");
+  src: url("/assets/fonts/themify.eot?-fvbane");
+  src: url("/assets/fonts/themify.eot?#iefix-fvbane") format("embedded-opentype"), url("/assets/fonts/themify.woff?-fvbane") format("woff"), url("/assets/fonts/themify.ttf?-fvbane") format("truetype"), url("/assets/fonts/themify.svg?-fvbane#themify") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -16065,8 +16065,8 @@ File: Icons
  */
 @font-face {
   font-family: "weathericons";
-  src: url("../fonts/weathericons-regular-webfont.eot");
-  src: url("../fonts/weathericons-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/weathericons-regular-webfont.woff2") format("woff2"), url("../fonts/weathericons-regular-webfont.woff") format("woff"), url("../fonts/weathericons-regular-webfont.ttf") format("truetype"), url("../fonts/weathericons-regular-webfont.svg#weather_iconsregular") format("svg");
+  src: url("/assets/fonts/weathericons-regular-webfont.eot");
+  src: url("/assets/fonts/weathericons-regular-webfont.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/weathericons-regular-webfont.woff2") format("woff2"), url("/assets/fonts/weathericons-regular-webfont.woff") format("woff"), url("/assets/fonts/weathericons-regular-webfont.ttf") format("truetype"), url("/assets/fonts/weathericons-regular-webfont.svg#weather_iconsregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
