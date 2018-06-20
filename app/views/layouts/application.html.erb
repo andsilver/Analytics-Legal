@@ -10,10 +10,6 @@
   </head>
 
   <body>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
     <!-- Navigation Bar-->
 		<header id="topnav">
 			<div class="topbar-main">
@@ -57,7 +53,10 @@
 						<ul class="navigation-menu">
 
 							<li class="has-submenu">
-								<a href="index.html"><i class="ti-home"></i>Dashboard</a>
+								<%= link_to root_path do %>
+									<i class="ti-home"></i>
+									Dashboard
+								<% end %>
 							</li>
 
 						</ul>
@@ -70,6 +69,12 @@
 
 		<div class="wrapper">
 			<div class="container-fluid">
+				<% if notice %>
+    			<p class="alert alert-info system-alert"><%= notice %></p>
+				<% end %>
+				<% if alert %>
+    			<p class="alert alert-warning system-alert"><%= alert %></p>
+				<% end %>
 				<%= yield %>
 			</div> <!-- end container -->
 		</div>
