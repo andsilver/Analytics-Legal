@@ -9,12 +9,6 @@
   </div>
 <% end -%>
 
-<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <div class="col-sm-5 text-right">
-    <%= link_to "Create an account", new_registration_path(resource_name), class: "text-muted" %>
-  </div>
-<% end -%>
-
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
   <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
 <% end -%>
