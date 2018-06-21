@@ -12,7 +12,7 @@
               <th>Country, city</th>
               <th>Phone Number</th>
               <th>Email</th>
-              <th>Type of User</th>
+              <th>User Type</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -24,7 +24,7 @@
                 <td><%= "#{user.country}, #{user.city}"%></td>
                 <td><%= user.phone_number %></td>
                 <td><%= user.email %></td>
-                <td><%= user.role %></td>
+                <td><%= User::ROLES[user.role.to_sym] %></td>
                 <td>
                   <%= link_to "Edit", edit_admin_user_path(user), class: 'm-r-5' %>
                   <% if current_user != user %>

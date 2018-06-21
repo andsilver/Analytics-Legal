@@ -1,2 +1,26 @@
-<h1>User#edit</h1>
-<p>Find me in app/views/user/edit.html.erb</p>
+<div class="row settings-container">
+  <div class="col-xl-3 col-lg-4">
+    <div class="text-center card-box">
+      <div class="member-card">
+				<div>
+					<h5 class="m-b-5"><%= @user.company %></h5>
+				</div>
+
+        <%= render partial: 'shared/user_profile', locals: { user: @user } %>
+			</div>
+		</div> <!-- end card-box -->
+	</div> <!-- end col -->
+
+	<div class="col-lg-8 col-xl-9">
+		<div>
+			<div class="card-box">
+        <h4>Settings</h4>
+        <hr />
+
+        <div class="tab-pane" id="settings">
+          <%= render 'form', user: @user %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
