@@ -8,4 +8,8 @@ class User < ApplicationRecord
             commercial_client: 'Commercial client',
             api_client: 'API client'
           }
+
+  def admin?
+    self.role == 'admin'
+  end
 end

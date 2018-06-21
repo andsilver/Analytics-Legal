@@ -43,7 +43,7 @@
 								</a>
 								<div class="dropdown-menu dropdown-menu-right profile-dropdown " aria-labelledby="Preview">
 									<%= link_to edit_user_registration_path, method: :get, class: "dropdown-item notify-item" do %>
-										<i class="mdi mdi-account"></i> <span>Profile</span>
+										<i class="ti-home"></i> <span>Profile</span>
 									<% end %>
 
 									<%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item notify-item" do %>
@@ -63,14 +63,33 @@
 					<div id="navigation">
 						<!-- Navigation Menu-->
 						<ul class="navigation-menu">
-
-							<li class="has-submenu">
+							<li>
 								<%= link_to root_path do %>
 									<i class="ti-home"></i>
 									Dashboard
 								<% end %>
 							</li>
 
+							<% if policy(current_user).create? %>
+								<li class="has-submenu">
+									<%= link_to '#' do %>
+										<i class="mdi mdi-account"></i>
+										Users
+									<% end %>
+									<ul class="submenu">
+										<li>
+											<%= link_to new_admin_user_path do %>
+												Create User
+											<% end %>
+										</li>
+										<li>
+											<%= link_to admin_users_path do %>
+												List Users
+											<% end %>
+										</li>
+									</ul>
+								</li>
+							<% end %>
 						</ul>
 						<!-- End navigation menu -->
 					</div> <!-- end #navigation -->
