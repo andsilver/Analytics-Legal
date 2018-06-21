@@ -1,0 +1,103 @@
+<div class="row register-container">
+  <div class="col-lg-12">
+    <div>
+
+      <div class="card-box">
+        <h4>Create User</h4>
+
+        <%= form_for([:admin, @user], html: { class: "form-horizontal m-t-20" }) do |f| %>
+
+          <div class="form-group row">
+            <div class="col-12">
+              <div class="input-group">
+                <%= f.email_field :email, autofocus: true, class: "form-control", type: "email",
+                  required: "", placeholder: "Email" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-12">
+              <div class="input-group">
+                <%= f.text_field :company, class: "form-control", required: "", placeholder: "Empresa" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-12">
+              <div class="input-group">
+                <%= f.text_field :company_id, class: "form-control", required: "", placeholder: "Rut" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-12">
+              <div class="input-group">
+                <%= f.text_field :address, class: "form-control", required: "", placeholder: "Direccion" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-12">
+              <div class="input-group">
+                <%= f.text_field :country, class: "form-control", required: "", placeholder: "Comuna" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-12">
+              <div class="input-group">
+                <%= f.text_field :city, class: "form-control", required: "", placeholder: "Ciudad" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-12">
+              <div class="input-group">
+                <%= f.telephone_field :phone_number, class: "form-control", required: "",
+                  placeholder: "Telefono" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-12">
+              <div class="input-group">
+                <%= f.text_field :position, class: "form-control", required: "", placeholder: "Cargo" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-12">
+              <div class="input-group">
+                <%= f.text_field :role, class: "form-control", required: "", placeholder: "Tipo de Usuario" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-12">
+              <div class="input-group">
+                <%= f.password_field :password_confirmation, autocomplete: "off",
+                  class: "form-control", type: "password", required: "", placeholder: "Contraseña" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group text-right m-t-20">
+            <div class="col-xs-12">
+              <%= f.button "Register", class: "btn btn-primary btn-custom waves-effect waves-light w-md",
+                type: "submit" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,7 +7,9 @@
     <h2>Log in</h2>
   </div>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "form-horizontal m-t-20") do |f| %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name),
+    html: { class: "form-horizontal m-t-20"}) do |f| %>
+
     <div class="form-group row">
       <div class="col-12">
         <div class="input-group">
