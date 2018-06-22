@@ -14,7 +14,7 @@
 	<div class="col-lg-8 col-xl-9">
 		<div>
 			<div class="card-box">
-        <h4>Settings</h4>
+        <h4><%= t('menu.settings')%></h4>
         <hr />
 
         <div class="tab-pane" id="settings">
@@ -32,27 +32,28 @@
             <% end %>
 
             <div class="form-group">
-              <%= f.label :password %>
+              <%= f.label t('menu.password'), id: :password %>
               <%= f.password_field :password, autocomplete: "off", class:"form-control",
-                placeholder: "(leave blank if you don't want to change it)" %>
+                placeholder: t('notices.blank_password') %>
               <% if @minimum_password_length %>
-                <em><%= @minimum_password_length %> characters minimum</em>
+                <em><%= "#{t('notices.min')} #{@minimum_password_length} #{t('notices.char')}" %>
+                </em>
               <% end %>
             </div>
 
             <div class="form-group">
-              <%= f.label :password_confirmation %><br />
+              <%= f.label t('menu.password_confirmation'), id: :password_confirmation %><br />
               <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control" %>
             </div>
 
             <div class="form-group">
-              <%= f.label :current_password %>
+              <%= f.label t('menu.current_password'), id: :current_password %>
               <%= f.password_field :current_password, autocomplete: "off", class:"form-control",
-                placeholder: "(we need your current password to confirm your changes)"%>
+                placeholder: t('notices.need_password')%>
             </div>
 
             <div class="actions">
-              <%= f.button "Update", class: "btn btn-primary waves-effect waves-light w-md" %>
+              <%= f.button t('buttons.update'), class: "btn btn-primary waves-effect waves-light w-md" %>
             </div>
           <% end %>
         </div>

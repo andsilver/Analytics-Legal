@@ -1,23 +1,49 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  users:
+    user: 'User'
+    users: 'Users'
+    create_user: 'Create user'
+    list_users: 'List users'
+    admin: 'Admin'
+    client: 'Client'
+    commercial_client: 'Commercial client'
+    api_client: 'API client'
+  notices:
+    user_create_success: 'User was created successfully.'
+    user_update_success: 'User was updated successfully.'
+    user_delete_success: 'User was deleted successfully.'
+    blank_password: "Leave blank if you don't want to change it"
+    min: 'minimum'
+    char: 'characters'
+    need_password: 'We need your current password to confirm your changes'
+    delete_confirmation: 'Are you sure you want to delete this user?'
+  menu:
+    dashboard: 'Dashboard'
+    profile: 'Profile'
+    login: 'Log in'
+    logout: 'Log out'
+    settings: 'Settings'
+    action: 'Action'
+    company: 'Company'
+    company_id: 'Company ID'
+    address: 'Address'
+    country: 'Country'
+    city: 'City'
+    phone_number: 'Phone number'
+    role: 'Role'
+    type_of_user: 'Type of user'
+    password: 'Password'
+    current_password: 'Current password'
+    password_confirmation: 'Password confirmation'
+  buttons:
+    save: 'Save'
+    update: 'Update'
+    edit: 'Edit'
+    delete: 'Delete'
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              too_short: 'Password is too short'

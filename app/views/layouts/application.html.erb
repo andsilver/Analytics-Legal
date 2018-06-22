@@ -43,11 +43,11 @@
 								</a>
 								<div class="dropdown-menu dropdown-menu-right profile-dropdown " aria-labelledby="Preview">
 									<%= link_to edit_user_registration_path, method: :get, class: "dropdown-item notify-item" do %>
-										<i class="ti-home"></i> <span>Profile</span>
+										<i class="ti-home"></i> <span><%= t('menu.profile')%></span>
 									<% end %>
 
 									<%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item notify-item" do %>
-										<i class="mdi mdi-logout"></i> <span>Logout</span>
+										<i class="mdi mdi-logout"></i> <span><%= t('menu.logout')%></span>
 									<% end %>
 								</div>
 							</li>
@@ -66,7 +66,7 @@
 							<li>
 								<%= link_to root_path do %>
 									<i class="ti-home"></i>
-									Dashboard
+									<%= t('menu.dashboard')%>
 								<% end %>
 							</li>
 
@@ -74,19 +74,17 @@
 								<li class="has-submenu">
 									<%= link_to '#' do %>
 										<i class="mdi mdi-account"></i>
-										Users
+										<%= t('users.users')%>
 									<% end %>
 									<ul class="submenu">
 										<li>
 											<%= link_to new_admin_user_path do %>
-												Create User
-											<% end %>
-										</li>
+												<%= t('users.create_user')%>
+											<% end %>										</li>
 										<li>
 											<%= link_to admin_users_path do %>
-												List Users
-											<% end %>
-										</li>
+												<%= t('users.list_users')%>
+											<% end %>										</li>
 									</ul>
 								</li>
 							<% end %>

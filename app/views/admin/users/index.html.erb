@@ -3,17 +3,17 @@
     <div>
 
       <div class="card-box">
-        <h4 class="m-t-0 header-title">List of Users</h4>
+        <h4 class="m-t-0 header-title"><%= t('users.list_users') %></h4>
         <table class="table m-t-20">
           <thead class="thead-light">
             <tr>
-              <th>Company</th>
-              <th>Company ID</th>
-              <th>Country, city</th>
-              <th>Phone Number</th>
-              <th>Email</th>
-              <th>User Type</th>
-              <th>Action</th>
+              <th><%= t('menu.company') %></th>
+              <th><%= t('menu.company_id') %></th>
+              <th><%= "#{t('menu.country')}, #{t('menu.city')}" %></th>
+              <th><%= t('menu.phone_number') %></th>
+              <th><%= t('menu.email') %></th>
+              <th><%= t('menu.type_of_user') %></th>
+              <th><%= t('menu.action') %></th>
             </tr>
           </thead>
           <tbody>
@@ -26,10 +26,10 @@
                 <td><%= user.email %></td>
                 <td><%= User::ROLES[user.role.to_sym] %></td>
                 <td>
-                  <%= link_to "Edit", edit_admin_user_path(user), class: 'm-r-5' %>
+                  <%= link_to t('buttons.edit'), edit_admin_user_path(user), class: 'm-r-5' %>
                   <% if current_user != user %>
-                    <%= link_to "Delete", admin_user_path(user), method: :delete,
-                    data: { confirm: 'Are you sure you want to delete this user?'} %>
+                    <%= link_to t('buttons.delete'), admin_user_path(user), method: :delete,
+                    data: { confirm: t('notices.delete_confirmation')} %>
                   <% end %>
                 </td>
               </tr>

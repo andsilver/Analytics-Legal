@@ -10,7 +10,7 @@ class Admin::UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to edit_admin_user_path(@user), notice: 'User was successfully created.' }
+        format.html { redirect_to edit_admin_user_path(@user), notice: t('notices.user_create_success') }
       else
         format.html { render :new }
       end
@@ -27,7 +27,7 @@ class Admin::UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to admin_users_path, notice: 'User was successfully updated.' }
+        format.html { redirect_to admin_users_path, notice: t('notices.user_update_success') }
       else
         format.html { render :edit }
       end
@@ -37,7 +37,7 @@ class Admin::UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to admin_users_path, notice: 'User was successfully deleted.' }
+      format.html { redirect_to admin_users_path, notice: t('notices.user_delete_success') }
     end
   end
 

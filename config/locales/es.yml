@@ -1,0 +1,55 @@
+es:
+  users:
+    user: 'Usuario'
+    users: 'Usuarios'
+    create_user: 'Crear usuario'
+    list_users: 'Lista de usuarios'
+    admin: 'Administración'
+    client: 'Cliente'
+    commercial_client: 'Cliente comercial'
+    api_client: 'Cliente API'
+  notices:
+    user_create_success: 'El usuario fue creado con éxito.'
+    user_update_success: 'El usuario fue actualizado con éxito.'
+    user_delete_success: 'El usuario fue eliminado con éxito.'
+    blank_password: 'Déjelo en blanco si no quiere cambiarlo'
+    min: 'mínimos'
+    char: 'caracteres'
+    need_password: 'Necesitamos su contraseña actual para confirmar sus cambios'
+    delete_confirmation: '¿Seguro que quieres eliminar a este usuario?'
+    forgot_password: '¿Olvidaste tu contraseña?'
+  menu:
+    dashboard: 'Tablero'
+    profile: 'Perfil'
+    login: 'Iniciar sesión'
+    logout: 'Cerrar sesión'
+    settings: 'Ajustes'
+    action: 'Acción'
+    company: 'Empresa'
+    company_id: 'Rut'
+    address: 'Direccion'
+    country: 'Comuna'
+    city: 'Ciudad'
+    phone_number: 'Telefono'
+    role: 'Cargo'
+    type_of_user: 'Tipo de Usuario'
+    password: 'Contraseña'
+    current_password: 'Contraseña actual'
+    password_confirmation: 'Confirmación de contraseña'
+    remember_me: 'Recuérdame'
+  buttons:
+    save: 'Salvar'
+    update: 'Actualizar'
+    edit: 'Editar'
+    delete: 'Borrar'
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              too_short: "La contraseña es demasiado corta"
+  devise:
+    registrations:
+      user:
+        updated: 'El usuario fue actualizado con éxito.'
