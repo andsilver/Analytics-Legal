@@ -1,21 +1,27 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-  # ROLES = { admin: 'Admin',
-  #           client: 'Client',
-  #           commercial_client: 'Commercial client',
-  #           api_client: 'API client'
-  #         }
-
-  ROLES = { admin: I18n.t('users.admin'),
+  ROLES = {
+    admin: I18n.t('users.admin'),
     client: I18n.t('users.client'),
     commercial_client: I18n.t('users.commercial_client'),
     api_client: I18n.t('users.api_client')
-  }
+  }.freeze
+
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
   def admin?
-    self.role == 'admin'
+    role == 'admin'
+  end
+
+  def client?
+    role == 'client'
+  end
+
+  def commercial_client?
+    role == 'commercial_client'
+  end
+
+  def api_client?
+    role == 'api_client'
   end
 end
