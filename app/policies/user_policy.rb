@@ -6,11 +6,37 @@ class UserPolicy
     @user = user
   end
 
+  def index?
+    admin_or_commercial?
+  end
+
   def create?
-    @current_user.admin?
+    admin_or_commercial?
+  end
+
+  def new?
+    admin_or_commercial?
+  end
+
+  def edit?
+    admin_or_commercial?
+  end
+
+  def update?
+    admin_or_commercial?
+  end
+
+  def destroy?
+    admin_or_commercial?
   end
 
   def change_email?
+    admin_or_commercial?
+  end
+
+  private
+
+  def admin_or_commercial?
     @current_user.admin? || @current_user.commercial_client?
   end
 end

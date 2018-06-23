@@ -1,5 +1,8 @@
 class Admin::UsersController < ApplicationController
+  include Pundit
+  after_action :verify_authorized
   before_action :set_user, only: [:edit, :update, :destroy]
+  before_action :authorize_user
 
   def index
     @users = User.all
@@ -41,13 +44,14 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  def show
-  end
-
   private
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def authorize_user
+    authorize current_user
   end
 
   def user_params
