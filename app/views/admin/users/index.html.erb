@@ -4,38 +4,40 @@
 
       <div class="card-box">
         <h4 class="m-t-0 header-title"><%= t('users.list_users') %></h4>
-        <table class="table m-t-20">
-          <thead class="thead-light">
-            <tr>
-              <th><%= t('menu.company') %></th>
-              <th><%= t('menu.company_id') %></th>
-              <th><%= "#{t('menu.country')}, #{t('menu.city')}" %></th>
-              <th><%= t('menu.phone_number') %></th>
-              <th><%= t('menu.email') %></th>
-              <th><%= t('menu.type_of_user') %></th>
-              <th><%= t('menu.action') %></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @users.each do |user| %>
+        <div class="table-responsive">
+          <table class="table m-t-20">
+            <thead class="thead-light">
               <tr>
-                <td><%= user.company %></td>
-                <td><%= user.company_id %></td>
-                <td><%= "#{user.country}, #{user.city}"%></td>
-                <td><%= user.phone_number %></td>
-                <td><%= user.email %></td>
-                <td><%= User::ROLES[user.role.to_sym] %></td>
-                <td>
-                  <%= link_to t('buttons.edit'), edit_admin_user_path(user), class: 'm-r-5' %>
-                  <% if current_user != user %>
-                    <%= link_to t('buttons.delete'), admin_user_path(user), method: :delete,
-                    data: { confirm: t('notices.delete_confirmation')} %>
-                  <% end %>
-                </td>
+                <th><%= t('menu.company') %></th>
+                <th><%= t('menu.company_id') %></th>
+                <th><%= "#{t('menu.country')}, #{t('menu.city')}" %></th>
+                <th><%= t('menu.phone_number') %></th>
+                <th><%= t('menu.email') %></th>
+                <th><%= t('menu.type_of_user') %></th>
+                <th><%= t('menu.action') %></th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <% @users.each do |user| %>
+                <tr>
+                  <td><%= user.company %></td>
+                  <td><%= user.company_id %></td>
+                  <td><%= "#{user.country}, #{user.city}"%></td>
+                  <td><%= user.phone_number %></td>
+                  <td><%= user.email %></td>
+                  <td><%= User::ROLES[user.role.to_sym] %></td>
+                  <td>
+                    <%= link_to t('buttons.edit'), edit_admin_user_path(user), class: 'm-r-5' %>
+                    <% if current_user != user %>
+                      <%= link_to t('buttons.delete'), admin_user_path(user), method: :delete,
+                      data: { confirm: t('notices.delete_confirmation')} %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
