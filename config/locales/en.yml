@@ -17,6 +17,8 @@ en:
     char: 'characters'
     need_password: 'We need your current password to confirm your changes'
     delete_confirmation: 'Are you sure you want to delete this user?'
+    forgot_password: 'Forgot your password?'
+    enter_email: 'Enter your Email and instructions will be sent to you!'
   menu:
     dashboard: 'Dashboard'
     profile: 'Profile'
@@ -35,11 +37,13 @@ en:
     password: 'Password'
     current_password: 'Current password'
     password_confirmation: 'Password confirmation'
+    remember_me: "Remember me"
   buttons:
     save: 'Save'
     update: 'Update'
     edit: 'Edit'
     delete: 'Delete'
+    reset: 'Reset'
   activerecord:
     errors:
       models:

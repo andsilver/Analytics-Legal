@@ -18,6 +18,7 @@ es:
     need_password: 'Necesitamos su contraseña actual para confirmar sus cambios'
     delete_confirmation: '¿Seguro que quieres eliminar a este usuario?'
     forgot_password: '¿Olvidaste tu contraseña?'
+    enter_email: '¡Ingrese su Email y le enviaremos las instrucciones!'
   menu:
     dashboard: 'Tablero'
     profile: 'Perfil'
@@ -42,6 +43,7 @@ es:
     update: 'Actualizar'
     edit: 'Editar'
     delete: 'Borrar'
+    reset: 'Reiniciar'
   activerecord:
     errors:
       models:

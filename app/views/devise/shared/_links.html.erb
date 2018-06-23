@@ -1,5 +1,9 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to t('menu.login'), new_session_path(resource_name) %><br />
+  <div class="col-sm-7">
+    <i class="fa fa-lock m-r-5 text-muted"></i>
+    <%= link_to t('menu.login'), new_session_path(resource_name), class: "text-muted" %>
+  </div>
+
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
