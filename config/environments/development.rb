@@ -1,3 +1,5 @@
+require 'dotenv/load'
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -27,9 +29,21 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
+
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.mailgun.org',
+    domain: 'dev.ops.deeplegal.ai',
+    user_name: 'postmaster@ops.deeplegal.ai',
+    password: ENV['MAILGUN_PASSWORD'],
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
+  config.action_mailer.perform_deliveries = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -52,7 +66,6 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.assets.paths << Rails.root.join("app", "assets")
-  config.i18n.default_locale = :es
+  config.i18n.default_locale = :en
 end

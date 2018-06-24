@@ -38,6 +38,7 @@ es:
     current_password: 'Contraseña actual'
     password_confirmation: 'Confirmación de contraseña'
     remember_me: 'Recuérdame'
+    new_password: 'Nueva contraseña'
   buttons:
     save: 'Salvar'
     update: 'Actualizar'

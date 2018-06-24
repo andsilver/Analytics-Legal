@@ -57,4 +57,3 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'pundit'
-gem 'mailgun-ruby', '~>1.1.6'

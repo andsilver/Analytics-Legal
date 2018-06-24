@@ -39,7 +39,7 @@
               <%= f.password_field :password, autocomplete: "off", class:"form-control",
                 placeholder: t('notices.blank_password') %>
               <% if @minimum_password_length %>
-                <em><%= "#{t('notices.min')} #{@minimum_password_length} #{t('notices.char')}" %>
+                <em class='text-muted'><%= "#{t('notices.min')} #{@minimum_password_length} #{t('notices.char')}" %>
                 </em>
               <% end %>
             </div>
