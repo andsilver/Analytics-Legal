@@ -39,12 +39,28 @@ en:
     password_confirmation: 'Password confirmation'
     remember_me: "Remember me"
     new_password: 'New password'
+  cases:
+    query_of_cases: 'Search Cases'
+    back_to_search: 'Back to Search'
+    enter_ruc: 'Enter RUC'
+    court: 'Court'
+    first_name: 'First name'
+    procedure: 'Procedure'
+    procedure_t: 'Procedure'
+    desc_procedure_t: 'Desc. Procedure'
+    home_form: 'Home form'
+    adm_status: 'Adm status'
+    status: 'Status'
+    stage: 'Stage'
+    state_procedure: 'State Procedure'
+    nothing_found: 'Sorry, nothing was found for this RUC'
   buttons:
     save: 'Save'
     update: 'Update'
     edit: 'Edit'
     delete: 'Delete'
     reset: 'Reset'
+    search: 'Search'
   activerecord:
     errors:
       models:

@@ -1,0 +1,11 @@
+.cases-table {
+  tr.clickable:hover {
+    background: #f1f1f1;
+    cursor: pointer;
+  }
+}
+
+.no-bullets {
+  margin-top: 16px;
+  list-style-type: none;
+}

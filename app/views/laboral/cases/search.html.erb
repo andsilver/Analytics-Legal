@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-12">
+    <div class="m-t-20">
+      <h4><%= t('cases.query_of_cases')%></h4>
+      <%= form_for(@case, url: laboral_cases_path,
+        html: { method: :get, class: "form-horizontal m-t-20" }) do |f| %>
+        <div class="form-group row">
+          <div class="col-4">
+            <div class="input-group">
+              <%= f.text_field :RUC, class: 'form-control', placeholder: t('cases.enter_ruc') %>
+              <span class="input-group-append">
+                <%= f.button t('buttons.search'), type: "submit", class: "btn btn-email btn-primary waves-effect waves-light" %>
+              </span>
+            </div>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>

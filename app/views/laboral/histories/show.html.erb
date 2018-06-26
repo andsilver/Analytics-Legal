@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="page-title-box">
+      <div class="btn-group pull-right">
+        <%= link_to t('cases.back_to_search'), search_laboral_cases_path,
+          class: "btn btn-primary btn-custom waves-effect waves-light w-md" %>
+      </div>
+      <h4 class="page-title">Timeline</h4>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="timeline">
+      <% @histories.each_with_index do |history, index| %>
+        <article class="timeline-item <%= index % 2 == 0 ? 'alt' : '' %>">
+          <div class="timeline-desk">
+            <div class="panel">
+              <div class="panel-body">
+                <span class="arrow-alt"></span>
+                <span class="timeline-icon"></span>
+                <h4 class="text-danger"><%= history.processed_date.strftime("%d/%m/%Y") %></h4>
+                <ul class="no-bullets">
+                  <li><b>Folio</b>: <%= history.Folio %></li>
+                  <li><b><%= t('cases.stage') %></b>: <%= history.Etapa %></li>
+                  <li><b><%= t('cases.procedure_t') %></b>: <%= history.Tramite %></li>
+                  <li><b><%= t('cases.desc_procedure_t') %></b>: <%= history.read_attribute('Desc. Tramite') %></li>
+                  <li><b><%= t('cases.status') %></b>: <%= history.Estado %></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+      <% end %>
+    </div>
+  </div>
+</div>

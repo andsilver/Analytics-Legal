@@ -39,12 +39,28 @@ es:
     password_confirmation: 'Confirmación de contraseña'
     remember_me: 'Recuérdame'
     new_password: 'Nueva contraseña'
+  cases:
+    query_of_cases: 'Consulta de Causas'
+    back_to_search: 'Volver a buscar'
+    enter_ruc: 'Ingrese RUC'
+    court: 'Tribunal'
+    first_name: 'Nombre'
+    procedure: 'Procedimiento'
+    procedure_t: 'Trámite'
+    desc_procedure_t: 'Desc. Trámite'
+    home_form: 'Forma Inicio'
+    adm_status: 'Estado Adm'
+    status: 'Estado'
+    stage: 'Etapa'
+    state_procedure: 'Estado Procedimiento'
+    nothing_found: 'Ningún dato disponible para este RUC'
   buttons:
     save: 'Salvar'
     update: 'Actualizar'
     edit: 'Editar'
     delete: 'Borrar'
     reset: 'Reiniciar'
+    search: 'Buscar'
   activerecord:
     errors:
       models:

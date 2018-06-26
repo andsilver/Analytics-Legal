@@ -63,11 +63,18 @@
 					<div id="navigation">
 						<!-- Navigation Menu-->
 						<ul class="navigation-menu">
-							<li>
+							<li class="has-submenu">
 								<%= link_to root_path do %>
 									<i class="ti-home"></i>
 									<%= t('menu.dashboard')%>
 								<% end %>
+								<ul class="submenu">
+									<li>
+										<%= link_to search_laboral_cases_path do %>
+											<%= t('cases.query_of_cases')%>
+										<% end %>
+									<li>
+								</ul>
 							</li>
 
 							<% if policy(current_user).create? %>

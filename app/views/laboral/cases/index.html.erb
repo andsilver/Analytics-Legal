@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-12">
+    <div class="m-t-20">
+      <h4><%= t('cases.query_of_cases')%></h4>
+      <%= form_for(@case, url: laboral_cases_path,
+        html: { method: :get, class: "form-horizontal m-t-20" }) do |f| %>
+        <div class="form-group row">
+          <div class="col-4">
+            <div class="input-group">
+              <%= f.text_field :RUC, class: 'form-control', placeholder: t('cases.enter_ruc') %>
+              <span class="input-group-append">
+                <%= f.button t('buttons.search'), type: "submit", class: "btn btn-email btn-primary waves-effect waves-light" %>
+              </span>
+            </div>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% if @cases.length > 0 %>
+  <div class="row m-t-20">
+    <div class="col-lg-12">
+      <div>
+        <div class="card-box">
+          <div class="table-responsive">
+            <table class="table m-t-20 cases-table">
+              <thead class="thead-light">
+                <tr>
+                  <th><%= t('cases.court') %></th>
+                  <th>RIT</th>
+                  <th><%= t('cases.first_name') %></th>
+                  <th><%= t('cases.process') %></th>
+                  <th><%= t('cases.home_form') %></th>
+                  <th><%= t('cases.adm_status') %></th>
+                  <th><%= t('cases.stage') %></th>
+                  <th><%= t('cases.state_procedure') %></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @cases.each do |kase| %>
+                  <tr class="clickable" onclick="window.location='<%= laboral_history_path(kase.Id) %>';">
+                    <td><%= kase.Tribunal %></td>
+                    <td><%= kase.RIT %></td>
+                    <td><%= kase.Nombre %></td>
+                    <td><%= kase.Procedimiento %></td>
+                    <td><%= kase.read_attribute('Forma Inicio') %></td>
+                    <td><%= kase.read_attribute('Estado Adm.') %></td>
+                    <td><%= kase.Etapa %></td>
+                    <td><%= kase.read_attribute('Estado Procedimiento') %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <h5 class="m-t-20"><%= t('cases.nothing_found')%></h5>
+<% end %>
