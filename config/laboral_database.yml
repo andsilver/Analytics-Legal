@@ -11,7 +11,7 @@ test:
   database: laboral_test
 production:
   <<: *default
-  host: <%= ENV['LABORAL_DATABASE_HOST'] %>
+  host: <%= Rails.application.secrets.laboral_db_host %>
   port: 3306
   database: laboral
   username: root
