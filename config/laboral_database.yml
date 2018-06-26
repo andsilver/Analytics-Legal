@@ -12,5 +12,6 @@ test:
 production:
   <<: *default
   host: <%= ENV['LABORAL_DATABASE_HOST'] %>
+  port: 3306
   database: laboral
   username: root
