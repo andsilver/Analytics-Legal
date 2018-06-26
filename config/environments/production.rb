@@ -69,7 +69,7 @@ Rails.application.configure do
     authentication: 'plain',
     enable_starttls_auto: true
   }
-  config.action_mailer.default_url_options = { :host => "ops.deeplegal.ai" }
+  config.action_mailer.default_url_options = { :host => ENV['MAILER_DEFAULT_DOMAIN'] }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
