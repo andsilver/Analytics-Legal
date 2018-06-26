@@ -11,5 +11,6 @@ test:
   database: laboral_test
 production:
   <<: *default
+  host: <%= ENV['LABORAL_DATABASE_HOST'] %>
   database: laboral
   username: root
