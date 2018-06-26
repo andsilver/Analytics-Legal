@@ -64,6 +64,7 @@ Rails.application.configure do
     address: 'smtp.mailgun.org',
     domain: 'dev.ops.deeplegal.ai',
     user_name: 'postmaster@ops.deeplegal.ai',
+    port: '2525',
     password: ENV['MAILGUN_PASSWORD'],
     authentication: 'plain',
     enable_starttls_auto: true
