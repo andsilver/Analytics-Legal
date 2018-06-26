@@ -65,11 +65,11 @@ Rails.application.configure do
     domain: 'dev.ops.deeplegal.ai',
     user_name: 'postmaster@ops.deeplegal.ai',
     port: '2525',
-    password: ENV['MAILGUN_PASSWORD'],
+    password: Rails.application.secrets.mailgun_password,
     authentication: 'plain',
     enable_starttls_auto: true
   }
-  config.action_mailer.default_url_options = { :host => ENV['MAILER_DEFAULT_DOMAIN'] }
+  config.action_mailer.default_url_options = { host: Rails.application.secrets.mailer_default_domain }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
