@@ -6,7 +6,7 @@ class User < ApplicationRecord
     api_client: I18n.t('users.api_client')
   }.freeze
 
-  devise :database_authenticatable, :registerable,
+  devise :session_limitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   def admin?
