@@ -39,6 +39,7 @@ en:
     password_confirmation: 'Password confirmation'
     remember_me: "Remember me"
     new_password: 'New password'
+    change_password: 'Change your password'
   cases:
     query_of_cases: 'Search Cases'
     back_to_search: 'Back to Search'

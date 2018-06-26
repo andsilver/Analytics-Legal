@@ -39,6 +39,7 @@ es:
     password_confirmation: 'Confirmación de contraseña'
     remember_me: 'Recuérdame'
     new_password: 'Nueva contraseña'
+    change_password: 'Cambia tu contraseña'
   cases:
     query_of_cases: 'Consulta de Causas'
     back_to_search: 'Volver a buscar'
