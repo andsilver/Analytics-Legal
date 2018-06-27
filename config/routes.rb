@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     end
 
     resources :histories, only: [:show]
+
+    get 'litigants/search'
   end
 
   devise_for :users, controllers: {
