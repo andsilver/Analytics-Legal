@@ -4,7 +4,27 @@ $(document).ready(function() {
     minimumInputLength: 3,
     ajax: {
       url: '/laboral/litigants/search',
-      dataType: 'json'
+      delay: 250,
+      dataType: 'json',
+      cache: true,
+      data: function (params) {
+        var query = {
+          q: params.term,
+          page: params.page || 1
+        }
+
+        return query;
+      },
+      processResults: function (data, params) {
+        params.page = params.page || 1;
+
+        return {
+          results: data.results,
+          pagination: {
+            more: data.pagination.more
+          }
+        };
+      }
     }
   });
 });

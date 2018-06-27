@@ -3,20 +3,32 @@ class Laboral::LitigantsController < ApplicationController
     query = params[:q]
 
     unless query.present?
-      render json: []
+      render json: {
+        results: [],
+        pagination: {
+          more: false
+        }
+      }
       return
     end
 
-    results = Laboral::Litigant
-      .select(:Nombre, :Rut)
-      .where('Nombre LIKE ? OR Rut LIKE ?', "%#{query}%", "%#{query}%")
-      .uniq
+    results = nombre_or_rut(query)
 
     render json: {
       results: results,
       pagination: {
-        more: false
+        more: !results.last_page?
       }
     }
+  end
+
+  private
+
+  def nombre_or_rut(query)
+    Laboral::Litigant
+      .select('DISTINCT Rut, Nombre, Persona')
+      .where('(Nombre LIKE ? OR Rut LIKE ?) AND Persona = 2', "%#{query}%", "%#{query}%")
+      .page(params[:page])
+      .without_count
   end
 end
