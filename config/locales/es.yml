@@ -20,7 +20,7 @@ es:
     forgot_password: '¿Olvidaste tu contraseña?'
     enter_email: '¡Ingrese su Email y le enviaremos las instrucciones!'
   menu:
-    dashboard: 'Tablero'
+    dashboard: 'Inicio'
     profile: 'Perfil'
     login: 'Iniciar sesión'
     logout: 'Cerrar sesión'
