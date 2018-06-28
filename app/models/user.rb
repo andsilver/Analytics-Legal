@@ -6,10 +6,10 @@ class User < ApplicationRecord
     api_client: I18n.t('users.api_client')
   }.freeze
 
+  has_many :whitelisted_litigators, dependent: :destroy
+
   devise :session_limitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
-  before_save :clear_emtpy_values_from_allowed_ruts
 
   def admin?
     role == 'admin'
@@ -27,9 +27,21 @@ class User < ApplicationRecord
     role == 'api_client'
   end
 
-  private
+  def whitelisted_litigators_ruts
+  end
 
-  def clear_emtpy_values_from_allowed_ruts
-    self.allowed_ruts = self.allowed_ruts.delete_if { |rut| rut.empty? }
+  def whitelisted_litigators_ruts=
+  end
+
+  def whitelisted_litigators_for_select
+    return [] if self.whitelisted_litigators.empty?
+
+    self.whitelisted_litigators.each_with_object([]) do |wl, memo|
+      memo << ["#{wl.name} (#{wl.rut})", wl.rut]
+    end
+  end
+
+  def selected_whitelisted_litigators
+    whitelisted_litigators_for_select.map { |wl| wl.last }
   end
 end

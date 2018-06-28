@@ -13,6 +13,7 @@ class Admin::UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        create_litigators(@user.id)
         format.html { redirect_to edit_admin_user_path(@user), notice: t('notices.user_create_success') }
       else
         format.html { render :new }
@@ -29,7 +30,7 @@ class Admin::UsersController < ApplicationController
 
   def update
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.update(user_params) && create_litigators(params[:id])
         format.html { redirect_to admin_users_path, notice: t('notices.user_update_success') }
       else
         format.html { render :edit }
@@ -46,6 +47,10 @@ class Admin::UsersController < ApplicationController
 
   private
 
+  def create_litigators(user_id)
+    WhitelistedLitigator.create_all(params[:user][:whitelisted_litigators_ruts], user_id)
+  end
+
   def set_user
     @user = User.find(params[:id])
   end
@@ -56,6 +61,6 @@ class Admin::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password, :role, :company, :company_id, :address, :country,
-      :city, :phone_number, :position, allowed_ruts: [])
+      :city, :phone_number, :position)
   end
 end
