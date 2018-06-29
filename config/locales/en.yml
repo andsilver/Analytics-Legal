@@ -40,6 +40,7 @@ en:
     remember_me: "Remember me"
     new_password: 'New password'
     change_password: 'Change your password'
+    cases_on_ruts: 'Cases on my RUTs'
   cases:
     query_of_cases: 'Search Cases'
     back_to_search: 'Back to Search'
@@ -54,6 +55,7 @@ en:
     status: 'Status'
     stage: 'Stage'
     state_procedure: 'State Procedure'
+    date: 'Date of admission'
     nothing_found: 'Sorry, nothing was found for this RUC'
   buttons:
     save: 'Save'

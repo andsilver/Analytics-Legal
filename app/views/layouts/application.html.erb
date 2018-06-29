@@ -73,7 +73,12 @@
 										<%= link_to search_laboral_cases_path do %>
 											<%= t('cases.query_of_cases')%>
 										<% end %>
+									</li>
 									<li>
+										<%= link_to index_by_rut_laboral_cases_path do %>
+											<%= t('menu.cases_on_ruts')%>
+										<% end %>
+									</li>
 								</ul>
 							</li>
 
@@ -87,11 +92,13 @@
 										<li>
 											<%= link_to new_admin_user_path do %>
 												<%= t('users.create_user')%>
-											<% end %>										</li>
+											<% end %>
+										</li>
 										<li>
 											<%= link_to admin_users_path do %>
 												<%= t('users.list_users')%>
-											<% end %>										</li>
+											<% end %>
+										</li>
 									</ul>
 								</li>
 							<% end %>

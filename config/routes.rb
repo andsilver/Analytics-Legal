@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   end
 
   namespace :laboral do
-    resources :cases, only: [:show, :index] do
+    resources :cases, only: [:show] do
       collection do
+        get 'index_by_ruc'
+        get 'index_by_rut'
         get 'search'
       end
     end
