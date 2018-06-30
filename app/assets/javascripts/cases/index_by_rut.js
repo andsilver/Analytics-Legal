@@ -1,4 +1,7 @@
 $(document).ready(function() {
+  if ($('.cases-by-rut-table').length == 0) {
+    return;
+  };
   FooTable.StatesFiltering = FooTable.Filtering.extend({
     construct: function(instance){
       this._super(instance);
@@ -93,6 +96,13 @@ $(document).ready(function() {
     components: {
       filtering: FooTable.StatesFiltering
     }
+  });
+
+  $( ".cases-by-rut-table" ).on( "click", "tbody tr", function(event) {
+    var rut_index = $('th.footable-sortable:contains(RUC)').index();
+    var rut = $(event.currentTarget).find(':eq('+rut_index+')').text();
+    var link = '/laboral/cases/index_by_ruc?laboral_case[RUC]='+rut;
+    window.location.href = link;
   });
 });
 
