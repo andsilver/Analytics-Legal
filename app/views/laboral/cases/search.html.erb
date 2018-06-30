@@ -5,7 +5,7 @@
       <%= form_for(@case, url: index_by_ruc_laboral_cases_path,
         html: { method: :get, class: "form-horizontal m-t-20" }) do |f| %>
         <div class="form-group row">
-          <div class="col-4">
+          <div class="col-lg-4 col-sm-12">
             <div class="input-group">
               <%= f.text_field :RUC, class: 'form-control', placeholder: t('cases.enter_ruc') %>
               <span class="input-group-append">
