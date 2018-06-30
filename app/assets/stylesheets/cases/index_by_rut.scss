@@ -15,4 +15,7 @@
   .footable-filtering form {
     float: right;
   }
+  .footable-page:not(.visible) {
+    display: none;
+  }
 }

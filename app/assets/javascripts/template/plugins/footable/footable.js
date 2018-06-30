@@ -5693,7 +5693,7 @@
 		 * @instance
 		 */
 		prevPages: function(){
-			var page = this.$pagination.children('li.page-item.visible:first').data('page') - 1;
+			var page = this.$pagination.children('li.page-item.footable-page.visible:first').data('page') - 1;
 			this._setVisible(page, true);
 			this._setNavigation(false);
 		},
@@ -5702,7 +5702,7 @@
 		 * @instance
 		 */
 		nextPages: function(){
-			var page = this.$pagination.children('li.page-item.visible:last').data('page') + 1;
+			var page = this.$pagination.children('li.page-item.footable-page.visible:last').data('page') + 1;
 			this._setVisible(page, false);
 			this._setNavigation(false);
 		},
@@ -5796,7 +5796,7 @@
 				}
 			}
 			for (var i = 0, $li; i < self.total; i++){
-				$li = link(i + 1, i + 1, 'page-item');
+				$li = link(i + 1, i + 1, 'page-item footable-page');
 				self.$pagination.append($li);
 			}
 			if (multiple){
@@ -5827,13 +5827,13 @@
 				this.$pagination.children('li[data-page="next"],li[data-page="last"]').removeClass('disabled');
 			}
 
-			if ((this.$pagination.children('li.page-item.visible:first').data('page') || 1) == 1) {
+			if ((this.$pagination.children('li.page-item.footable-page.visible:first').data('page') || 1) == 1) {
 				this.$pagination.children('li[data-page="prev-limit"]').addClass('disabled');
 			} else {
 				this.$pagination.children('li[data-page="prev-limit"]').removeClass('disabled');
 			}
 
-			if ((this.$pagination.children('li.page-item.visible:last').data('page') || this.limit) == this.total) {
+			if ((this.$pagination.children('li.page-item.footable-page.visible:last').data('page') || this.limit) == this.total) {
 				this.$pagination.children('li[data-page="next-limit"]').addClass('disabled');
 			} else {
 				this.$pagination.children('li[data-page="next-limit"]').removeClass('disabled');
@@ -5846,7 +5846,7 @@
 			}
 
 			if (active){
-				this.$pagination.children('li.page-item').removeClass('active').filter('li[data-page="' + this.current + '"]').addClass('active');
+				this.$pagination.children('li.page-item.footable-page').removeClass('active').filter('li[data-page="' + this.current + '"]').addClass('active');
 			}
 		},
 		/**
@@ -5858,7 +5858,7 @@
 		 */
 		_setVisible: function(page, right){
 			if (this.limit > 0 && this.total > this.limit){
-				if (!this.$pagination.children('li.page-item[data-page="'+page+'"]').hasClass('visible')){
+				if (!this.$pagination.children('li.footable-page[data-page="'+page+'"]').hasClass('visible')){
 					var start = 0, end = 0;
 					if (right == true){
 						end = page > this.total ? this.total : page;
@@ -5875,10 +5875,10 @@
 						end = this.total;
 						start = this.total - this.limit < 0 ? 0 : this.total - this.limit;
 					}
-					this.$pagination.children('li.page-item').removeClass('visible').slice(start, end).addClass('visible');
+					this.$pagination.children('li.footable-page').removeClass('visible').slice(start, end).addClass('visible');
 				}
 			} else {
-				this.$pagination.children('li.page-item').removeClass('visible').slice(0, this.total).addClass('visible');
+				this.$pagination.children('li.footable-page').removeClass('visible').slice(0, this.total).addClass('visible');
 			}
 		},
 		/**
