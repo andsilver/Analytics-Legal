@@ -52,7 +52,6 @@ $(document).ready(function() {
       self.filter();
     },
     _onAdmStatusDropdownChanged: function(e){
-      debugger;
       var self = e.data.self,
         selected = $(this).val();
       if (selected !== self.adminDefault){
