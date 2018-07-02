@@ -77,6 +77,7 @@ es:
       user:
         updated: 'El usuario fue actualizado con éxito.'
   datetime:
+    last_update: 'Última actualización: hace'
     distance_in_words:
       about_x_hours:
         one: alrededor de 1 hora
