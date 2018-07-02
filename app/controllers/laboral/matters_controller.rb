@@ -5,5 +5,6 @@ class Laboral::MattersController < ApplicationController
     ).pluck(:id)
 
     @matters = Cache::MattersCache.new.get(current_user.id)
+    @matters_updated_at = Cache::MattersCache.new.get_updated_at(current_user.id).to_i
   end
 end

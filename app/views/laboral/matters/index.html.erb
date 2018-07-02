@@ -11,6 +11,9 @@
 					<div id="chart">
 						<svg style="height:500px;width:100%"></svg>
 					</div>
+					<div class="last-update text-muted">
+						Last update: <%= distance_of_time_in_words(Time.now, Time.at(@matters_updated_at)) %> ago
+					</div>
 				</div>
 			</div>
 		</div>

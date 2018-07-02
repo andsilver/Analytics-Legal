@@ -1,5 +1,6 @@
 class Cache::MattersCache
   TOP_10_MATTERS_KEY = 'top-10-matters'.freeze
+  TOP_10_MATTERS_UPDATED_KEY = 'top-10-matters-updated'.freeze
 
   def initialize(logger = nil)
     @logger = logger || Logger.new('log/matters_cache.log')
@@ -14,12 +15,17 @@ class Cache::MattersCache
   def save(user)
     @logger.info("Processing user ##{user.id}")
     $redis.hset(TOP_10_MATTERS_KEY, user.id, matters_json(user))
+    $redis.hset(TOP_10_MATTERS_UPDATED_KEY, user.id, Time.now.to_i)
 
     true
   end
 
   def get(user_id)
     $redis.hget(TOP_10_MATTERS_KEY, user_id.to_s)
+  end
+
+  def get_updated_at(user_id)
+    $redis.hget(TOP_10_MATTERS_UPDATED_KEY, user_id.to_s)
   end
 
   private
