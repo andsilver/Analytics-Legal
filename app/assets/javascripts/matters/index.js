@@ -1,4 +1,8 @@
 $(document).ready(function() {
+  if ($('.top-materias').length == 0) {
+    return;
+  }
+
   nv.addGraph(function() {
     var chart = nv.models.pieChart()
       .x(function(d) { return d.label })
