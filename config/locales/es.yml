@@ -41,6 +41,7 @@ es:
     new_password: 'Nueva contraseña'
     change_password: 'Cambia tu contraseña'
     cases_on_ruts: 'Causas de mis Ruts'
+    top_10_matters: 'Top 10 Materias'
   cases:
     query_of_cases: 'Consulta de Causas'
     back_to_search: 'Volver a buscar'

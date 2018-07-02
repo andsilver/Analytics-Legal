@@ -41,6 +41,7 @@ en:
     new_password: 'New password'
     change_password: 'Change your password'
     cases_on_ruts: 'Cases on my RUTs'
+    top_10_matters: 'Top 10 matters'
   cases:
     query_of_cases: 'Search Cases'
     back_to_search: 'Back to Search'
