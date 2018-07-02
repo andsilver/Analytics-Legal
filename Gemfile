@@ -61,3 +61,4 @@ gem 'pundit'
 gem 'devise_security_extension'
 gem 'kaminari'
 gem 'redis'
+gem 'whenever', require: false
