@@ -6,6 +6,8 @@ class User < ApplicationRecord
     api_client: I18n.t('users.api_client')
   }.freeze
 
+  after_commit :update_cache
+
   has_many :whitelisted_litigators, dependent: :destroy
 
   devise :session_limitable, :database_authenticatable, :registerable,
@@ -43,5 +45,11 @@ class User < ApplicationRecord
 
   def selected_whitelisted_litigators
     whitelisted_litigators_for_select.map { |wl| wl.last }
+  end
+
+  private
+
+  def update_cache
+    Cache::MattersCache.new.save(self)
   end
 end
