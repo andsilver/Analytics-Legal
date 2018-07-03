@@ -52,6 +52,7 @@ group :development do
   gem 'capistrano3-puma'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
+  gem 'capistrano-sidekiq'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -62,3 +63,4 @@ gem 'devise_security_extension'
 gem 'kaminari'
 gem 'redis'
 gem 'whenever', require: false
+gem 'sidekiq'

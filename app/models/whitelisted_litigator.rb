@@ -12,6 +12,14 @@ class WhitelistedLitigator < ApplicationRecord
       create(rut: rut, user_id: user_id, name: litigant.Nombre)
     end
 
+    self.update_cache(user_id)
+
     true
+  end
+
+  private
+
+  def self.update_cache(user_id)
+    MattersCacheWorker.perform_async(user_id)
   end
 end
