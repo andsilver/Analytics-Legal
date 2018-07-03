@@ -58,6 +58,8 @@ en:
     state_procedure: 'State Procedure'
     date: 'Date of admission'
     nothing_found: 'Sorry, nothing was found for this RUC'
+  matters:
+    no_data_to_show: 'No data to show, you have to add some RUTs first.'
   buttons:
     save: 'Save'
     update: 'Update'
