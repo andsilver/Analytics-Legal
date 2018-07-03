@@ -65,6 +65,7 @@ es:
     delete: 'Borrar'
     reset: 'Reiniciar'
     search: 'Buscar'
+    update_data: 'Actualizar Datos'
   activerecord:
     errors:
       models:

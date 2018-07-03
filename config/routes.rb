@@ -14,7 +14,13 @@ Rails.application.routes.draw do
 
     resources :histories, only: [:show]
 
-    resources :matters, only: [:index]
+    resources :matters, only: [:index] do
+      collection do
+        post 'update_cache'
+      end
+    end
+
+    resources :litigants, only: [:index]
 
     get 'litigants/search'
   end

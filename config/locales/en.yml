@@ -65,6 +65,7 @@ en:
     delete: 'Delete'
     reset: 'Reset'
     search: 'Search'
+    update_data: 'Update Data'
   activerecord:
     errors:
       models:
