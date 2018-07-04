@@ -56,7 +56,6 @@ class Cache::CasesCache
   end
 
   def count_number_of_cases(json)
-    binding.pry
     unless json.present?
       return 0
     else
