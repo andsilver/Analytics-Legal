@@ -22,6 +22,12 @@ class Laboral::LitigantsController < ApplicationController
     }
   end
 
+  def index
+    @count_cases = Cache::CasesCache.new.get(current_user.id)
+    @count_cases_updated_at = Cache::CasesCache.new.get_updated_at(current_user.id).to_i
+    @number_of_cases = Cache::CasesCache.new.get_number_of_cases(current_user.id).to_i
+  end
+
   private
 
   def nombre_or_rut(query)

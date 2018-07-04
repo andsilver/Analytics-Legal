@@ -1,0 +1,14 @@
+.count-cases-table {
+  .footable-filtering {
+    display: none;
+  }
+  .footable-pagination-wrapper span {
+    display: none;
+  }
+  ul.pagination {
+    float: right;
+  }
+}
+.number_of_cases {
+  font-style: italic;
+}

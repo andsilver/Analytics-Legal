@@ -60,6 +60,9 @@ es:
     nothing_found: 'Ningún dato disponible para este RUC'
   matters:
     no_data_to_show: 'Sin datos para mostrar, primero debe agregar algunos RUT.'
+  litigants:
+    top_demanded_ruts: 'Top RUTs Demandados'
+    number_of_cases: 'Cantidad de Causas'
   buttons:
     save: 'Salvar'
     update: 'Actualizar'
