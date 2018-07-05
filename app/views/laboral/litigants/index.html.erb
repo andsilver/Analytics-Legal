@@ -19,6 +19,14 @@
           data-paging="true" data-sorting="true" data-paging-size="15" data-paging-limit="5">
         </table>
       </div>
+			<div class="last-update text-muted">
+				<%= t('datetime.last_update') %> <%= distance_of_time_in_words(Time.now, Time.at(@count_cases_updated_at)) %>
+			</div>
+			<div class="update-data m-t-10">
+				<%= link_to t('buttons.update_data'), update_cache_laboral_litigants_path,
+					class: "btn btn-sm btn-primary btn-custom waves-effect waves-light w-md",
+					method: :post %>
+			</div>
 		</div>
 	</div>
 </div>

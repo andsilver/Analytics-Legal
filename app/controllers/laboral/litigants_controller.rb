@@ -28,6 +28,12 @@ class Laboral::LitigantsController < ApplicationController
     @number_of_cases = Cache::CasesCache.new.get_number_of_cases(current_user.id).to_i
   end
 
+  def update_cache
+    CasesCacheWorker.perform_async(current_user.id)
+
+    redirect_to laboral_litigants_path
+  end
+
   private
 
   def nombre_or_rut(query)

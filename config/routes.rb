@@ -25,7 +25,11 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :litigants, only: [:index]
+    resources :litigants, only: [:index] do
+      collection do
+        post 'update_cache'
+      end
+    end
 
     get 'litigants/search'
   end
