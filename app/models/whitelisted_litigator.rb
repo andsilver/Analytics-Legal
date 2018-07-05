@@ -21,5 +21,6 @@ class WhitelistedLitigator < ApplicationRecord
 
   def self.update_cache(user_id)
     MattersCacheWorker.perform_async(user_id)
+    CasesCacheWorker.perform_async(user_id)
   end
 end
