@@ -1,0 +1,9 @@
+matters_cache:
+  cron: "*/15 * * * *"
+  class: "MattersCacheWorker"
+  queue: cache
+
+cases_cache:
+  cron: "*/15 * * * *"
+  class: "CasesCacheWorker"
+  queue: cache

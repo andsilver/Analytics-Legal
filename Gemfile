@@ -62,5 +62,6 @@ gem 'pundit'
 gem 'devise_security_extension'
 gem 'kaminari'
 gem 'redis'
-gem 'whenever', require: false
+gem 'rufus-scheduler', '~> 3.4.0'
+gem "sidekiq-cron", "~> 0.6.3"
 gem 'sidekiq'
