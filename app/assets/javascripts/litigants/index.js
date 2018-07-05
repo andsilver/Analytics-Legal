@@ -7,7 +7,8 @@ $(document).ready(function() {
     columns: [
       {"name":"name","title":"Nombre"},
       {"name":"rut","title":"RUT"},
-      {"name":"count","title":"Count"},
+      {"name":"count","title":"Cantidad"},
+      {"name":"percentage","title":"Porcentaje"},
     ],
     rows: countCasesJSON
   });
