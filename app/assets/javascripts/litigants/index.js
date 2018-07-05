@@ -5,10 +5,10 @@ $(document).ready(function() {
 
   FooTable.init('.count-cases-table', {
     columns: [
-      {"name":"name","title":"Nombre"},
-      {"name":"rut","title":"RUT"},
-      {"name":"count","title":"Cantidad"},
-      {"name":"percentage","title":"Porcentaje"},
+      { "name": "name", "title": "Nombre" },
+      { "name": "rut", "title": "RUT" },
+      { "name": "count", "title": "Cantidad", "sorted": true, "direction": "DESC" },
+      { "name": "percentage", "title": "Porcentaje" },
     ],
     rows: countCasesJSON
   });
