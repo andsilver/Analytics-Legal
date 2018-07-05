@@ -68,7 +68,7 @@ class Cache::CasesCache
     return unless cases_hash.present?
 
     cases_hash.map do |kase|
-      kase.merge(percentage: "#{kase[:count].to_f / number_of_cases * 100}%")
+      kase.merge(percentage: "#{(kase[:count].to_f / number_of_cases * 100).round(1)}%")
     end
   end
 end
