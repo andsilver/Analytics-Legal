@@ -2,8 +2,8 @@ $('a.update-cache[data-remote]').on('ajax:success', function() {
   $.Notification.notify(
     'success',
     'top left',
-    'Data is being refreshed',
-    'This might take a couple of minutes, please come back a bit later'
+    'Los datos se actualizan',
+    'Esto puede demorar un par de minutos. Regrese un poco más tarde.'
   );
 });
 
@@ -11,7 +11,7 @@ $('a.update-cache[data-remote]').on('ajax:error', function() {
   $.Notification.notify(
     'error',
     'top left',
-    'Something went wrong',
-    'We are already working on a fix, please come back later'
+    'Algo salió mal',
+    'Ya estamos trabajando en una solución, por favor regrese más tarde'
   );
 });
