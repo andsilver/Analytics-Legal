@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require dashboards/common
 //= require jquery_ujs
 //= require template/jquery.min
 //= require template/popper.min
@@ -18,4 +19,6 @@
 //= require template/waves
 //= require template/jquery.slimscroll
 //= require template/jquery.scrollTo.min
+//= require template/plugins/notify/notify.min
+//= require template/plugins/notify/notify-metro
 //= require_tree .

@@ -1,0 +1,29 @@
+<script>
+  var topMattersJSON = JSON.parse('<%= @cached_data[:data].to_json.html_safe %>')
+</script>
+
+<div class="row m-t-20 top-materias">
+	<div class="col-sm-12">
+		<div class="card-box">
+			<h4 class="m-t-0 m-b-20 header-title"><%= t('menu.top_10_matters') %></h4>
+			<div class="row">
+				<div class="col-md-12">
+					<div id="chart">
+						<svg style="height:500px;width:100%"></svg>
+					</div>
+					<div class="last-update text-muted">
+						<%= t('datetime.last_update') %>
+						<%= distance_of_time_in_words_to_now(Time.at(@cached_data[:updated_at])) %>
+					</div>
+					<div class="update-data m-t-10">
+						<%= link_to t('buttons.update_data'), dashboards_refresh_path(dashboard: 'top_matters'),
+							class: "btn btn-sm btn-primary btn-custom waves-effect waves-light w-md update-cache",
+							remote: true,
+							data: { 'disable-with' => 'Updating...' },
+							method: :post %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
