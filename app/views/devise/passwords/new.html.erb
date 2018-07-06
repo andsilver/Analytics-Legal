@@ -1,6 +1,8 @@
 <div class="wrapper-page">
   <div class="text-center">
-      <a href="index.html" class="logo-lg"><i class="mdi mdi-radar"></i> <span>DeepLegal</span> </a>
+    <%= link_to root_path, class: "logo" do %>
+      <%= image_tag("logo.png", size: '220x72') %>
+    <% end %>
   </div>
 
   <%= form_for(resource, as: resource_name, url: password_path(resource_name),
