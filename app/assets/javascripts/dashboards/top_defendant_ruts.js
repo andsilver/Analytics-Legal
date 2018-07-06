@@ -10,6 +10,6 @@ $(document).ready(function() {
       { "name": "count", "title": "Cantidad", "sorted": true, "direction": "DESC" },
       { "name": "percentage", "title": "Porcentaje" },
     ],
-    rows: countCasesJSON
+    rows: topDefendantRutsJSON
   });
 });

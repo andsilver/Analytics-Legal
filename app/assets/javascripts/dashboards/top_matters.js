@@ -14,7 +14,7 @@ $(document).ready(function() {
       .donutRatio(0.35);     //Configure how big you want the donut hole size to be.
 
     d3.select("#chart svg")
-        .datum(mattersJSON)
+        .datum(topMattersJSON)
         .transition().duration(350)
         .call(chart);
 
