@@ -25,13 +25,14 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :litigants, only: [:index] do
-      collection do
-        post 'update_cache'
-      end
-    end
-
     get 'litigants/search'
+  end
+
+  namespace :dashboards do
+    get 'top-defendant-ruts'
+    get 'top-matters'
+
+    post 'refresh'
   end
 
   devise_for :users, controllers: {
