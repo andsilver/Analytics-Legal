@@ -9,12 +9,18 @@
 		</div>
 	</div>
 </div>
-
 <div class="row litigants-index">
 	<div class="col-12">
 		<div class="card-box">
+			<form class="form-horizontal">
+				<div class="form-group">
+					<div class="m-b-20">
+						<input type="text" class="top_defendant_ruts__slider">
+					</div>
+				</div>
+			</form>
+			<i class='number_of_cases pull-right'><%= t('litigants.number_of_cases') %>: <%= @cached_data[:total] %></i>
       <div class="table-responsive">
-        <h4 class='number_of_cases'><%= t('litigants.number_of_cases') %>: <%= @cached_data[:total] %></h4>
         <table class="table table-bordered toggle-circle m-b-0 m-t-20 count-cases-table"
           data-paging="true" data-sorting="true" data-paging-size="15" data-paging-limit="5">
         </table>

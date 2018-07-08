@@ -34,19 +34,26 @@ class Cache::TopDefendantRutsCache
       }.to_json
     end
 
-
     def user_data(whitelisted_litigators)
       total = 0
 
       data = whitelisted_litigators
         .group_by(&:Rut)
         .each_with_object([]) do |(rut, litigators), memo|
-          count = Laboral::Case.where(Id: litigators.pluck(:Id)).count
+          cases = Laboral::Case.where(Id: litigators.pluck(:Id))
+          quarter = nil
+          binding.pry
+          if cases.present?
+            first_case = cases.order(:'Fecha Ingreso' => 'ASC').first
+            quarter = Time.at(first_case.read_attribute('Fecha Ingreso')).beginning_of_quarter.to_i
+          end
+          count = cases.count
           total += count
 
           memo << {
             rut: rut,
             count: count,
+            quarter: quarter,
             name: litigators.first.Nombre
           }
         end
