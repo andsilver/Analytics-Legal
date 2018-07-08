@@ -42,7 +42,6 @@ class Cache::TopDefendantRutsCache
         .each_with_object([]) do |(rut, litigators), memo|
           cases = Laboral::Case.where(Id: litigators.pluck(:Id))
           quarter = nil
-          binding.pry
           if cases.present?
             first_case = cases.order(:'Fecha Ingreso' => 'ASC').first
             quarter = Time.at(first_case.read_attribute('Fecha Ingreso')).beginning_of_quarter.to_i
