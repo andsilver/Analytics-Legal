@@ -1,7 +1,15 @@
 body {
-  #topnav .topbar-main {
-    margin-top: 3px;
-    background-color: #f5f5f5;
+  #topnav {
+    .topbar-main {
+      margin-top: 3px;
+      background-color: #f5f5f5;
+    }
+    .navbar-toggle span {
+      background-color:#3bafda;
+    }
+    .navbar-toggle:hover span {
+      background-color:#3bafda;
+    }
   }
   .topbar-custom .nav-link {
     color:#3bafda
