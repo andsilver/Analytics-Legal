@@ -20,7 +20,7 @@ class WhitelistedLitigator < ApplicationRecord
   private
 
   def self.update_cache(user_id)
-    MattersCacheWorker.perform_async(user_id)
-    CasesCacheWorker.perform_async(user_id)
+    Cache::TopMattersWorker.perform_async(user_id)
+    Cache::TopDefendantRutsWorker.perform_async(user_id)
   end
 end
