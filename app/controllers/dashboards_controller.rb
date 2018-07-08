@@ -15,9 +15,9 @@ class DashboardsController < ApplicationController
   def refresh
     case params[:dashboard]
     when 'top_defendant_ruts'
-      TopDefendantRutsWorker.perform_async(current_user.id)
+      Cache::TopDefendantRutsWorker.perform_async(current_user.id)
     when 'top_matters'
-      TopMattersWorker.perform_async(current_user.id)
+      Cache::TopMattersWorker.perform_async(current_user.id)
     end
   end
 end
