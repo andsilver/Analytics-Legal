@@ -11,10 +11,4 @@ class Laboral::MattersController < ApplicationController
 
     render template
   end
-
-  def update_cache
-    MattersCacheWorker.perform_async(current_user.id)
-
-    redirect_to laboral_matters_path
-  end
 end
