@@ -2,7 +2,7 @@ require 'sidekiq/web'
 require 'sidekiq/cron/web'
 
 Rails.application.routes.draw do
-  mount Sidekiq::Web => '/sidekiq'
+    mount Sidekiq::Web => '/sidekiq'
 
   namespace :admin do
     resources :users
@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   namespace :dashboards do
     get 'top-defendant-ruts'
     get 'top-matters'
+    get 'cases-on-users-ruts'
 
     post 'refresh'
   end

@@ -1,9 +1,14 @@
 top_matters_cache:
   cron: "*/15 * * * *"
-  class: "Cache::TopMattersCache"
+  class: "TopMattersWorker"
   queue: cache
 
 top_defendant_ruts_cache:
   cron: "*/15 * * * *"
-  class: "Cache::TopDefendantRutsWorker"
+  class: "TopDefendantRutsWorker"
+  queue: cache
+
+cases_on_users_ruts_cache:
+  cron: "*/15 * * * *"
+  class: "CasesOnUsersRutsWorker"
   queue: cache
