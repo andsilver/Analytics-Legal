@@ -19,20 +19,21 @@ $(document).ready(function() {
   sliderValues = _.map(sliderData, function(json) {
     return moment.unix(json.quarter).format(timeFormat)
   });
-  debugger;
   $(".top_defendant_ruts__slider").ionRangeSlider({
     type: "double",
     grid: true,
     from: sliderValues[0],
     to: sliderValues[sliderValues.length - 1],
     values: _.sortedUniq(sliderValues),
-    onChange: function(data) {
-      fromTime = moment(data.from_value, timeFormat);
-      toTime = moment(data.to_value, timeFormat);
-      fooTable.rows.load(_.filter(topDefendantRutsJSON, function(json) {
-        return json.quarter === null ||
-               (json.quarter >= parseInt(fromTime.format("X")) && json.quarter <= parseInt(toTime.format("X")));
-      }));
+    onFinish: function(data) {
+      fromTime = moment(data.from_value, timeFormat).format("X") - 1;
+      toTime = moment(data.to_value, timeFormat).format("X") + 1;
+
+      newData = _.filter(topDefendantRutsJSON, function(json) {
+        return json.quarter === null || _.inRange(json.quarter, fromTime, toTime)
+      });
+
+      fooTable.rows.load(newData);
     }
   });
 });
