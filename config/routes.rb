@@ -19,8 +19,6 @@ Rails.application.routes.draw do
 
     resources :histories, only: [:show]
 
-    resources :matters, only: [:index]
-
     get 'litigants/search'
   end
 
