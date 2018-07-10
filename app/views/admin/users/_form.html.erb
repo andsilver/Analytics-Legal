@@ -104,6 +104,23 @@
         </div>
       </div>
     </div>
+
+  <% else %>
+
+    <div class="form-group">
+      <%= f.password_field :password, autocomplete: "off", class:"form-control",
+        placeholder: "#{t('menu.password')} (#{t('notices.blank_password')})" %>
+      <% if @minimum_password_length %>
+        <em class='text-muted'><%= "#{t('notices.min')} #{@minimum_password_length} #{t('notices.char')}" %>
+        </em>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control",
+        placeholder: t('menu.password_confirmation') %>
+    </div>
+
   <% end %>
 
   <div class="form-group text-right m-t-20">
