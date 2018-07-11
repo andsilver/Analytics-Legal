@@ -28,17 +28,6 @@
 					</thead>
         </table>
       </div>
-      <div class="last-update text-muted m-t-15">
-				<%= t('datetime.last_update') %>
-				<%= distance_of_time_in_words(Time.now, Time.at(@cases[:updated_at].to_i)) %>
-			</div>
-			<div class="update-data m-t-10">
-				<%= link_to t('buttons.update_data'), dashboards_refresh_path(dashboard: 'cases_on_users_ruts'),
-					class: "btn btn-sm btn-primary btn-custom waves-effect waves-light w-md update-cache",
-					remote: true,
-					data: { 'disable-with' => 'Updating...' },
-					method: :post %>
-			</div>
     </div>
   </div>
 </div>
