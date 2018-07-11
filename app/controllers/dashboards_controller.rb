@@ -12,7 +12,6 @@ class DashboardsController < ApplicationController
   def cases_on_users_ruts
     serializer = Serializers::CasesOnUsersRutsSerializer.new(current_user)
     respond_to do |format|
-      format.html { @cases = Cache::CasesOnUsersRutsCache.get(current_user.id) }
       format.json do
         render json: serializer.to_json(
           draw: params[:draw],
