@@ -16,9 +16,23 @@
       <div class="table-responsive">
         <table class="table cases-table table-bordered toggle-circle m-b-0 cases-by-rut-table"
               data-paging="true" data-sorting="true" data-filtering="true" data-paging-size="15" data-paging-limit="5">
+					<thead>
+						<tr>
+							<th>RIT</th>
+							<th>RUC</th>
+							<th>Nombre</th>
+							<th>Tribunal</th>
+							<th>Fecha Ingreso</th>
+							<th>Procedimiento</th>
+							<th>Forma Inicio</th>
+							<th>Estado Adm.</th>
+							<th>Etapa</th>
+							<th>Estado Procedimiento</th>
+						</tr>
+					</thead>
         </table>
       </div>
-      <div class="last-update text-muted">
+      <div class="last-update text-muted m-t-15">
 				<%= t('datetime.last_update') %>
 				<%= distance_of_time_in_words(Time.now, Time.at(@cases[:updated_at].to_i)) %>
 			</div>

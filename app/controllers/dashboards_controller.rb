@@ -10,7 +10,19 @@ class DashboardsController < ApplicationController
   end
 
   def cases_on_users_ruts
-    @cases = Cache::CasesOnUsersRutsCache.get(current_user.id)
+    serializer = Serializers::CasesOnUsersRutsSerializer.new(current_user)
+    respond_to do |format|
+      format.html { @cases = Cache::CasesOnUsersRutsCache.get(current_user.id) }
+      format.json do
+        render json: serializer.to_json(
+          draw: params[:draw],
+          limit: params[:length],
+          offset: params[:start],
+          columns: params[:columns],
+          order: params[:order]
+        )
+      end
+    end
   end
 
   def refresh

@@ -1,23 +1,4 @@
 .cases-by-rut-table {
-  .footable-filtering {
-    .footable-filtering-search {
-      .input-group-btn {
-        display: none;
-      }
-    }
-  }
-  .footable-pagination-wrapper span {
-    display: none;
-  }
-  ul.pagination {
-    float: right;
-  }
-  .footable-filtering form {
-    float: right;
-  }
-  .footable-page:not(.visible) {
-    display: none;
-  }
   tbody tr:hover {
     background: #f1f1f1;
     cursor: pointer;
