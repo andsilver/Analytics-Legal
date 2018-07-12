@@ -29,6 +29,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
+    filter_empty_password
     respond_to do |format|
       if @user.update(user_params) && create_litigators(params[:id])
         format.html { redirect_to admin_users_path, notice: t('notices.user_update_success') }
@@ -62,5 +63,12 @@ class Admin::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :password, :role, :company, :company_id, :address, :country,
       :city, :phone_number, :position)
+  end
+
+  def filter_empty_password
+    if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
   end
 end
