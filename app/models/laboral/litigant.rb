@@ -9,7 +9,7 @@ class Laboral::Litigant < ApplicationRecord
     }
   end
 
-  def filter_rut_duplicates(litigants)
+  def not_duplicate?(litigants)
     self.Rut == '0-0' || !litigants.any? { |l| l.Rut == self.Rut }
   end
 end

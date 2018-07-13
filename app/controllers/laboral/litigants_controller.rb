@@ -14,8 +14,8 @@ class Laboral::LitigantsController < ApplicationController
 
     results = nombre_or_rut(query)
     filtered_results = results.each_with_object([]) do |litigant, acc|
-      acc.push(litigant.filter_rut_duplicates(acc) ? litigant : nil)
-    end.compact
+      acc.push(litigant) if litigant.not_duplicate?(acc)
+    end
 
     render json: {
       results: filtered_results,
