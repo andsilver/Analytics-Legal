@@ -13,9 +13,9 @@ class Laboral::LitigantsController < ApplicationController
     end
 
     results = nombre_or_rut(query)
-    filtered_results = results.each_with_object([]) do |litigant, acc|
-      acc.push(litigant) if litigant.not_duplicate?(acc)
-    end
+
+    partitioned_array = results.to_a.partition { |l| l.Rut == '0-0' }
+    filtered_results = [partitioned_array[0], partitioned_array[1].uniq { |l| l.Rut }].flatten
 
     render json: {
       results: filtered_results,
