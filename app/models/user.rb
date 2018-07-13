@@ -27,17 +27,17 @@ class User < ApplicationRecord
     role == 'api_client'
   end
 
-  def whitelisted_litigators_ruts
+  def whitelisted_litigators_ids
   end
 
-  def whitelisted_litigators_ruts=
+  def whitelisted_litigators_ids=
   end
 
   def whitelisted_litigators_for_select
     return [] if self.whitelisted_litigators.empty?
 
     self.whitelisted_litigators.each_with_object([]) do |wl, memo|
-      memo << ["#{wl.name} (#{wl.rut})", wl.rut]
+      memo << ["#{wl.name} (#{wl.rut})", "#{wl.laboral_id}:#{wl.rut}"]
     end
   end
 

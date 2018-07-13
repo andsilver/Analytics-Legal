@@ -49,7 +49,7 @@ class Admin::UsersController < ApplicationController
   private
 
   def create_litigators(user_id)
-    WhitelistedLitigator.create_all(params[:user][:whitelisted_litigators_ruts], user_id)
+    WhitelistedLitigator.create_all(params[:user][:whitelisted_litigators_ids], user_id)
   end
 
   def set_user

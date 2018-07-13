@@ -4,7 +4,7 @@ class Laboral::Litigant < ApplicationRecord
 
   def as_json(options = {})
     {
-      id: self.Rut,
+      id: "#{self.Id}:#{self.Rut}",
       text: "#{self.Nombre} (#{self.Rut})"
     }
   end

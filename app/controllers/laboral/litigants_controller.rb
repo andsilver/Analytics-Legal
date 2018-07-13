@@ -26,7 +26,7 @@ class Laboral::LitigantsController < ApplicationController
 
   def nombre_or_rut(query)
     Laboral::Litigant
-      .select('DISTINCT Rut, Nombre, Persona')
+      .select('DISTINCT Id, Rut, Nombre, Persona')
       .where('(Nombre LIKE ? OR Rut LIKE ?) AND Persona = 2', "%#{query}%", "%#{query}%")
       .page(params[:page])
       .without_count
