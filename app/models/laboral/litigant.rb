@@ -8,4 +8,8 @@ class Laboral::Litigant < ApplicationRecord
       text: "#{self.Nombre} (#{self.Rut})"
     }
   end
+
+  def filter_rut_duplicates(litigants)
+    self.Rut == '0-0' || !litigants.any? { |l| l.Rut == self.Rut }
+  end
 end
