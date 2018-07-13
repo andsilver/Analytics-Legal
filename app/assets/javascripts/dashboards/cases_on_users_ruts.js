@@ -31,4 +31,15 @@ $(document).ready(function() {
     var link = '/laboral/cases/index_by_ruc?laboral_case[RUC]='+rut;
     window.location.href = link;
   });
+
+  $('.cases-by-rut-table').on('draw.dt', function () {
+    var updatedAtIndex = $('th:contains(Fecha Ingreso)').index();
+    $('.cases-by-rut-table tr').each(function(i, el) {
+      if($(el).children('th').length > 0) {
+        return true;
+      }
+      updatedAtCell = $(el).children('td:eq('+ updatedAtIndex +')');
+      updatedAtCell.text(moment.unix(updatedAtCell.text()).format("DD/MM/YY"));
+    });
+  });
 });
