@@ -65,3 +65,4 @@ gem 'redis'
 gem 'rufus-scheduler', '~> 3.4.0'
 gem "sidekiq-cron", "~> 0.6.3"
 gem 'sidekiq'
+gem 'active_record_union'

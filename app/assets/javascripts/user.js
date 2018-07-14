@@ -16,17 +16,9 @@ $(document).ready(function() {
         return query;
       },
       processResults: function (data, params) {
-        existingRuts = _.map($('.allowed-ruts-select2').select2('data'), function(el) {
-          return el.id.split(':')[1];
-        });
-
         params.page = params.page || 1;
         return {
-          results: _.filter(data.results, function(el) {
-            rut = el.id.split(':')[1];
-
-            return rut == '0-0' || !existingRuts.includes(rut);
-          }),
+          results: data.results,
           pagination: {
             more: data.pagination.more
           }
