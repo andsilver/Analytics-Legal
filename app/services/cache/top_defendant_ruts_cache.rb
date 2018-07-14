@@ -21,7 +21,8 @@ class Cache::TopDefendantRutsCache
     private
 
     def cacheable_json(user)
-      whitelisted_litigators = Laboral::Litigant.where(Rut: user.whitelisted_litigators.pluck(:rut))
+      whitelisted_litigators = Laboral::Litigant.where(Rut: user.whitelisted_litigators.pluck(:rut),
+        Persona: 2)
 
       return unless whitelisted_litigators
 
@@ -36,25 +37,20 @@ class Cache::TopDefendantRutsCache
 
     def user_data(whitelisted_litigators)
       total = 0
-
-      data = whitelisted_litigators
-        .group_by(&:Rut)
+      ruts_data = nil
+      data = whitelisted_litigators.group_by(&:Rut)
         .each_with_object([]) do |(rut, litigators), memo|
-          cases = Laboral::Case.where(Id: litigators.pluck(:Id))
-          quarter = nil
-          if cases.present?
-            first_case = cases.order(:'Fecha Ingreso' => 'ASC').first
-            quarter = Time.at(first_case.read_attribute('Fecha Ingreso')).beginning_of_quarter.to_i
+          if rut == "0-0"
+            litigators.group_by(&:Id).values.each do |l|
+              ruts_data = ruts_hash(rut, l)
+              memo << ruts_data
+              total += ruts_data[:count]
+            end
+          else
+            ruts_data = ruts_hash(rut, litigators)
+            memo << ruts_data
+            total += ruts_data[:count]
           end
-          count = cases.count
-          total += count
-
-          memo << {
-            rut: rut,
-            count: count,
-            quarter: quarter,
-            name: litigators.first.Nombre
-          }
         end
 
       {
@@ -62,6 +58,22 @@ class Cache::TopDefendantRutsCache
           kase.merge(percentage: "#{(kase[:count].to_f / total * 100).round(1)}%")
         end,
         total: total
+      }
+    end
+
+    def ruts_hash(rut, litigators)
+      cases = Laboral::Case.where(Id: litigators.pluck(:Id))
+      quarter = nil
+      if cases.present?
+        first_case = cases.order(:'Fecha Ingreso' => 'ASC').first
+        quarter = Time.at(first_case.read_attribute('Fecha Ingreso')).beginning_of_quarter.to_i
+      end
+      count = cases.count
+      {
+        rut: rut,
+        count: count,
+        quarter: quarter,
+        name: litigators.first.Nombre
       }
     end
   end
