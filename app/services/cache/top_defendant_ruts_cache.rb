@@ -55,7 +55,7 @@ class Cache::TopDefendantRutsCache
 
       {
         users_array: data.map do |kase|
-          kase.merge(percentage: "#{(kase[:count].to_f / total * 100).round(1)}%")
+          kase.merge(percentage: "#{(kase[:count].to_f / total * 100).round(3)}%")
         end,
         total: total
       }
