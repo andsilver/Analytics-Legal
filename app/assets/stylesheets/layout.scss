@@ -17,6 +17,13 @@ body {
   .select2-container--default .select2-results__option[aria-selected=true] {
     background-color: #ffc5c5;
   }
+
+  li.page-item.footable-page {
+    display: none;
+    &.visible {
+      display: block;
+    }
+  }
 }
 
 .system-alert {
