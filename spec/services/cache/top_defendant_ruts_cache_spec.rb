@@ -1,7 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Cache::TopDefendantRutsCache do
-  it 'fails' do
-    expect(1).to eq(0)
+  describe '#user_data' do
+    let(:whitelisted_litigators) do
+      create(:litigant, Rut: '0-1')
+      create(:litigant, Rut: '0-2')
+    end
+
+    it 'returns data' do
+      # binding.pry
+    end
   end
 end

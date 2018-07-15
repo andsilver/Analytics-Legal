@@ -99,4 +99,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.i18n.default_locale = :es
+  config.filter_parameters << :password
 end
