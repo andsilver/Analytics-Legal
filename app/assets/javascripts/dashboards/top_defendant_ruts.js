@@ -33,7 +33,12 @@ $(document).ready(function() {
         return json.quarter === null || _.inRange(json.quarter, fromTime, toTime)
       });
 
+      newCount = _.reduce(newData, function(acc, el) {
+        return acc += el.count;
+      }, 0);
+
       fooTable.rows.load(newData);
+      $('.number_of_cases').html(newCount)
     }
   });
 });
