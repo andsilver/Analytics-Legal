@@ -63,6 +63,8 @@ en:
     zeus: 'Zeus'
     consultation: 'Consultation SII'
     deep_graph: 'Deep Graph'
+    neo4j_db: 'NEO4j DB'
+    tensorflow_engine: 'Tensorflow engine'
     admin: 'Admin'
     rut_selection: 'Rut Selection'
     auth_menu: 'Authorization menu'
