@@ -21,8 +21,10 @@ class Cache::TopDefendantRutsCache
     private
 
     def cacheable_json(user)
-      whitelisted_litigators = Laboral::Litigant.where(Rut: user.whitelisted_litigators.pluck(:rut),
-        Persona: 2)
+      whitelisted_litigators = Laboral::Litigant.where(
+        Rut: user.whitelisted_litigators.pluck(:rut),
+        Persona: 2
+      )
 
       return unless whitelisted_litigators
 
