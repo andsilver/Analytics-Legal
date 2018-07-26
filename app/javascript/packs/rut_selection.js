@@ -1,10 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import RutSelection from 'src/rut_selection';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import { createStore, applyMiddleware } from 'redux';
+import reducers from 'src/laboral_rut_selection/reducers';
+import RutSelection from 'src/laboral_rut_selection/containers/rut_selection';
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   ReactDOM.render(
-//     <RutSelection name="React" />,
-//     document.body.appendChild(document.createElement('div')),
-//   )
-// });
+document.addEventListener('DOMContentLoaded', () => {
+  const store = createStore(
+    reducers,
+    applyMiddleware(thunk),
+  );
+  render(
+    <Provider store={store}>
+      <RutSelection name="React" />
+    </Provider>,
+    document.body.appendChild(document.createElement('div')),
+  )
+});

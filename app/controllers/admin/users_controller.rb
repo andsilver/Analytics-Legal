@@ -46,6 +46,9 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  def laboral_rut_selection
+  end
+
   private
 
   def create_litigators(user_id)

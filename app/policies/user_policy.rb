@@ -34,6 +34,10 @@ class UserPolicy
     admin_or_commercial?
   end
 
+  def laboral_rut_selection?
+    admin_or_commercial?
+  end
+
   private
 
   def admin_or_commercial?
