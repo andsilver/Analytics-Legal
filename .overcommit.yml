@@ -15,9 +15,9 @@
 #
 # Uncomment the following lines to make the configuration take effect.
 
-PrePush:
-  RSpec:
-    enabled: true
+# PrePush:
+#   RSpec:
+#     enabled: true
 
 #PreCommit:
 #  RuboCop:
