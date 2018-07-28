@@ -36,6 +36,9 @@ Rails.application.routes.draw do
     post 'refresh'
   end
 
+  get 'virtual_dashboards/1' => 'virtual_dashboards#one'
+  get 'virtual_dashboards/2' => 'virtual_dashboards#two'
+
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',

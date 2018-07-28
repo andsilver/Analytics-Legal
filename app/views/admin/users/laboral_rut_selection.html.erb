@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>DeepLegal</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <%= csrf_meta_tags %>
+<script>
+  var emails = JSON.parse('<%= User.all.order(:email).pluck(:email, :id).to_json.html_safe %>')
+</script>
 
-    <%= favicon_link_tag 'favicon.ico' %>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-		<%= javascript_pack_tag 'rut_selection' %>
-  </head>
+<%= javascript_pack_tag 'rut_selection' %>
 
-  <body>
-  </body>
-</html>

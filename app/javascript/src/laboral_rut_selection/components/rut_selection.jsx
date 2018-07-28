@@ -31,6 +31,10 @@ export default class RutSelection extends React.Component {
     this.props.updateTerm(e.target.value);
   }
 
+  saveUser = (e) => {
+    this.props.saveUserId(e.target.value);
+  }
+
   render() {
 		return (
       <div className="container-fluid">
@@ -40,6 +44,20 @@ export default class RutSelection extends React.Component {
               <h1>Laboral RUT Selection</h1>
               <div className="m-t-20">
                 <form>
+                  <div className="form-group row">
+                    <div className="col-lg-4 col-sm-12">
+                      <div className="input-group">
+                        <select className='form-control' onChange={this.saveUser}>
+                        <option key={ _.uniqueId() }>Elegir usuario</option>
+                        { this.props.users_emails.map(el => {
+                            return (<option value={el[1]} key={ _.uniqueId() }>{el[0]}</option>)
+                          })
+                        }
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
                   <div className="form-group row">
                     <div className="col-lg-4 col-sm-12">
                       <div className="input-group">

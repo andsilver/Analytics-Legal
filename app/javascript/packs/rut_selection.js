@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   );
   render(
     <Provider store={store}>
-      <RutSelection name="React" />
+      <RutSelection users_emails={ emails } />
     </Provider>,
     document.body.appendChild(document.createElement('div')),
   )

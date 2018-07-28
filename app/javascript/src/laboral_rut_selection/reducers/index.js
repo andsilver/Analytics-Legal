@@ -19,7 +19,8 @@ const initialCasesState = { schema: [],
                             current_page: 0,
                             search_type: '',
                             term: '',
-                            hasMoreCases: false };
+                            hasMoreCases: false,
+                            user_id: 0 };
 
 const data = handleActions({
   [actions.searchSuccess](state, { payload: { schema, data } }) {
@@ -52,7 +53,10 @@ const data = handleActions({
   },
   [actions.updatePagination](state, { payload: hasMoreCases }) {
     return { ...state, hasMoreCases: hasMoreCases }
-  }
+  },
+  [actions.saveUserId](state, { payload: id }) {
+    return { ...state, user_id: id }
+  },
 }, initialCasesState);
 
 export default combineReducers({

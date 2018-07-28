@@ -17,6 +17,8 @@ export const updateTerm = createAction('UPDATE_TERM');
 
 export const updatePagination = createAction('UPDATE_PAGINATION');
 
+export const saveUserId = createAction('SAVE_USER');
+
 const hasMoreCases = (res, cases_per_page) => {
   if (res.data.length > cases_per_page) {
     return { ...res, data: res.data.slice(0, -1) }
@@ -27,7 +29,7 @@ const hasMoreCases = (res, cases_per_page) => {
 export const search = (term, type, cases_per_page, offset = 0) => async (dispatch) => {
   const getSearchURL = (type, term, cases_per_page, offset) => {
     const baseURL = `http://voltdb.deeplegal.ai:8080/api/1.0?Procedure=laboral_search_by_${type}`;
-    const encodedParams = encodeURI(`["%${term}%",${cases_per_page + 1},${offset}]`);
+    const encodedParams = encodeURI(`[%${term}%,${cases_per_page + 1},${offset}]`);
     return `${baseURL}&Parameters=${encodedParams}`;
   }
 
@@ -35,7 +37,8 @@ export const search = (term, type, cases_per_page, offset = 0) => async (dispatc
 
   try {
     const httpResponse = await fetchJsonp(getSearchURL(type, term, cases_per_page, offset), {
-      jsonpCallback: 'jsonp'
+      jsonpCallback: 'jsonp',
+      timeout: 15000
     });
     const response = await httpResponse.json();
     dispatch(updatePagination(response.results[0].data.length > cases_per_page));

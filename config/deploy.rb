@@ -12,7 +12,8 @@ set :deploy_to, "/var/www/deeplegal"
 append :linked_files, "config/database.yml", "config/secrets.yml", "config/laboral_database.yml"
 
 # Default value for linked_dirs is []
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "public/assets/fonts"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system",
+                     "public/assets/fonts", "public/packs"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -30,3 +31,16 @@ set :puma_worker_timeout, nil
 set :puma_init_active_record, true
 
 set :sidekiq_queue, 'cache'
+
+before "deploy:assets:precompile", "deploy:yarn_install"
+
+namespace :deploy do
+  desc 'Run rake yarn:install'
+  task :yarn_install do
+    on roles(:web) do
+      within release_path do
+        execute("cd #{release_path} && yarn install")
+      end
+    end
+  end
+end
