@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
 
-const cases_per_page = 2;
+const cases_per_page = 100;
 
 export default class RutSelection extends React.Component {
   search = (type) => (e) => {
