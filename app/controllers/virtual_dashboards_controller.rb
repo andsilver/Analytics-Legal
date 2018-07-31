@@ -10,4 +10,7 @@ class VirtualDashboardsController < ApplicationController
 
   def four
   end
+
+  def five
+  end
 end
