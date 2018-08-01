@@ -83,16 +83,19 @@ const dataset = {
 	{"Name": "Igualdad de remuneraciones", "Count":34},
 ]};
 
-const diameter = 900;
+const topPanelHeight = 200;
+const diameter = window.innerHeight - topPanelHeight;
 const color = d3.scaleOrdinal(d3.schemeCategory10);
 
 const bubble = d3.pack(dataset)
   .size([diameter, diameter])
-  .padding(0.7);
+  .padding(0.8);
 
 const svg = d3.select("body")
-  .append("svg")
-	.attr("viewBox", `0, 0, ${diameter}, ${diameter}`)
+	.append("svg")
+	.attr("class", "bubble")
+	.attr("width", diameter)
+  .attr("height", diameter);
 
 const nodes = d3.hierarchy(dataset)
   .sum(function(d) { return d.Count; });
@@ -101,7 +104,7 @@ const node = svg.selectAll(".node")
   .data(bubble(nodes).descendants())
   .enter()
   .filter(function(d){
-	  return  !d.children
+	  return !d.children
   })
   .append("g")
   .attr("class", "node")
