@@ -82,6 +82,7 @@ const dataset = {
 	{"Name": "Art. 485", "Count":13048},
 	{"Name": "Igualdad de remuneraciones", "Count":34},
 ]};
+const totalCount = dataset["children"].reduce((acc, val) => { return (acc + val["Count"]); }, 0);
 
 const topPanelHeight = 200;
 const diameter = window.innerHeight - topPanelHeight;
@@ -112,6 +113,10 @@ const node = svg.selectAll(".node")
 	  return "translate(" + d.x + "," + d.y + ")";
   });
 
+const getPercent = (count) => {
+	return count / totalCount * 100;
+}
+
 node.append("circle")
   .attr("r", function(d) {
 	  return d.r;
@@ -123,14 +128,18 @@ node.append("circle")
 	.attr("data-placement", "top")
 	.attr("data-trigger", "hover")
 	.attr("data-content", (d) => {
-		return `${d.data.Name}: ${d.data.Count}`;
+		const percent = getPercent(d.data.Count);
+
+		return `${d.data.Name}: ${d.data.Count}\n(${percent < 0.1 ? '< 0.1' : percent.toFixed(2)}%)`;
 	});
 
 node.append("text")
   .attr("dy", "0.5em")
   .style("text-anchor", "middle")
   .text(function(d) {
-	  return d.data.Count;
+		const percent = getPercent(d.data.Count);
+
+	  return `${d.data.Count} (${percent < 0.1 ? '< 0.1' : percent.toFixed(2)}%)`;
   })
   .attr("font-family",  "Gill Sans", "Gill Sans MT")
   .attr("font-size", function(d){
