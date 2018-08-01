@@ -83,22 +83,16 @@ const dataset = {
 	{"Name": "Igualdad de remuneraciones", "Count":34},
 ]};
 
-
-
-
-
-const diameter = "100%";
+const diameter = 900;
 const color = d3.scaleOrdinal(d3.schemeCategory10);
 
 const bubble = d3.pack(dataset)
-  .size(["100%", "100%"])
+  .size([diameter, diameter])
   .padding(0.7);
 
 const svg = d3.select("body")
   .append("svg")
-  .attr("width", diameter)
-  .attr("height", diameter)
-  .attr("class", "bubble");
+	.attr("viewBox", `0, 0, ${diameter}, ${diameter}`)
 
 const nodes = d3.hierarchy(dataset)
   .sum(function(d) { return d.Count; });
@@ -125,7 +119,7 @@ node.append("circle")
 	.attr("data-toggle", "popover")
 	.attr("data-placement", "top")
 	.attr("data-trigger", "hover")
-	.attr("data-content", function(d) {
+	.attr("data-content", (d) => {
 		return `${d.data.Name}: ${d.data.Count}`;
 	});
 
@@ -142,5 +136,4 @@ node.append("text")
   .attr("fill", "white");
 
 d3.select(self.frameElement)
-	.style("height", diameter)
-  // .style("height", diameter + "px");
+  .style("height", diameter + "px");
