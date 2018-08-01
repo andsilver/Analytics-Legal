@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   get 'virtual_dashboards/4' => 'virtual_dashboards#four'
   get 'virtual_dashboards/5' => 'virtual_dashboards#five'
   get 'virtual_dashboards/6' => 'virtual_dashboards#six'
+  get 'virtual_dashboards/7' => 'virtual_dashboards#seven'
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
