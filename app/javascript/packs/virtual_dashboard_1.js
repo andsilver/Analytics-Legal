@@ -87,11 +87,11 @@ const dataset = {
 
 
 
-const diameter = 900;
+const diameter = "100%";
 const color = d3.scaleOrdinal(d3.schemeCategory10);
 
 const bubble = d3.pack(dataset)
-  .size([diameter, diameter])
+  .size(["100%", "100%"])
   .padding(0.7);
 
 const svg = d3.select("body")
@@ -126,7 +126,7 @@ node.append("circle")
 	.attr("data-placement", "top")
 	.attr("data-trigger", "hover")
 	.attr("data-content", function(d) {
-		return d.data.Name;
+		return `${d.data.Name}: ${d.data.Count}`;
 	});
 
 node.append("text")
@@ -142,4 +142,5 @@ node.append("text")
   .attr("fill", "white");
 
 d3.select(self.frameElement)
-  .style("height", diameter + "px");
+	.style("height", diameter)
+  // .style("height", diameter + "px");
