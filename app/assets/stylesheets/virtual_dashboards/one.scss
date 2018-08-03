@@ -11,3 +11,16 @@
 .popover-body {
   font-size: 17px;
 }
+
+.virtual_dashboard_1 {
+  .palette {
+    margin: 20px 0 0 0;
+    float: right;
+    &--color {
+      width: 30px;
+      height: 30px;
+      float: left;
+      margin: 0 5px 0 0;
+    }
+  }
+}
