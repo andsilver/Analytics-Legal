@@ -88,6 +88,9 @@ window.onload = function() {
 	const topPanelHeight = 200;
 	const diameter = window.innerHeight - topPanelHeight;
 	const color = d3.scaleOrdinal(d3.schemeCategory10);
+	const numberWithSpaces = (x) => {
+		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+	}
 
 	for(let i in [...Array(10).keys()]) {
 		document.querySelector(`.palette--color__${parseInt(i) + 1}`).style.backgroundColor = color(i);
@@ -124,7 +127,7 @@ window.onload = function() {
 		.attr("data-content", (d) => {
 			const percent = getPercent(d.data.Count);
 
-			return `${d.data.Name}: ${d.data.Count} (${percent < 0.1 ? '< 0.1' : percent.toFixed(2)}%)`;
+			return `${d.data.Name}: ${numberWithSpaces(d.data.Count)} (${percent < 0.1 ? '< 0.1' : percent.toFixed(2)}%)`;
 		})
 		.attr("transform", function(d) {
 			return "translate(" + d.x + "," + d.y + ")";
@@ -146,7 +149,7 @@ window.onload = function() {
 		.text(function(d) {
 			const percent = getPercent(d.data.Count);
 
-			return `${d.data.Count} (${percent < 0.1 ? '< 0.1' : percent.toFixed(2)}%)`;
+			return `${numberWithSpaces(d.data.Count)} (${percent < 0.1 ? '< 0.1' : percent.toFixed(2)}%)`;
 		})
 		.attr("font-family",  "Gill Sans", "Gill Sans MT")
 		.attr("font-size", function(d){
