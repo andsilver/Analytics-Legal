@@ -4,6 +4,10 @@ class Admin::UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy]
   before_action :authorize_user
 
+  content_security_policy do |p|
+    p.connect_src "*"
+  end
+
   def index
     @users = User.all
   end

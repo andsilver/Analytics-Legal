@@ -1,4 +1,9 @@
 FactoryBot.define do
+  factory :selected_case do
+    user nil
+    crr_idcausa 1
+    crr_idcausa_type "MyString"
+  end
   factory :litigant, class: Laboral::Litigant do
     sequence(:Id)
     Tipo 1

@@ -7,37 +7,39 @@ const searchState = handleActions({
     return 'requested';
   },
   [actions.searchSuccess]() {
-    return 'failed';
+    return 'successed';
   },
   [actions.searchFailure]() {
-    return 'successed';
+    return 'failed';
   },
 }, 'none');
 
-const initialCasesState = { schema: [],
+const initialCasesState = { schema: ['CLIENT_ID', 'CAUSA_ID', 'CAUSA_TYPE'],
                             cases: [],
                             current_page: 0,
                             search_type: '',
                             term: '',
                             hasMoreCases: false,
-                            user_id: 0 };
+                            user_id: 0,
+                            selected: [] };
 
 const data = handleActions({
-  [actions.searchSuccess](state, { payload: { schema, data } }) {
-    const newSchema = schema.map(el => el.name);
-    const newCases = data.map(el => ({ case: el, selected: true }));
-		return { ...state, schema: newSchema, cases: state['cases'].concat(newCases) };
+  [actions.searchSuccess](state, { payload: { data } }) {
+    const newCases = data.map(el => ({ case: el['_source'], selected: true }));
+    const selected = newCases.filter(el => el.selected == true);
+		return { ...state, cases: state['cases'].concat(newCases), selected: state['selected'].concat(selected) };
   },
   [actions.toggleSelect](state, { payload: id }) {
     const newCases = state.cases.map(el => {
-      if (el.case[0] == id) {
+      if (el.case['crr_idcausa'] == id) {
         return { ...el, selected: !el.selected };
       }
       else {
         return el;
       }
     });
-    return { ...state, cases: newCases };
+    const selected = newCases.filter(el => el.selected == true);
+    return { ...state, cases: newCases, selected: selected };
   },
   [actions.updateCurrentPage](state, { payload: page }) {
     return {...state, current_page: page }

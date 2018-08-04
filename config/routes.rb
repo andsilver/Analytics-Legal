@@ -44,6 +44,8 @@ Rails.application.routes.draw do
   get 'virtual_dashboards/6' => 'virtual_dashboards#six'
   get 'virtual_dashboards/7' => 'virtual_dashboards#seven'
 
+  post 'selected_cases/batch_create' => 'selected_cases#batch_create'
+
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',

@@ -35,6 +35,16 @@ export default class RutSelection extends React.Component {
     this.props.saveUserId(e.target.value);
   }
 
+  saveRuts = (e) => {
+    e.preventDefault();
+    const token = document.querySelector('meta[name=csrf-token]').getAttribute("content");
+    const cases = this.props.selected.map(el => {
+      return { crr_idcausa: el.case.crr_idcausa, crr_idcausa_type: 'laboral' }
+    });
+    this.props.saveRuts(this.props.user_id, cases, token);
+    this.props.clearCases();
+  }
+
   render() {
 		return (
       <div className="container-fluid">
@@ -47,7 +57,7 @@ export default class RutSelection extends React.Component {
                   <div className="form-group row">
                     <div className="col-lg-4 col-sm-12">
                       <div className="input-group">
-                        <select className='form-control' onChange={this.saveUser}>
+                        <select className='form-control' onChange={this.saveUser} value={this.props.user_id}>
                         <option key={ _.uniqueId() }>Elegir usuario</option>
                         { this.props.users_emails.map(el => {
                             return (<option value={el[1]} key={ _.uniqueId() }>{el[0]}</option>)
@@ -78,13 +88,24 @@ export default class RutSelection extends React.Component {
                       </button>
                     </div>
                   </div>
+
+                  { this.props.user_id !== 0 && this.props.cases.length > 0 &&
+                    <div className="form-group row">
+                      <div className="col-lg-4 col-sm-12">
+                        <button type='button' onClick={this.saveRuts}
+                          className='btn btn-primary waves-effect waves-light'>
+                          Save RUTs
+                        </button>
+                      </div>
+                    </div>
+                  }
                 </form>
               </div>
             </div>
           </div>
         </div>
 
-        { this.props.schema.length > 0 &&
+        { this.props.cases.length > 0 &&
           <div className="row">
             <div className="col-12">
               <div className="card-box">
@@ -100,21 +121,21 @@ export default class RutSelection extends React.Component {
                     </thead>
                     <tbody>
                       { this.props.cases.map(el => {
-                          let [crr, nombre, rut] = el.case;
+                          let { crr_idcausa, nombre_o_razon_social, rut } = el.case;
 
                           return (
                             <tr key={ _.uniqueId() } className={ el.selected ? 'table-info' : '' }>
                               <td style={{'textAlign': 'center'}}>
                                 <div className='checkbox checkbox-primary checkbox-single'>
                                   <input type="checkbox"
-                                    onChange={this.toggleSelect(crr)}
+                                    onChange={this.toggleSelect(crr_idcausa)}
                                     checked={el.selected}
                                   />
                                   <label></label>
                                 </div>
                               </td>
-                              <td>{ crr }</td>
-                              <td>{ nombre }</td>
+                              <td>{ crr_idcausa }</td>
+                              <td>{ nombre_o_razon_social }</td>
                               <td>{ rut }</td>
                             </tr>
                           )

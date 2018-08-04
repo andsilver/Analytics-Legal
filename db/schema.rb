@@ -10,47 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180712230950) do
+ActiveRecord::Schema.define(version: 2018_08_03_203432) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
   enable_extension "hstore"
+  enable_extension "plpgsql"
 
-  create_table "users", force: :cascade do |t|
-    t.string   "email",                             default: "", null: false
-    t.string   "encrypted_password",                default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                     default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
-    t.string   "role"
-    t.string   "company"
-    t.string   "company_id"
-    t.string   "address"
-    t.string   "country"
-    t.string   "city"
-    t.string   "phone_number"
-    t.string   "position"
-    t.string   "unique_session_id",      limit: 20
-    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-  end
-
-  create_table "whitelisted_litigators", force: :cascade do |t|
-    t.string   "name"
-    t.string   "rut"
-    t.integer  "user_id"
+  create_table "selected_cases", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "crr_idcausa"
+    t.string "crr_idcausa_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "laboral_id"
-    t.index ["user_id"], name: "index_whitelisted_litigators_on_user_id", using: :btree
+    t.index ["user_id"], name: "index_selected_cases_on_user_id"
   end
 
+  create_table "users", id: :serial, force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "role"
+    t.string "company"
+    t.string "company_id"
+    t.string "address"
+    t.string "country"
+    t.string "city"
+    t.string "phone_number"
+    t.string "position"
+    t.string "unique_session_id", limit: 20
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "whitelisted_litigators", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.string "rut"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "laboral_id"
+    t.index ["user_id"], name: "index_whitelisted_litigators_on_user_id"
+  end
+
+  add_foreign_key "selected_cases", "users"
   add_foreign_key "whitelisted_litigators", "users"
 end

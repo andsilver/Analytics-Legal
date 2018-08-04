@@ -9,7 +9,9 @@ const casesToProps = ({ data }) => {
     current_page: data['current_page'],
     search_type: data['search_type'],
     term: data['term'],
-    hasMoreCases: data['hasMoreCases']
+    hasMoreCases: data['hasMoreCases'],
+    user_id: data['user_id'],
+    selected: data['selected']
   }
   return props;
 };
