@@ -2,8 +2,8 @@ import * as d3 from "d3";
 
 window.onload = function() {
   // Dimensions of sunburst.
-  var width = 750;
-  var height = 600;
+  let width = window.innerWidth;
+  let height = window.innerHeight - 220;
   var radius = Math.min(width, height) / 2;
 
   // Breadcrumb dimensions: width, height, spacing, width of tip/tail.

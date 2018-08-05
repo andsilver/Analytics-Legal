@@ -12,7 +12,7 @@ const partition = data => {
 }
 const color = d3.scaleOrdinal().range(d3.quantize(d3.interpolateRainbow, data.children.length + 1));
 
-const width = 932;
+let width = window.innerHeight - 200;
 const radius = width / 6;
 
 const arc = d3.arc()

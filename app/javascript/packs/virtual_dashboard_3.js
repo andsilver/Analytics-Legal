@@ -223,10 +223,10 @@ const data = [
     {"name":"flare.vis.Visualization","size":16540,"imports":["flare.animate.Transitioner","flare.vis.operator.IOperator","flare.animate.Scheduler","flare.vis.events.VisualizationEvent","flare.vis.data.Tree","flare.vis.events.DataEvent","flare.vis.axis.Axes","flare.vis.axis.CartesianAxes","flare.util.Displays","flare.vis.operator.OperatorList","flare.vis.controls.ControlList","flare.animate.ISchedulable","flare.vis.data.Data"]}
     ];
 
-var diameter = 960,
+var diameter = window.innerHeight - 200,
     radius = diameter / 2,
     innerRadius = radius - 120;
-
+    
 var cluster = d3.cluster()
     .size([360, innerRadius]);
 

@@ -6,7 +6,7 @@ const data = [
       {"name":"NODE3","size":3938,"imports":["NODE1","NODE2","NODE4"]},
         {"name":"NODE4","size":3938,"imports":["NODE1","NODE2","NODE3"]}];
 
-var diameter = 960,
+var diameter = window.innerHeight - 200,
     radius = diameter / 2,
     innerRadius = radius - 120;
 
