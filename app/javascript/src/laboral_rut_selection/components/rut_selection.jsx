@@ -109,6 +109,9 @@ export default class RutSelection extends React.Component {
           <div className="row">
             <div className="col-12">
               <div className="card-box">
+                <span className="pull-right text-muted">
+                  Selected {this.props.selected.length} of {this.props.total}
+                </span>
                 <div className="table-responsive">
                   <table className="table m-t-20 table-bordered">
                     <thead className="thead-light">

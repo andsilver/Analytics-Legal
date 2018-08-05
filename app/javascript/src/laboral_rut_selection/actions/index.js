@@ -18,6 +18,8 @@ export const updatePagination = createAction('UPDATE_PAGINATION');
 
 export const saveUserId = createAction('SAVE_USER');
 
+export const saveTotal = createAction('SAVE_TOTAL');
+
 export const saveRutsRequest = createAction('SAVE_RUTS_REQUEST');
 export const saveRutsSuccess = createAction('SAVE_RUTS_SUCCESS');
 export const saveRutsFailure = createAction('SAVE_RUTS_FAILURE');
@@ -50,6 +52,7 @@ export const search = (term, type, cases_per_page, offset = 0) => async (dispatc
     });
     const response = await httpResponse.json();
     dispatch(updatePagination(response.hits.total > cases_per_page));
+    dispatch(saveTotal(response.hits.total));
     dispatch(searchSuccess(hasMoreCases(response.hits.hits, cases_per_page)));
   } catch (e) {
     console.log(e);
