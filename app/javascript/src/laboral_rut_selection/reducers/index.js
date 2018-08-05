@@ -21,13 +21,16 @@ const initialCasesState = { schema: ['CLIENT_ID', 'CAUSA_ID', 'CAUSA_TYPE'],
                             term: '',
                             hasMoreCases: false,
                             user_id: 0,
-                            selected: [] };
+                            selected: [],
+                            total: 0 };
 
 const data = handleActions({
   [actions.searchSuccess](state, { payload: { data } }) {
     const newCases = data.map(el => ({ case: el['_source'], selected: true }));
     const selected = newCases.filter(el => el.selected == true);
-		return { ...state, cases: state['cases'].concat(newCases), selected: state['selected'].concat(selected) };
+    return { ...state, cases: state['cases'].concat(newCases),
+                       selected: state['selected'].concat(selected)
+           };
   },
   [actions.toggleSelect](state, { payload: id }) {
     const newCases = state.cases.map(el => {
@@ -48,7 +51,7 @@ const data = handleActions({
     return {...state, search_type: type }
   },
   [actions.clearCases](state) {
-    return { ...state, cases: [] }
+    return { ...state, cases: [], selected: [] }
   },
   [actions.updateTerm](state, { payload: term }) {
     return { ...state, term: term }
@@ -59,6 +62,9 @@ const data = handleActions({
   [actions.saveUserId](state, { payload: id }) {
     return { ...state, user_id: id }
   },
+  [actions.saveTotal](state, { payload: total }) {
+    return { ...state, total: total }
+  }
 }, initialCasesState);
 
 export default combineReducers({
