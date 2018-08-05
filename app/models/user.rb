@@ -7,6 +7,7 @@ class User < ApplicationRecord
   }.freeze
 
   has_many :whitelisted_litigators, dependent: :destroy
+  has_many :selected_cases
 
   devise :session_limitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
