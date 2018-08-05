@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   get 'virtual_dashboards/5' => 'virtual_dashboards#five'
   get 'virtual_dashboards/6' => 'virtual_dashboards#six'
   get 'virtual_dashboards/7' => 'virtual_dashboards#seven'
+  get 'virtual_dashboards/8' => 'virtual_dashboards#eight'
 
   post 'selected_cases/batch_create' => 'selected_cases#batch_create'
 
