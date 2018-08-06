@@ -62,6 +62,7 @@ const label = g.append("g")
     .attr("dy", "0.35em")
     .attr("fill-opacity", d => +labelVisible(d.current))
     .attr("transform", d => labelTransform(d.current))
+    .attr("font-size", `${width / 70}px`)
     .text(d => d.data.name);
 
 const parent = g.append("circle")
