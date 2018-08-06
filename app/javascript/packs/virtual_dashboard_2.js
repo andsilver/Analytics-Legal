@@ -30,12 +30,12 @@ root.each(d => d.current = d);
 
 const svg = d3.select("body")
   .append("svg")
-  .attr("width", width)
+  .attr("width", window.innerWidth)
   .attr("height", width)
   .attr("font", "10px sans-serif");
 
 const g = svg.append("g")
-    .attr("transform", `translate(${width / 2},${width / 2})`);
+    .attr("transform", `translate(${window.innerWidth / 2},${width / 2})`);
 
 const path = g.append("g")
   .selectAll("path")

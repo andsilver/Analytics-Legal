@@ -19,11 +19,11 @@ var line = d3.radialLine()
     .angle(function(d) { return d.x / 180 * Math.PI; });
 
 var svg = d3.select("body").append("svg")
-    .attr("width", diameter)
+    .attr("width", window.innerWidth)
     .attr("height", diameter)
     .attr("class", "virtual_dashboard_3")
     .append("g")
-    .attr("transform", "translate(" + radius + "," + radius + ")");
+    .attr("transform", "translate(" + window.innerWidth / 2 + "," + radius + ")");
 
 var link = svg.append("g").selectAll(".link"),
     node = svg.append("g").selectAll(".node");
