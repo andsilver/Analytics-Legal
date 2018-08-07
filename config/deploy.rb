@@ -2,8 +2,7 @@ lock "~> 3.11.0"
 
 set :application, "deeplegal"
 set :repo_url, "git@github.com:storrealba-dl/deeplegal.git"
-# set :user, "linakirsanova"
-set :user, "danil"
+set :user, "linakirsanova"
 
 # Default branch is :master
 ask :branch, 'master'
