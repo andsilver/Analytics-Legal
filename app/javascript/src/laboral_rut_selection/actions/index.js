@@ -47,9 +47,11 @@ export const search = (term, type, cases_per_page, offset = 0) => async (dispatc
 
   try {
     const httpResponse = await fetch(getSearchURL(type, term, cases_per_page, offset), {
-      headers: {
-        "_source": { "includes": [type] },
-        "query": { "match": type === 'rut' ? { "rut": term } : { "name": term } }}
+      headers: myHeaders,
+      body: JSON.stringify({
+        "query": { "match": type === 'rut' ? { "rut.keyword": term } : { "name": term } },
+      }),
+      method: 'POST'
     });
     const response = await httpResponse.json();
     dispatch(updatePagination(response.hits.total > cases_per_page));
