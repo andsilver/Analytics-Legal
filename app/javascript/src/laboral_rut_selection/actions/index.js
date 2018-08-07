@@ -33,9 +33,8 @@ const hasMoreCases = (res, cases_per_page) => {
 
 export const search = (term, type, cases_per_page, offset = 0) => async (dispatch) => {
   const getSearchURL = (type, term, cases_per_page, offset) => {
-    const baseURL = `http://35.237.222.159:9200/laboral/litigantes/_search?q=${type}`;
-    const encodedParams = `${term}&from=${offset}&size=${cases_per_page + 1}&sort=inc_idx:asc&pretty`;
-    return `${baseURL}:${encodedParams}`;
+    const baseURL = `http://35.237.222.159:9200/laboral/litigantes/_search`;
+    return `${baseURL}`;
   }
 
   dispatch(searchRequest());
@@ -48,7 +47,9 @@ export const search = (term, type, cases_per_page, offset = 0) => async (dispatc
 
   try {
     const httpResponse = await fetch(getSearchURL(type, term, cases_per_page, offset), {
-      headers: myHeaders
+      headers: {
+        "_source": { "includes": [type] },
+        "query": { "match": type === 'rut' ? { "rut": term } : { "name": term } }}
     });
     const response = await httpResponse.json();
     dispatch(updatePagination(response.hits.total > cases_per_page));
