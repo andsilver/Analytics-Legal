@@ -5,7 +5,8 @@ export default class RutSelection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cases_number: 10
+      cases_number: 10,
+      filterSearchField: ''
     }
   }
 
@@ -40,6 +41,10 @@ export default class RutSelection extends React.Component {
     this.setState({ cases_number: Number(e.target.value) });
   }
 
+  filterSearchField = (e) => {
+    this.setState({ filterSearchField: e.target.value });
+  }
+
   saveUser = (e) => {
     this.props.saveUserId(e.target.value);
   }
@@ -55,6 +60,7 @@ export default class RutSelection extends React.Component {
   }
 
   render() {
+    const { filterSearchField } = this.state;
 		return (
       <div className="container-fluid">
         <div className="row m-t-20">
@@ -113,11 +119,14 @@ export default class RutSelection extends React.Component {
             </div>
           </div>
         </div>
-
         { this.props.cases.length > 0 &&
           <div className="row">
             <div className="col-12">
               <div className="card-box">
+                <div className="row">
+                  <input className='filter-search-field' placeholder='Search' id='search-word-field'
+                    onChange={this.filterSearchField} />
+                </div>
                 <div className="row query-result-container">
                   <button type='button' onClick={this.updatePage}
                     className='btn btn-primary waves-effect waves-light'>
@@ -137,30 +146,37 @@ export default class RutSelection extends React.Component {
                         <th>CRR IDCAUSA</th>
                         <th>Nombre o razon social</th>
                         <th>RUT</th>
+                        <th>Persona</th>
                         <th>Sujeto</th>
                       </tr>
                     </thead>
                     <tbody>
                       { this.props.cases.map(el => {
-                          let { crr_idcausa, nombre_o_razon_social, rut, sujeto } = el.case;
-
-                          return (
-                            <tr key={ _.uniqueId() } className={ el.selected ? 'table-info' : '' }>
-                              <td style={{'textAlign': 'center'}}>
-                                <div className='checkbox checkbox-primary checkbox-single'>
-                                  <input type="checkbox"
-                                    onChange={this.toggleSelect(crr_idcausa)}
-                                    checked={el.selected}
-                                  />
-                                  <label></label>
-                                </div>
-                              </td>
-                              <td>{ crr_idcausa }</td>
-                              <td>{ nombre_o_razon_social }</td>
-                              <td>{ rut }</td>
-                              <td>{ sujeto }</td>
-                            </tr>
-                          )
+                          let { crr_idcausa, nombre_o_razon_social, rut, sujeto, persona } = el.case;
+                          if (`${crr_idcausa}`.indexOf(filterSearchField.toUpperCase()) >= 0
+                            || `${nombre_o_razon_social}`.indexOf(filterSearchField.toUpperCase()) >= 0
+                            || `${rut}`.indexOf(filterSearchField.toUpperCase()) >= 0
+                            || `${sujeto}`.indexOf(filterSearchField.toUpperCase()) >= 0
+                            || `${persona}`.indexOf(filterSearchField.toUpperCase()) >= 0) {
+                              return (
+                                <tr key={_.uniqueId()} className={el.selected ? 'table-info' : ''}>
+                                  <td style={{ 'textAlign': 'center' }}>
+                                    <div className='checkbox checkbox-primary checkbox-single'>
+                                      <input type="checkbox"
+                                        onChange={this.toggleSelect(crr_idcausa)}
+                                        checked={el.selected}
+                                      />
+                                      <label></label>
+                                    </div>
+                                  </td>
+                                  <td>{crr_idcausa}</td>
+                                  <td>{nombre_o_razon_social}</td>
+                                  <td>{rut}</td>
+                                  <td>{persona}</td>
+                                  <td>{sujeto}</td>
+                                </tr>
+                              )
+                            }
                         })}
                     </tbody>
                   </table>
