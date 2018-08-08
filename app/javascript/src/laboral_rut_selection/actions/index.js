@@ -49,7 +49,12 @@ export const search = (term, type, cases_per_page, offset = 0) => async (dispatc
     const httpResponse = await fetch(getSearchURL(type, term, cases_per_page, offset), {
       headers: myHeaders,
       body: JSON.stringify({
-        "query": { "wildcard": type === 'rut' ? { "rut.keyword": `*${term}*` } : { "nombre_o_razon_social.keyword": `*${term}*` } },
+        "sort": [
+          { "inc_idx": "asc" }
+        ],
+        "query": { "wildcard": type === 'rut' ? { "rut.keyword": `*${term}*` } : { "nombre_o_razon_social.keyword": `*${term.toUpperCase()}*` } },
+        "size": cases_per_page,
+        "from": offset,
       }),
       method: 'POST'
     });

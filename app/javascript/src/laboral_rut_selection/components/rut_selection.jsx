@@ -1,14 +1,19 @@
 import _ from 'lodash';
 import React from 'react';
 
-const cases_per_page = 100;
-
 export default class RutSelection extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cases_number: 10
+    }
+  }
+
   search = (type) => (e) => {
     e.preventDefault();
     this.props.clearCases();
     this.props.updateSearchType(type);
-    this.props.search(this.props.term, type, cases_per_page);
+    this.props.search(this.props.term, type, this.state.cases_number);
   }
 
   toggleSelect = (id) => (e) => {
@@ -23,12 +28,16 @@ export default class RutSelection extends React.Component {
   }
 
   loadMore = (newPage) => {
-    let offset = newPage * cases_per_page;
-    this.props.search(this.props.term, this.props.search_type, cases_per_page, offset);
+    let offset = this.props.cases.length;
+    this.props.search(this.props.term, this.props.search_type, this.state.cases_number, offset);
   }
 
   updateTerm = (e) => {
     this.props.updateTerm(e.target.value);
+  }
+
+  updateCasesNumber = (e) => {
+    this.setState({ cases_number: Number(e.target.value) });
   }
 
   saveUser = (e) => {
@@ -109,9 +118,17 @@ export default class RutSelection extends React.Component {
           <div className="row">
             <div className="col-12">
               <div className="card-box">
-                <span className="pull-right text-muted">
-                  Selected {this.props.selected.length} of {this.props.total}
-                </span>
+                <div className="row query-result-container">
+                  <button type='button' onClick={this.updatePage}
+                    className='btn btn-primary waves-effect waves-light'>
+                    Load more results
+                  </button>
+                  <input type='number' className='query-input-field' placeholder='Cantidad de Causas' id='case-field'
+                    onChange={this.updateCasesNumber} />
+                  <span className="pull-right text-muted query-text-field">
+                    Selected {this.props.selected.length} of {this.props.total}
+                  </span>
+                </div>
                 <div className="table-responsive">
                   <table className="table m-t-20 table-bordered">
                     <thead className="thead-light">
@@ -120,11 +137,12 @@ export default class RutSelection extends React.Component {
                         <th>CRR IDCAUSA</th>
                         <th>Nombre o razon social</th>
                         <th>RUT</th>
+                        <th>Sujeto</th>
                       </tr>
                     </thead>
                     <tbody>
                       { this.props.cases.map(el => {
-                          let { crr_idcausa, nombre_o_razon_social, rut } = el.case;
+                          let { crr_idcausa, nombre_o_razon_social, rut, sujeto } = el.case;
 
                           return (
                             <tr key={ _.uniqueId() } className={ el.selected ? 'table-info' : '' }>
@@ -140,17 +158,12 @@ export default class RutSelection extends React.Component {
                               <td>{ crr_idcausa }</td>
                               <td>{ nombre_o_razon_social }</td>
                               <td>{ rut }</td>
+                              <td>{ sujeto }</td>
                             </tr>
                           )
                         })}
                     </tbody>
                   </table>
-                  { this.props.hasMoreCases &&
-                    <button type='button' onClick={this.updatePage}
-                      className='btn btn-primary waves-effect waves-light'>
-                      Load more results
-                    </button>
-                  }
                 </div>
               </div>
             </div>

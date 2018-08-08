@@ -797,6 +797,32 @@ a:hover, a:active, a:focus {
   background-color: #ffffff;
 }
 
+.query-result-container {
+  flex-direction: row;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.query-input-field {
+  display: block;
+  flex: 1;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.query-text-field {
+  line-height: 40px;
+}
+
 .header-title {
   text-transform: uppercase;
   font-size: 15px;
