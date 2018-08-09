@@ -31,9 +31,9 @@ const hasMoreCases = (res, cases_per_page) => {
   return { data: res };
 }
 
-export const search = (term, type, cases_per_page, offset = 0) => async (dispatch) => {
-  const getSearchURL = (type, term, cases_per_page, offset) => {
-    const baseURL = `http://35.237.222.159:9200/laboral/litigantes/_search`;
+export const search = (term, type, cases_per_page, offset = 0, type_of_cause = '') => async (dispatch) => {
+  const getSearchURL = (type, term, cases_per_page, offset, type_of_cause, dbTypeValue) => {
+    const baseURL = `http://35.237.222.159:9200/${dbTypeValue}/litigantes${type_of_cause !== 'Laboral' && type_of_cause !== '' ? '_data' : ''}/_search`;
     return `${baseURL}`;
   }
 
@@ -46,7 +46,8 @@ export const search = (term, type, cases_per_page, offset = 0) => async (dispatc
   });
 
   try {
-    const httpResponse = await fetch(getSearchURL(type, term, cases_per_page, offset), {
+    const dbTypeValue = type_of_cause === 'Cobranzas' ? 'cobranza' : type_of_cause === 'Civil' ? 'civil' : 'laboral';
+    const httpResponse = await fetch(getSearchURL(type, term, cases_per_page, offset, type_of_cause, dbTypeValue), {
       headers: myHeaders,
       body: JSON.stringify({
         "sort": [

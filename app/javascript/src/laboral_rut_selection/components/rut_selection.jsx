@@ -15,7 +15,7 @@ export default class RutSelection extends React.Component {
     e.preventDefault();
     this.props.clearCases();
     this.props.updateSearchType(type);
-    this.props.search(this.props.term, type, this.state.cases_number);
+    this.props.search(this.props.term, type, this.state.cases_number, 0, this.state.typeOfCause);
   }
 
   toggleSelect = (id) => (e) => {
@@ -31,7 +31,7 @@ export default class RutSelection extends React.Component {
 
   loadMore = (newPage) => {
     let offset = this.props.cases.length;
-    this.props.search(this.props.term, this.props.search_type, this.state.cases_number, offset);
+    this.props.search(this.props.term, this.props.search_type, this.state.cases_number, offset, this.state.typeOfCause);
   }
 
   updateTerm = (e) => {
@@ -61,7 +61,7 @@ export default class RutSelection extends React.Component {
   }
 
   render() {
-    const { filterSearchField, typeOfCause } = this.state;
+    const { filterSearchField, typeOfCause, cases_number } = this.state;
 		return (
       <div className="container-fluid">
         <div className="row m-t-20">
@@ -114,12 +114,12 @@ export default class RutSelection extends React.Component {
                         Save RUTs
                       </button>}
                     </div>
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-info dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">{typeOfCause === '' ? 'Tipo de Causa' : typeOfCause}<span class="caret"></span></button>
-                      <div class="dropdown-menu">
-                        <a class="dropdown-item" onClick={() => { this.setState({ typeOfCause: 'Laboral' }); }} href="#">Laboral</a>
-                        <a class="dropdown-item" onClick={() => { this.setState({ typeOfCause: 'Civil' }); }} href="#">Civil</a>
-                        <a class="dropdown-item" onClick={() => { this.setState({ typeOfCause: 'Cobranzas' }); }} href="#">Cobranzas</a>
+                    <div className="btn-group">
+                      <button type="button" className="btn btn-info dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">{typeOfCause === '' ? 'Tipo de Causa' : typeOfCause}<span className="caret"></span></button>
+                      <div className="dropdown-menu">
+                        <a className="dropdown-item" onClick={() => { this.setState({ typeOfCause: 'Laboral' }); }} href="#">Laboral</a>
+                        <a className="dropdown-item" onClick={() => { this.setState({ typeOfCause: 'Civil' }); }} href="#">Civil</a>
+                        <a className="dropdown-item" onClick={() => { this.setState({ typeOfCause: 'Cobranzas' }); }} href="#">Cobranzas</a>
                       </div>
                     </div>
                   </div>
@@ -133,7 +133,7 @@ export default class RutSelection extends React.Component {
             <div className="col-12">
               <div className="card-box">
                 <div className="row">
-                  <input className='filter-search-field' placeholder='Search' id='search-word-field'
+                  <input value={filterSearchField} className='filter-search-field' placeholder='Search' id='search-word-field'
                     onChange={this.filterSearchField} />
                 </div>
                 <div className="row query-result-container">
@@ -141,7 +141,7 @@ export default class RutSelection extends React.Component {
                     className='btn btn-primary waves-effect waves-light'>
                     Load more results
                   </button>
-                  <input type='number' className='query-input-field' placeholder='Cantidad de Causas' id='case-field'
+                  <input value={cases_number} type='number' className='query-input-field' placeholder='Cantidad de Causas' id='case-field'
                     onChange={this.updateCasesNumber} />
                   <span className="pull-right text-muted query-text-field">
                     Selected {this.props.selected.length} of {this.props.total}
