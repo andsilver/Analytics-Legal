@@ -161,7 +161,7 @@ export default class RutSelection extends React.Component {
                     </thead>
                     <tbody>
                       { this.props.cases.map(el => {
-                          let { crr_idcausa, nombre_o_razon_social, rut, sujeto, persona } = el.case;
+                          let { crr_idcausa, nombre_o_razon_social, rut, sujeto, persona, sujento, participante } = el.case;
                           if (`${crr_idcausa}`.indexOf(filterSearchField.toUpperCase()) >= 0
                             || `${nombre_o_razon_social}`.indexOf(filterSearchField.toUpperCase()) >= 0
                             || `${rut}`.indexOf(filterSearchField.toUpperCase()) >= 0
@@ -182,7 +182,7 @@ export default class RutSelection extends React.Component {
                                   <td>{nombre_o_razon_social}</td>
                                   <td>{rut}</td>
                                   <td>{persona}</td>
-                                  <td>{sujeto}</td>
+                                  <td>{typeOfCause === 'Cobranzas' ? sujento : typeOfCause === 'Civil' ? participante : sujeto }</td>
                                 </tr>
                               )
                             }
