@@ -6,7 +6,8 @@ export default class RutSelection extends React.Component {
     super(props);
     this.state = {
       cases_number: 10,
-      filterSearchField: ''
+      filterSearchField: '',
+      typeOfCause: ''
     }
   }
 
@@ -60,7 +61,7 @@ export default class RutSelection extends React.Component {
   }
 
   render() {
-    const { filterSearchField } = this.state;
+    const { filterSearchField, typeOfCause } = this.state;
 		return (
       <div className="container-fluid">
         <div className="row m-t-20">
@@ -114,11 +115,11 @@ export default class RutSelection extends React.Component {
                       </button>}
                     </div>
                     <div class="btn-group">
-                      <button type="button" class="btn btn-info dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">Tipo de Causa <span class="caret"></span></button>
+                      <button type="button" class="btn btn-info dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">{typeOfCause === '' ? 'Tipo de Causa' : typeOfCause}<span class="caret"></span></button>
                       <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Laboral</a>
-                        <a class="dropdown-item" href="#">Civil</a>
-                        <a class="dropdown-item" href="#">Cobranzas</a>
+                        <a class="dropdown-item" onClick={() => { this.setState({ typeOfCause: 'Laboral' }); }} href="#">Laboral</a>
+                        <a class="dropdown-item" onClick={() => { this.setState({ typeOfCause: 'Civil' }); }} href="#">Civil</a>
+                        <a class="dropdown-item" onClick={() => { this.setState({ typeOfCause: 'Cobranzas' }); }} href="#">Cobranzas</a>
                       </div>
                     </div>
                   </div>
