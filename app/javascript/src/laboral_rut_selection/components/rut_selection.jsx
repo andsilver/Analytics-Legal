@@ -103,17 +103,25 @@ export default class RutSelection extends React.Component {
                       </button>
                     </div>
                   </div>
-
-                  { this.props.user_id !== 0 && this.props.cases.length > 0 &&
-                    <div className="form-group row">
-                      <div className="col-lg-4 col-sm-12">
-                        <button type='button' onClick={this.saveRuts}
-                          className='btn btn-primary waves-effect waves-light'>
-                          Save RUTs
-                        </button>
+                  
+                  <div className="form-group row">
+                    
+                    <div className="col-lg-4 col-sm-12">
+                      {this.props.user_id !== 0 && this.props.cases.length > 0 &&
+                      <button type='button' onClick={this.saveRuts}
+                        className='btn btn-primary waves-effect waves-light'>
+                        Save RUTs
+                      </button>}
+                    </div>
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-info dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">Tipo de Causa <span class="caret"></span></button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Laboral</a>
+                        <a class="dropdown-item" href="#">Civil</a>
+                        <a class="dropdown-item" href="#">Cobranzas</a>
                       </div>
                     </div>
-                  }
+                  </div>
                 </form>
               </div>
             </div>
