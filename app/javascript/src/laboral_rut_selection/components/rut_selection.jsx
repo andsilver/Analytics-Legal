@@ -7,12 +7,14 @@ export default class RutSelection extends React.Component {
     this.state = {
       cases_number: 10,
       filterSearchField: '',
-      typeOfCause: ''
+      typeOfCause: '',
+      search_type: 'rut'
     }
   }
 
   search = (type) => (e) => {
     e.preventDefault();
+    this.setState({ search_type: type });
     this.props.clearCases();
     this.props.updateSearchType(type);
     this.props.search(this.props.term, type, this.state.cases_number, 0, this.state.typeOfCause);
@@ -48,6 +50,13 @@ export default class RutSelection extends React.Component {
 
   saveUser = (e) => {
     this.props.saveUserId(e.target.value);
+  }
+
+  changeTypeOfCause = (value) => {
+    this.setState({ typeOfCause: value });
+    this.props.clearCases();
+    this.props.updateSearchType(this.state.search_type);
+    this.props.search(this.props.term, this.state.search_type, this.state.cases_number, 0, value);
   }
 
   saveRuts = (e) => {
@@ -117,9 +126,9 @@ export default class RutSelection extends React.Component {
                     <div className="btn-group">
                       <button type="button" className="btn btn-info dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">{typeOfCause === '' ? 'Tipo de Causa' : typeOfCause}<span className="caret"></span></button>
                       <div className="dropdown-menu">
-                        <a className="dropdown-item" onClick={() => { this.setState({ typeOfCause: 'Laboral' }); }} href="#">Laboral</a>
-                        <a className="dropdown-item" onClick={() => { this.setState({ typeOfCause: 'Civil' }); }} href="#">Civil</a>
-                        <a className="dropdown-item" onClick={() => { this.setState({ typeOfCause: 'Cobranzas' }); }} href="#">Cobranzas</a>
+                        <a className="dropdown-item" onClick={() => { this.changeTypeOfCause('Laboral' ); }} href="#">Laboral</a>
+                        <a className="dropdown-item" onClick={() => { this.changeTypeOfCause('Civil' ); }} href="#">Civil</a>
+                        <a className="dropdown-item" onClick={() => { this.changeTypeOfCause('Cobranzas' ); }} href="#">Cobranzas</a>
                       </div>
                     </div>
                   </div>
@@ -161,7 +170,7 @@ export default class RutSelection extends React.Component {
                     </thead>
                     <tbody>
                       { this.props.cases.map(el => {
-                          let { crr_idcausa, nombre_o_razon_social, rut, sujeto, persona, sujento, participante } = el.case;
+                          let { crr_idcausa, nombre_o_razon_social, rut, sujeto, persona, sujento, participante, url } = el.case;
                           if (`${crr_idcausa}`.indexOf(filterSearchField.toUpperCase()) >= 0
                             || `${nombre_o_razon_social}`.indexOf(filterSearchField.toUpperCase()) >= 0
                             || `${rut}`.indexOf(filterSearchField.toUpperCase()) >= 0
@@ -178,7 +187,7 @@ export default class RutSelection extends React.Component {
                                       <label></label>
                                     </div>
                                   </td>
-                                  <td>{crr_idcausa}</td>
+                                  <td>{typeOfCause === 'Civil' ? url : crr_idcausa}</td>
                                   <td>{nombre_o_razon_social}</td>
                                   <td>{rut}</td>
                                   <td>{persona}</td>
