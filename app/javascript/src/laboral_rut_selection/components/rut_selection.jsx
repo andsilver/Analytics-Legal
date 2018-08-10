@@ -8,7 +8,8 @@ export default class RutSelection extends React.Component {
       cases_number: 10,
       filterSearchField: '',
       typeOfCause: '',
-      search_type: 'rut'
+      search_type: 'rut',
+      selectAll: true
     }
   }
 
@@ -69,8 +70,13 @@ export default class RutSelection extends React.Component {
     this.props.clearCases();
   }
 
+  toggleSelectAll = () => (e) => {
+    this.props.toggleSelectAll(!this.state.selectAll);
+    this.setState({ selectAll: !this.state.selectAll });
+  }
+
   render() {
-    const { filterSearchField, typeOfCause, cases_number } = this.state;
+    const { filterSearchField, typeOfCause, cases_number, selectAll } = this.state;
 		return (
       <div className="container-fluid">
         <div className="row m-t-20">
@@ -160,7 +166,15 @@ export default class RutSelection extends React.Component {
                   <table className="table m-t-20 table-bordered">
                     <thead className="thead-light">
                       <tr>
-                        <th></th>
+                        <th style={{ 'textAlign': 'center' }}>
+                          <div className='checkbox checkbox-primary checkbox-single'>
+                            <input type="checkbox"
+                              onChange={this.toggleSelectAll()}
+                              checked={selectAll}
+                            />
+                            <label></label>
+                          </div>
+                        </th>
                         <th>CRR IDCAUSA</th>
                         <th>Nombre o razon social</th>
                         <th>RUT</th>
@@ -168,9 +182,9 @@ export default class RutSelection extends React.Component {
                         <th>Sujeto</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="tbody-light">
                       { this.props.cases.map(el => {
-                          let { crr_idcausa, nombre_o_razon_social, rut, sujeto, persona, sujento, participante, url } = el.case;
+                          let { crr_idcausa, nombre_o_razon_social, rut, sujeto, persona, sujento, participante, url, inc_idx } = el.case;
                           let real_crr_idcausa = typeOfCause === 'Civil' ? url : crr_idcausa;
                           let real_sujeto = typeOfCause === 'Cobranzas' ? sujento : typeOfCause === 'Civil' ? participante : sujeto;
                           if (`${real_crr_idcausa}`.indexOf(filterSearchField.toUpperCase()) >= 0
@@ -183,7 +197,7 @@ export default class RutSelection extends React.Component {
                                   <td style={{ 'textAlign': 'center' }}>
                                     <div className='checkbox checkbox-primary checkbox-single'>
                                       <input type="checkbox"
-                                        onChange={this.toggleSelect(crr_idcausa)}
+                                        onChange={this.toggleSelect(inc_idx)}
                                         checked={el.selected}
                                       />
                                       <label></label>

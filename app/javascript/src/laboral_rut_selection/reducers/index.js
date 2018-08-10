@@ -34,12 +34,19 @@ const data = handleActions({
   },
   [actions.toggleSelect](state, { payload: id }) {
     const newCases = state.cases.map(el => {
-      if (el.case['crr_idcausa'] == id) {
+      if (el.case['inc_idx'] == id) {
         return { ...el, selected: !el.selected };
       }
       else {
         return el;
       }
+    });
+    const selected = newCases.filter(el => el.selected == true);
+    return { ...state, cases: newCases, selected: selected };
+  },
+  [actions.toggleSelectAll](state, { payload: selectedFlag }) {
+    const newCases = state.cases.map(el => {
+      return { ...el, selected: selectedFlag };
     });
     const selected = newCases.filter(el => el.selected == true);
     return { ...state, cases: newCases, selected: selected };

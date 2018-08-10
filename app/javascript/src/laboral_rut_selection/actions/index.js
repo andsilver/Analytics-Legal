@@ -5,6 +5,7 @@ export const searchSuccess = createAction('SEARCH_SUCCESS');
 export const searchFailure = createAction('SEARCH_FAILURE');
 
 export const toggleSelect = createAction('TOGGLE_SELECT');
+export const toggleSelectAll = createAction('TOGGLE_SELECT_ALL');
 
 export const updateCurrentPage = createAction('UPDATE_CURRENT_PAGE');
 

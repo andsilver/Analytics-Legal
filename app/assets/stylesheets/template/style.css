@@ -2308,6 +2308,34 @@ code, pre {
   font-size: 13px;
 }
 
+.thead-light .checkbox label::after {
+  padding-top: 14px;
+}
+
+.thead-light .checkbox label {
+  padding-top: 12px;
+}
+
+.thead-light .checkbox.checkbox-single input {
+  margin-top: 12px;
+}
+
+.tbody-light {
+
+}
+
+.tbody-light .checkbox label::after {
+  padding-top: 5px;
+}
+
+.tbody-light .checkbox label {
+  padding-top: 3px;
+}
+
+.tbody-light .checkbox.checkbox-single input {
+  margin-top: 3px;
+}
+
 .checkbox label::before {
   -o-transition: 0.3s ease-in-out;
   -webkit-transition: 0.3s ease-in-out;
