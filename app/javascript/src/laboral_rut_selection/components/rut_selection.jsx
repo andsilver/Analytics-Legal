@@ -121,7 +121,6 @@ export default class RutSelection extends React.Component {
                   </div>
                   
                   <div className="form-group row">
-                    
                     <div className="col-lg-4 col-sm-12">
                       {this.props.user_id !== 0 && this.props.cases.length > 0 &&
                       <button type='button' onClick={this.saveRuts}
@@ -138,6 +137,14 @@ export default class RutSelection extends React.Component {
                       </div>
                     </div>
                   </div>
+
+                  {this.props.took_time !== 0 && <div className="form-group row">
+                    <div className="col-lg-4 col-sm-12">
+                      <span>
+                        Respuesta en X milisegundos: {this.props.took_time}
+                      </span>
+                    </div>
+                  </div>}
                 </form>
               </div>
             </div>

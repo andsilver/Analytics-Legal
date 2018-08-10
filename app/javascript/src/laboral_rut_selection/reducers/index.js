@@ -18,6 +18,7 @@ const initialCasesState = { schema: ['CLIENT_ID', 'CAUSA_ID', 'CAUSA_TYPE'],
                             cases: [],
                             current_page: 0,
                             search_type: '',
+                            took_time: 0,
                             term: '',
                             hasMoreCases: false,
                             user_id: 0,
@@ -71,6 +72,9 @@ const data = handleActions({
   },
   [actions.saveTotal](state, { payload: total }) {
     return { ...state, total: total }
+  },
+  [actions.saveTookTime](state, { payload: took_time }) {
+    return { ...state, took_time }
   }
 }, initialCasesState);
 

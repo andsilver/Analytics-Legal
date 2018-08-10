@@ -12,7 +12,8 @@ const casesToProps = ({ data }) => {
     hasMoreCases: data['hasMoreCases'],
     user_id: data['user_id'],
     selected: data['selected'],
-    total: data['total']
+    total: data['total'],
+    took_time: data['took_time']
   }
   return props;
 };
