@@ -141,7 +141,7 @@ export default class RutSelection extends React.Component {
                   {this.props.took_time !== 0 && <div className="form-group row">
                     <div className="col-lg-4 col-sm-12">
                       <span>
-                        Respuesta en X milisegundos: {this.props.took_time}
+                        Respuesta en {this.props.took_time} milisegundos
                       </span>
                     </div>
                   </div>}
