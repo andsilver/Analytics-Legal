@@ -171,10 +171,12 @@ export default class RutSelection extends React.Component {
                     <tbody>
                       { this.props.cases.map(el => {
                           let { crr_idcausa, nombre_o_razon_social, rut, sujeto, persona, sujento, participante, url } = el.case;
-                          if (`${crr_idcausa}`.indexOf(filterSearchField.toUpperCase()) >= 0
+                          let real_crr_idcausa = typeOfCause === 'Civil' ? url : crr_idcausa;
+                          let real_sujeto = typeOfCause === 'Cobranzas' ? sujento : typeOfCause === 'Civil' ? participante : sujeto;
+                          if (`${real_crr_idcausa}`.indexOf(filterSearchField.toUpperCase()) >= 0
                             || `${nombre_o_razon_social}`.indexOf(filterSearchField.toUpperCase()) >= 0
                             || `${rut}`.indexOf(filterSearchField.toUpperCase()) >= 0
-                            || `${sujeto}`.indexOf(filterSearchField.toUpperCase()) >= 0
+                            || `${real_sujeto}`.indexOf(filterSearchField.toUpperCase()) >= 0
                             || `${persona}`.indexOf(filterSearchField.toUpperCase()) >= 0) {
                               return (
                                 <tr key={_.uniqueId()} className={el.selected ? 'table-info' : ''}>
@@ -187,11 +189,11 @@ export default class RutSelection extends React.Component {
                                       <label></label>
                                     </div>
                                   </td>
-                                  <td>{typeOfCause === 'Civil' ? url : crr_idcausa}</td>
+                                  <td>{real_crr_idcausa}</td>
                                   <td>{nombre_o_razon_social}</td>
                                   <td>{rut}</td>
                                   <td>{persona}</td>
-                                  <td>{typeOfCause === 'Cobranzas' ? sujento : typeOfCause === 'Civil' ? participante : sujeto }</td>
+                                  <td>{real_sujeto}</td>
                                 </tr>
                               )
                             }
