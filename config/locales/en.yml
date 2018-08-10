@@ -71,6 +71,12 @@ en:
     templates: 'Templates'
     custom: 'Custom'
     virtual_db_auth: 'Virtual Dashboard Autorization'
+    cases: 'Cases'
+    my_cases: 'My Cases'
+    attorney: 'Attorney'
+    durations: 'Durations'
+    deep_search: 'Deep Search'
+    predict: 'Predict'
   cases:
     query_of_cases: 'Search Cases'
     back_to_search: 'Back to Search'

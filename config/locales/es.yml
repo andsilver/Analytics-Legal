@@ -72,6 +72,12 @@ es:
     templates: 'Plantillas'
     custom: 'Personalizado'
     virtual_db_auth: 'Autorización del tablero virtual'
+    cases: 'Causas'
+    my_cases: 'Mis Causas'
+    attorney: 'Abogados'
+    durations: 'Duraciones'
+    deep_search: 'Deep Search'
+    predict: 'Predict'
   cases:
     query_of_cases: 'Consulta de Causas'
     back_to_search: 'Volver a buscar'
