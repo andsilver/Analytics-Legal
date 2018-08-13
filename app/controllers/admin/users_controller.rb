@@ -56,6 +56,12 @@ class Admin::UsersController < ApplicationController
   def cases_laboral_my_cases
   end
 
+  def cases_civil_my_cases
+  end
+
+  def cases_cobranzas_my_cases
+  end
+
   private
 
   def create_litigators(user_id)

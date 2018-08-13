@@ -5,7 +5,7 @@ import $ from 'jquery';
 window.jQuery = $;
 require ('footable');
 
-export default class LaboralMyCases extends React.Component {
+export default class CobranzasMyCases extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,7 +19,7 @@ export default class LaboralMyCases extends React.Component {
   }
 
   componentWillMount() {
-    this.props.searchLaboralMyCases(this.state.cases_number, 0, this.props.selectedCases);
+    this.props.searchCobranzasMyCases(this.state.cases_number, 0, this.props.selectedCases);
   }
 
   componentDidMount() {
@@ -46,7 +46,7 @@ export default class LaboralMyCases extends React.Component {
     this.setState({ search_type: type });
     this.props.clearCases();
     this.props.updateSearchType(type);
-    this.props.searchLaboralMyCases(this.state.cases_number, 0, this.props.selectedCases);
+    this.props.searchCobranzasMyCases(this.state.cases_number, 0, this.props.selectedCases);
   }
 
   updatePage = (e) => {
@@ -58,7 +58,7 @@ export default class LaboralMyCases extends React.Component {
 
   loadMore = (newPage) => {
     let offset = this.props.cases.length;
-    this.props.searchLaboralMyCases(this.state.cases_number, offset, this.props.selectedCases);
+    this.props.searchCobranzasMyCases(this.state.cases_number, offset, this.props.selectedCases);
   }
 
   filterSearchField = (e) => {
@@ -67,11 +67,8 @@ export default class LaboralMyCases extends React.Component {
 
   selectorChange = (e) => {
     e.preventDefault();
-    let filtering = jQuery(ReactDOM.findDOMNode(this.refs.productstable)).use(FooTable.Filtering);
-    filtering.addFilter('status', e.target.value, ['Estado']);
-    filtering.filter();
-    // filtering.trigger('footable_filtering', { filter: e.target.value });
-    
+    let filtering = jQuery(ReactDOM.findDOMNode(this.refs.productstable));
+    filtering.trigger('footable_filtering', { filter: e.target.value });
     
     // this.setState({ est_adm_value: e.target.value });
   }
@@ -114,28 +111,32 @@ export default class LaboralMyCases extends React.Component {
                             <th>RUC</th>
                             <th>Procedimiento</th>
                             <th>Fecha Ingreso</th>
-                            <th>Inicio</th>
+                            <th>Forma Inicio</th>
                             <th>Estado</th>
                             <th>Etapa</th>
-                            <th>E.Proc</th>
+                            <th>Estado Proc</th>
+                            <th>Juez</th>
                             <th>Tribunal</th>
+                            <th>Ubicación</th>
                           </tr>
                         </thead>
                         <tbody>
                           {this.props.cases.map((item, index) => {
-                            let { case: item_case, rit, ruc, proc, f_ing, forma_inicio, est_adm, etapa, estado_proc, tribunal, inc_idx } = item.case;
+                            let { caratula, rit, ruc, proc, f_lng, forma_lnicio, est_adm, etapa, estado_proc, juez_asignado, tribunal, ubicacion, inc_idx } = item.case;
                               return (
                                 <tr key={inc_idx}>
-                                  <td>{item_case}</td>
+                                  <td>{caratula}</td>
                                   <td>{rit}</td>
                                   <td>{ruc}</td>
                                   <td>{proc}</td>
-                                  <td>{f_ing}</td>
-                                  <td>{forma_inicio}</td>
+                                  <td>{f_lng}</td>
+                                  <td>{forma_lnicio}</td>
                                   <td>{est_adm}</td>
                                   <td>{etapa}</td>
                                   <td>{estado_proc}</td>
+                                  <td>{juez_asignado}</td>
                                   <td>{tribunal}</td>
+                                  <td>{ubicacion}</td>
                                 </tr>
                               );   
                           })}

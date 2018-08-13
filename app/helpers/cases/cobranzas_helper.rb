@@ -1,0 +1,2 @@
+module Cases::CobranzasHelper
+end

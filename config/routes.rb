@@ -18,6 +18,12 @@ Rails.application.routes.draw do
     namespace :laborals do
       get 'my_cases'
     end
+    namespace :civil do
+      get 'my_cases'
+    end
+    namespace :cobranzas do
+      get 'my_cases'
+    end
   end
 
   namespace :laboral do
