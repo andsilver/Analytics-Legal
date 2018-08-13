@@ -66,9 +66,9 @@ export default class LaboralMyCases extends React.Component {
   }
 
   selectorChange = (e) => {
-    e.preventDefault();
-    let filtering = jQuery(ReactDOM.findDOMNode(this.refs.productstable));
-    filtering.trigger('footable_filtering', { filter: e.target.value });
+    // e.preventDefault();
+    // let filtering = jQuery(ReactDOM.findDOMNode(this.refs.productstable));
+    // filtering.trigger('footable_filtering', { filter: e.target.value });
     
     // this.setState({ est_adm_value: e.target.value });
   }
@@ -121,7 +121,6 @@ export default class LaboralMyCases extends React.Component {
                         <tbody>
                           {this.props.cases.map((item, index) => {
                             let { case: item_case, rit, ruc, proc, f_ing, forma_inicio, est_adm, etapa, estado_proc, tribunal, inc_idx } = item.case;
-                            if (est_adm_value === '' || est_adm_value === est_adm) {
                               return (
                                 <tr key={inc_idx}>
                                   <td>{item_case}</td>
@@ -135,10 +134,7 @@ export default class LaboralMyCases extends React.Component {
                                   <td>{estado_proc}</td>
                                   <td>{tribunal}</td>
                                 </tr>
-                              );
-                            } else {
-                              return null;
-                            }               
+                              );   
                           })}
                         </tbody>
                         <tfoot>
