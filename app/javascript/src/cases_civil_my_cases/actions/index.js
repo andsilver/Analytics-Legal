@@ -59,7 +59,6 @@ export const searchCivilMyCases = (cases_per_page, offset = 0, selectedIdCausas)
     });
     
     const response = await httpResponse.json();
-    console.log(response)
     dispatch(updatePaginationCivilMyCases(response.hits.total > cases_per_page));
     dispatch(saveTotalCivilMyCases(response.hits.total));
     dispatch(saveTookTimeCivilMyCases(response.took));

@@ -45,7 +45,6 @@ export const searchCobranzasMyCases = (cases_per_page, offset = 0, selectedIdCau
   });
 
   try {
-    console.log('this.props.selectedCases', Array.from(new Set(selectedIdCausas)));
     const httpResponse = await fetch(getSearchURL(cases_per_page, offset), {
       headers: myHeaders,
       body: JSON.stringify({
@@ -60,7 +59,7 @@ export const searchCobranzasMyCases = (cases_per_page, offset = 0, selectedIdCau
     });
     
     const response = await httpResponse.json();
-    console.log(response)
+    console.log(response);
     dispatch(updatePaginationCobranzasMyCases(response.hits.total > cases_per_page));
     dispatch(saveTotalCobranzasMyCases(response.hits.total));
     dispatch(saveTookTimeCobranzasMyCases(response.took));
