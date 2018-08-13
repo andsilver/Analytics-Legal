@@ -64,7 +64,7 @@ export default class RutSelection extends React.Component {
     e.preventDefault();
     const token = document.querySelector('meta[name=csrf-token]').getAttribute("content");
     const cases = this.props.selected.map(el => {
-      return { crr_idcausa: el.case.crr_idcausa, crr_idcausa_type: 'laboral' }
+      return { crr_idcausa: this.state.typeOfCause === 'Civil' ? el.case.url : el.case.crr_idcausa, crr_idcausa_type: this.state.typeOfCause === 'Cobranzas' ? 'cobranza' : this.state.typeOfCause === 'Civil' ? 'civil' : 'laboral' }
     });
     this.props.saveRuts(this.props.user_id, cases, token);
     this.props.clearCases();
