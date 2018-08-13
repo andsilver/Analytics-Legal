@@ -38,6 +38,10 @@ class UserPolicy
     admin_or_commercial?
   end
 
+  def cases_laboral_my_cases?
+    admin_or_commercial?
+  end
+
   private
 
   def admin_or_commercial?

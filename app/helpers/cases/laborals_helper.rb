@@ -1,0 +1,2 @@
+module Cases::LaboralsHelper
+end

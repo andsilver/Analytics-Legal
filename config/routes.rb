@@ -14,6 +14,12 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :cases do
+    namespace :laborals do
+      get 'my_cases'
+    end
+  end
+
   namespace :laboral do
     resources :cases, only: [:show] do
       collection do
