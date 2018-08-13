@@ -3,7 +3,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 window.jQuery = $;
-require ('footable');
 
 export default class LaboralMyCases extends React.Component {
   constructor(props) {
@@ -19,7 +18,7 @@ export default class LaboralMyCases extends React.Component {
   }
 
   componentWillMount() {
-    this.props.searchLaboralMyCases(this.state.cases_number, 0, this.props.selectedCases);
+    this.props.searchLaboralMyCases(this.props.selectedCases.length, 0, this.props.selectedCases);
   }
 
   componentDidMount() {
@@ -27,14 +26,7 @@ export default class LaboralMyCases extends React.Component {
       if (this.props.cases && this.props.cases.length > 0) {
         let filtering = jQuery(ReactDOM.findDOMNode(this.refs.productstable));
         let filteringStatus = jQuery(ReactDOM.findDOMNode(this.refs.filterstatus));
-        // filtering.footable();
-        // var filtering = $('#demo-foo-filtering');
-        filtering.footable().on('footable_filtering', (e) => {
-            var selected = filteringStatus.find(':selected').val();
-            e.filter = selected;
-            console.log(e);
-            e.clear = !e.filter;
-        });
+        filtering.footable();
         clearInterval(this.footableInterval);
         this.forceUpdate();
       }
@@ -62,18 +54,16 @@ export default class LaboralMyCases extends React.Component {
   }
 
   filterSearchField = (e) => {
-    this.setState({ filterSearchField: e.target.value });
+    e.preventDefault();
+    let filtering = jQuery(ReactDOM.findDOMNode(this.refs.productstable));
+    filtering.trigger('footable_filter', { filter: e.target.value });
   }
 
   selectorChange = (e) => {
     e.preventDefault();
-    let filtering = jQuery(ReactDOM.findDOMNode(this.refs.productstable)).use(FooTable.Filtering);
-    filtering.addFilter('status', e.target.value, ['Estado']);
-    filtering.filter();
-    // filtering.trigger('footable_filtering', { filter: e.target.value });
+    let filtering = jQuery(ReactDOM.findDOMNode(this.refs.productstable));
+    filtering.trigger('footable_filter', { filter: e.target.value });
     
-    
-    // this.setState({ est_adm_value: e.target.value });
   }
 
   render() {
@@ -101,12 +91,12 @@ export default class LaboralMyCases extends React.Component {
                           </div>
                           <div className="col-md-6 text-center text-right">
                             <div className="form-group float-right">
-                              <input id="demo-foo-search" type="text" placeholder="Search" className="form-control" autoComplete="on" />
+                              <input id="demo-foo-search" ref="filterSearchField" type="text" placeholder="Search" className="form-control" autoComplete="on" />
                             </div>
                           </div>
                         </div>
                       </div>
-                      <table ref="productstable" id="demo-foo-filtering" className="table table-striped table-bordered toggle-circle m-b-0 footable" data-filter="#demo-foo-search" data-paging='true' data-filtering="true" data-sorting="true" data-paging-size="7">
+                      <table ref="productstable" id="demo-foo-filtering" className="table table-striped table-bordered toggle-circle m-b-0 footable" data-filter="#demo-foo-search" data-paging='true' data-sorting="true" data-paging-size="10">
                         <thead>
                           <tr>
                             <th data-toggle="true">Nombre Causa</th>
