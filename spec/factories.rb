@@ -1,4 +1,11 @@
 FactoryBot.define do
+  factory :menu_template do
+    name "MyString"
+  end
+  factory :menu do
+    label "MyString"
+    parent_id 1
+  end
   factory :selected_case do
     user nil
     crr_idcausa 1

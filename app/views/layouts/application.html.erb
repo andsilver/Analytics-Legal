@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>DeepLegal</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <%= csrf_meta_tags %>
 
     <%= favicon_link_tag 'favicon.ico' %>
@@ -12,114 +12,113 @@
 
   <body>
     <!-- Navigation Bar-->
-		<header id="topnav">
-			<div class="topbar-main">
-				<div class="container-fluid">
+    <header id="topnav">
+      <div class="topbar-main">
+        <div class="container-fluid">
 
-					<div class="logo">
-						<%= link_to root_path, class: "logo" do %>
-							<%= image_tag("logo.png", size: '190x60') %>
-						<% end %>
-					</div>
+          <div class="logo">
+            <%= link_to root_path, class: "logo" do %>
+              <%= image_tag("logo.png", size: '190x60') %>
+            <% end %>
+          </div>
 
-					<div class="menu-extras topbar-custom">
-						<ul class="list-inline float-right mb-0">
-							<li class="menu-item list-inline-item">
-									<!-- Mobile menu toggle-->
-									<a class="navbar-toggle nav-link">
-											<div class="lines">
-													<span></span>
-													<span></span>
-													<span></span>
-											</div>
-									</a>
-									<!-- End mobile menu toggle-->
-							</li>
-							<li class="list-inline-item dropdown notification-list">
-								<a class="nav-link dropdown-toggle waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
-								   aria-haspopup="false" aria-expanded="false">
-									<%= current_user.email %>
-								</a>
-								<div class="dropdown-menu dropdown-menu-right profile-dropdown " aria-labelledby="Preview">
-									<%= link_to edit_user_registration_path, method: :get, class: "dropdown-item notify-item" do %>
-										<i class="ti-home"></i> <span><%= t('menu.profile')%></span>
-									<% end %>
+          <div class="menu-extras topbar-custom">
+            <ul class="list-inline float-right mb-0">
+              <li class="menu-item list-inline-item">
+                  <!-- Mobile menu toggle-->
+                  <a class="navbar-toggle nav-link">
+                      <div class="lines">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                      </div>
+                  </a>
+                  <!-- End mobile menu toggle-->
+              </li>
+              <li class="list-inline-item dropdown notification-list">
+                <a class="nav-link dropdown-toggle waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
+                   aria-haspopup="false" aria-expanded="false">
+                  <%= current_user.email %>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right profile-dropdown " aria-labelledby="Preview">
+                  <%= link_to edit_user_registration_path, method: :get, class: "dropdown-item notify-item" do %>
+                    <i class="ti-home"></i> <span><%= t('menu.profile')%></span>
+                  <% end %>
 
-									<%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item notify-item" do %>
-										<i class="mdi mdi-logout"></i> <span><%= t('menu.logout')%></span>
-									<% end %>
-								</div>
-							</li>
+                  <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item notify-item" do %>
+                    <i class="mdi mdi-logout"></i> <span><%= t('menu.logout')%></span>
+                  <% end %>
+                </div>
+              </li>
 
-						</ul>
-					</div>
-					<div class="clearfix"></div>
-				</div> <!-- end container -->
-			</div>
+            </ul>
+          </div>
+          <div class="clearfix"></div>
+        </div> <!-- end container -->
+      </div>
 
-			<div class="navbar-custom">
-				<div class="container-fluid">
-					<div id="navigation">
-						<!-- Navigation Menu-->
-						<ul class="navigation-menu">
-							<li class="has-submenu">
-								<%= link_to '#' do %>
-									<%= t('menu.summary')%>
-								<% end %>
-								<ul class="submenu">
-									<li>
-										<%= link_to virtual_dashboards_1_path do %>
-											<%= t('menu.virtual_dashboard') %> 1
-										<% end %>
-									</li>
-									<li>
-										<%= link_to virtual_dashboards_2_path do %>
-											<%= t('menu.virtual_dashboard') %> 2
-										<% end %>
-									</li>
-									<li>
-										<%= link_to virtual_dashboards_3_path do %>
-											<%= t('menu.virtual_dashboard') %> 3
-										<% end %>
-									</li>
-									<li>
-										<%= link_to virtual_dashboards_4_path do %>
-											<%= t('menu.virtual_dashboard') %> 4
-										<% end %>
-									</li>
-									<li>
-										<%= link_to virtual_dashboards_5_path do %>
-											<%= t('menu.virtual_dashboard') %> 5
-										<% end %>
-									</li>
-									<li>
-										<%= link_to virtual_dashboards_6_path do %>
-											<%= t('menu.virtual_dashboard') %> 6
-										<% end %>
-									</li>
-									<li>
-										<%= link_to virtual_dashboards_7_path do %>
-											<%= t('menu.virtual_dashboard') %> 7
-										<% end %>
-									</li>
-									<li>
-										<%= link_to virtual_dashboards_8_path do %>
-											<%= t('menu.virtual_dashboard') %> 8
-										<% end %>
-									</li>
-									<li>
-										<%= link_to '#' do %>
-											<%= t('menu.virtual_dashboard') %> 9
-										<% end %>
-									</li>
-									<li>
-										<%= link_to '#' do %>
-											<%= t('menu.virtual_dashboard') %> n
-										<% end %>
-									</li>
-								</ul>
-							</li>
-
+      <div class="navbar-custom">
+        <div class="container-fluid">
+          <div id="navigation">
+            <!-- Navigation Menu-->
+            <ul class="navigation-menu">
+              <li class="has-submenu">
+                <%= link_to '#' do %>
+                  <%= t('menu.summary')%>
+                <% end %>
+                <ul class="submenu">
+                  <li>
+                    <%= link_to virtual_dashboards_1_path do %>
+                      <%= t('menu.virtual_dashboard') %> 1
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to virtual_dashboards_2_path do %>
+                      <%= t('menu.virtual_dashboard') %> 2
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to virtual_dashboards_3_path do %>
+                      <%= t('menu.virtual_dashboard') %> 3
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to virtual_dashboards_4_path do %>
+                      <%= t('menu.virtual_dashboard') %> 4
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to virtual_dashboards_5_path do %>
+                      <%= t('menu.virtual_dashboard') %> 5
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to virtual_dashboards_6_path do %>
+                      <%= t('menu.virtual_dashboard') %> 6
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to virtual_dashboards_7_path do %>
+                      <%= t('menu.virtual_dashboard') %> 7
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to virtual_dashboards_8_path do %>
+                      <%= t('menu.virtual_dashboard') %> 8
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to '#' do %>
+                      <%= t('menu.virtual_dashboard') %> 9
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to '#' do %>
+                      <%= t('menu.virtual_dashboard') %> n
+                    <% end %>
+                  </li>
+                </ul>
+              </li>
 							<li class="has-submenu">
 								<%= link_to '#' do %>
 									<%= t('menu.cases')%>
@@ -229,171 +228,175 @@
 									</li>
 								</ul>
 							</li>
+              <li>
+                <%= link_to '#' do %>
+                  <%= t('menu.notifications')%>
+                <% end %>
+              </li>
 
-							<li>
-								<%= link_to '#' do %>
-									<%= t('menu.notifications')%>
-								<% end %>
-							</li>
+              <li class="has-submenu">
+                <%= link_to '#' do %>
+                  <%= t('menu.zeus')%>
+                <% end %>
+                <ul class="submenu">
+                  <li>
+                    <%= link_to '#' do %>
+                      <%= t('menu.consultation') %>
+                    <% end %>
+                  </li>
+                </ul>
+              </li>
 
-							<li class="has-submenu">
-								<%= link_to '#' do %>
-									<%= t('menu.zeus')%>
-								<% end %>
-								<ul class="submenu">
-									<li>
-										<%= link_to '#' do %>
-											<%= t('menu.consultation') %>
-										<% end %>
-									</li>
-								</ul>
-							</li>
+              <li class="has-submenu">
+                <%= link_to '#' do %>
+                  <%= t('menu.deep_graph')%>
+                <% end %>
+                <ul class="submenu">
+                  <li>
+                    <%= link_to 'http://ai.deeplegal.ai' do %>
+                      <%= t('menu.neo4j_db')%>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to '#' do %>
+                      <%= t('menu.tensorflow_engine')%>
+                    <% end %>
+                  </li>
+                </ul>
+              </li>
 
-							<li class="has-submenu">
-								<%= link_to '#' do %>
-									<%= t('menu.deep_graph')%>
-								<% end %>
-								<ul class="submenu">
-									<li>
-										<%= link_to 'http://ai.deeplegal.ai' do %>
-											<%= t('menu.neo4j_db')%>
-										<% end %>
-									</li>
-									<li>
-										<%= link_to '#' do %>
-											<%= t('menu.tensorflow_engine')%>
-										<% end %>
-									</li>
-								</ul>
-							</li>
+              <li>
+                <%= link_to '#' do %>
+                  <%= t('menu.deep_search')%>
+                <% end %>
+              </li>
 
-							<li>
-								<%= link_to '#' do %>
-									<%= t('menu.deep_search')%>
-								<% end %>
-							</li>
+              <li>
+                <%= link_to '#' do %>
+                  <%= t('menu.predict')%>
+                <% end %>
+              </li>
 
-							<li>
-								<%= link_to '#' do %>
-									<%= t('menu.predict')%>
-								<% end %>
-							</li>
+              <% if policy(current_user).create? %>
+                <li class="has-submenu">
+                  <%= link_to '#' do %>
+                    <%= t('menu.admin')%>
+                  <% end %>
+                  <ul class="submenu">
+                    <li>
+                      <%= link_to new_admin_user_path do %>
+                        <%= t('users.create_user')%>
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to admin_users_path do %>
+                        <%= t('users.edit_user')%>
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to laboral_rut_selection_admin_users_path do %>
+                        <%= t('menu.rut_selection')%>
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to admin_authorization_menu_template_index_path do %>
+                        <%= t('menu.auth_menu')%>
+                      <% end %>
+                      <!-- <ul class="submenu">
+                        <li>
+                          <%= link_to '#' do %>
+                            <%= t('menu.templates')%>
+                          <% end %>
+                        </li>
+                        <li>
+                          <%= link_to '#' do %>
+                            <%= t('menu.custom')%>
+                          <% end %>
+                        </li>
+                      </ul> -->
+                    </li>
+                    <li class="has-submenu">
+                      <%= link_to '#' do %>
+                        <%= t('menu.virtual_db_auth')%>
+                      <% end %>
+                      <ul class="submenu">
+                        <li>
+                          <%= link_to '#' do %>
+                            <%= t('menu.templates')%>
+                          <% end %>
+                        </li>
+                        <li>
+                          <%= link_to '#' do %>
+                            <%= t('menu.custom')%>
+                          <% end %>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              <% end %>
+            </ul>
+            <!-- End navigation menu -->
+          </div> <!-- end #navigation -->
+        </div> <!-- end container -->
+      </div> <!-- end navbar-custom -->
+    </header>
+    <!-- End Navigation Bar-->
 
-							<% if policy(current_user).create? %>
-								<li class="has-submenu">
-									<%= link_to '#' do %>
-										<%= t('menu.admin')%>
-									<% end %>
-									<ul class="submenu">
-										<li>
-											<%= link_to new_admin_user_path do %>
-												<%= t('users.create_user')%>
-											<% end %>
-										</li>
-										<li>
-											<%= link_to laboral_rut_selection_admin_users_path do %>
-												<%= t('menu.rut_selection')%>
-											<% end %>
-										</li>
-										<li class="has-submenu">
-											<%= link_to '#' do %>
-												<%= t('menu.auth_menu')%>
-											<% end %>
-											<ul class="submenu">
-												<li>
-													<%= link_to '#' do %>
-														<%= t('menu.templates')%>
-													<% end %>
-												</li>
-												<li>
-													<%= link_to '#' do %>
-														<%= t('menu.custom')%>
-													<% end %>
-												</li>
-											</ul>
-										</li>
-										<li class="has-submenu">
-											<%= link_to '#' do %>
-												<%= t('menu.virtual_db_auth')%>
-											<% end %>
-											<ul class="submenu">
-												<li>
-													<%= link_to '#' do %>
-														<%= t('menu.templates')%>
-													<% end %>
-												</li>
-												<li>
-													<%= link_to '#' do %>
-														<%= t('menu.custom')%>
-													<% end %>
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</li>
-							<% end %>
-						</ul>
-						<!-- End navigation menu -->
-					</div> <!-- end #navigation -->
-				</div> <!-- end container -->
-			</div> <!-- end navbar-custom -->
-		</header>
-		<!-- End Navigation Bar-->
+    <div class="wrapper">
+      <div class="container-fluid">
+        <% if notice %>
+          <p class="alert alert-info system-alert"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-warning system-alert"><%= alert %></p>
+        <% end %>
+        <%= yield %>
+      </div> <!-- end container -->
+    </div>
+    <!-- end wrapper -->
 
-		<div class="wrapper">
-			<div class="container-fluid">
-				<% if notice %>
-    			<p class="alert alert-info system-alert"><%= notice %></p>
-				<% end %>
-				<% if alert %>
-    			<p class="alert alert-warning system-alert"><%= alert %></p>
-				<% end %>
-				<%= yield %>
-			</div> <!-- end container -->
-		</div>
-		<!-- end wrapper -->
-
-		<!-- Footer -->
-		<footer class="footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-12 text-center">
-						2018 © DeepLegal
-					</div>
-				</div>
-			</div>
-		</footer>
-		<!-- End Footer -->
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            2018 © DeepLegal
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
 
     <%= javascript_include_tag 'application' %>
 
-		<script type="text/javascript">
-			jQuery(document).ready(function($) {
-				$('.counter').counterUp({
-					delay: 100,
-					time: 1200
-				});
-				$('.circliful-chart').circliful();
-			});
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+        $('.counter').counterUp({
+          delay: 100,
+          time: 1200
+        });
+        $('.circliful-chart').circliful();
+      });
 
-			// BEGIN SVG WEATHER ICON
-			if (typeof Skycons !== 'undefined'){
-				var icons = new Skycons(
-						{"color": "#3bafda"},
-						{"resizeClear": true}
-						),
-						list  = [
-							"clear-day", "clear-night", "partly-cloudy-day",
-							"partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
-							"fog"
-						],
-						i;
+      // BEGIN SVG WEATHER ICON
+      if (typeof Skycons !== 'undefined'){
+        var icons = new Skycons(
+            {"color": "#3bafda"},
+            {"resizeClear": true}
+            ),
+            list  = [
+              "clear-day", "clear-night", "partly-cloudy-day",
+              "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
+              "fog"
+            ],
+            i;
 
-				for(i = list.length; i--; )
-					icons.set(list[i], list[i]);
-				icons.play();
-			};
+        for(i = list.length; i--; )
+          icons.set(list[i], list[i]);
+        icons.play();
+      };
 
-		</script>
+    </script>
   </body>
 </html>

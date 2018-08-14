@@ -1,0 +1,33 @@
+<div class="template-menu container-fluid">
+  <div class="header">
+    <h4>Templates</h4>
+   	<% if @templates.size == 0 %>
+      <h5>No template yet</h5>
+     <% end %>
+  </div>
+
+  <div class="template–content">
+  	<%= link_to "New Template", admin_authorization_menu_template_new_path %>
+  	<% @templates.each do |template| %>
+  		<div class="row m-t-20">
+  			<div class="col-sm-12 template-title">
+  				Template Name: <%= template.name %>
+  				<%= link_to admin_authorization_menu_template_destroy_path(id: template.id), method: :delete, data: {:confirm => "Are you sure?"} do %>
+  					<i class="fa fa-trash" aria-hidden="true" style="margin-left: 20px;"></i>
+  				<% end %>
+  			</div>
+  			<div class="col-sm-12">
+	 				<div class="template-options">
+	 					<% if template.menus.size == 0 %>
+	 						No available menus
+	 					<% else %>
+	 						<% template.menus.each do |menu| %>
+		 						<span class="template-option-title"><%= menu.label %></span>
+		  				<% end %>
+	 					<% end %>
+	  			</div>
+  			</div>
+  		</div>
+  	<% end %>
+  </div>
+</div>

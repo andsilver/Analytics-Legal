@@ -3,6 +3,7 @@ es:
     user: 'Usuario'
     users: 'Usuarios'
     create_user: 'Crear usuario'
+    edit_user: 'Editar usuario'
     list_users: 'Lista de usuarios'
     admin: 'Administración'
     client: 'Cliente'
