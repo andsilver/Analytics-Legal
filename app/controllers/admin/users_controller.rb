@@ -27,9 +27,11 @@ class Admin::UsersController < ApplicationController
 
   def new
     @user = User.new
+    @templates = MenuTemplate.all
   end
 
   def edit
+    @templates = MenuTemplate.all
   end
 
   def update
@@ -78,7 +80,7 @@ class Admin::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password, :role, :company, :company_id, :address, :country,
-      :city, :phone_number, :position)
+      :city, :phone_number, :position, :menu_template_id)
   end
 
   def filter_empty_password
