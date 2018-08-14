@@ -1,0 +1,47 @@
+{
+  "aggs": {
+    "cuenta_court_cases": {
+      "filter": {
+        "match": {
+          "_type": "court_cases"
+        }
+      },
+      "aggs": {
+        "cuenta": {
+          "value_count": {
+            "field": "inc_idx"
+          }
+        }
+      }
+    },
+    "cuenta_historia": {
+      "filter": {
+        "match": {
+          "_type": "historia"
+        }
+      },
+      "aggs": {
+        "cuenta": {
+          "value_count": {
+            "field": "inc_idx"
+          }
+        }
+      }
+    },
+    "cuenta_litigantes": {
+      "filter": {
+        "match": {
+          "_type": "litigantes"
+        }
+      },
+      "aggs": {
+        "cuenta": {
+          "value_count": {
+            "field": "inc_idx"
+          }
+        }
+      }
+    }
+  },
+  "size": 100
+}

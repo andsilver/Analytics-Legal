@@ -46,6 +46,7 @@ window.onload = function() {
     const csv = d3.csvParseRows(data);
     const json = buildHierarchy(csv);
     createVisualization(json);
+    console.log(json)
   });
 
   // Main function to draw and set up the visualization, once we have the data.

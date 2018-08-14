@@ -1,0 +1,18 @@
+{
+  "size": 100,
+  "aggs": {
+    "by_crr_idcausa": {
+      "terms": { "field": "crr_idcausa", "size": 10000 },
+      "aggs": {
+        "inicio": { "min": { "field": "f_tramite"} },
+        "final": { "max": { "field": "f_tramite"} },
+        "delta": {
+          "bucket_script": {
+            "buckets_path": { "xmin" : "inicio", "xmax": "final" },
+            "script": "(params.xmax - params.xmin)/86400000"
+          }
+        }
+      }
+    }
+  }
+}
