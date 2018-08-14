@@ -61,12 +61,26 @@ export default class RutSelection extends React.Component {
   }
 
   saveRuts = (e) => {
+    const { typeOfCause, filterSearchField } = this.state;
     e.preventDefault();
     const token = document.querySelector('meta[name=csrf-token]').getAttribute("content");
-    const cases = this.props.selected.map(el => {
-      return { crr_idcausa: this.state.typeOfCause === 'Civil' ? el.case.url : el.case.crr_idcausa, crr_idcausa_type: this.state.typeOfCause === 'Cobranzas' ? 'cobranza' : this.state.typeOfCause === 'Civil' ? 'civil' : 'laboral' }
+    const cases = this.props.selected.filter(el => {
+      let { crr_idcausa, nombre_o_razon_social, rut, sujeto, persona, sujento, participante, url, inc_idx } = el.case;
+      let real_crr_idcausa = typeOfCause === 'Civil' ? url : crr_idcausa;
+      let real_sujeto = typeOfCause === 'Cobranzas' ? sujento : typeOfCause === 'Civil' ? participante : sujeto;
+      if (`${real_crr_idcausa}`.indexOf(filterSearchField.toUpperCase()) >= 0
+        || `${nombre_o_razon_social}`.indexOf(filterSearchField.toUpperCase()) >= 0
+        || `${rut}`.indexOf(filterSearchField.toUpperCase()) >= 0
+        || `${real_sujeto}`.indexOf(filterSearchField.toUpperCase()) >= 0
+        || `${persona}`.indexOf(filterSearchField.toUpperCase()) >= 0) {
+          return true;
+        }
+      return false;
     });
-    const newCases = cases.filter((oldCase, index, self) => 
+    let tempCases = cases.map(el => {
+      return { crr_idcausa: typeOfCause === 'Civil' ? el.case.url : el.case.crr_idcausa, crr_idcausa_type: typeOfCause === 'Cobranzas' ? 'cobranza' :   typeOfCause === 'Civil' ? 'civil' : 'laboral' }
+    });
+    let newCases = tempCases.filter((oldCase, index, self) => 
       index === self.findIndex((t) => (
         t.crr_idcausa === oldCase.crr_idcausa
     )))
@@ -75,7 +89,7 @@ export default class RutSelection extends React.Component {
   }
 
   toggleSelectAll = () => (e) => {
-    this.props.toggleSelectAll(!this.state.selectAll);
+    this.props.toggleSelectAll({ selectedFlag: !this.state.selectAll, keyWord: this.state.filterSearchField, typeOfCause: this.state.typeOfCause });
     this.setState({ selectAll: !this.state.selectAll });
   }
 

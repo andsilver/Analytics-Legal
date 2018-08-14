@@ -45,9 +45,20 @@ const data = handleActions({
     const selected = newCases.filter(el => el.selected == true);
     return { ...state, cases: newCases, selected: selected };
   },
-  [actions.toggleSelectAll](state, { payload: selectedFlag }) {
+  [actions.toggleSelectAll](state, { payload: data }) {
+    const { selectedFlag, keyWord, typeOfCause } = data;
     const newCases = state.cases.map(el => {
-      return { ...el, selected: selectedFlag };
+      let { crr_idcausa, nombre_o_razon_social, rut, sujeto, persona, sujento, participante, url, inc_idx } = el.case;
+      let real_crr_idcausa = typeOfCause === 'Civil' ? url : crr_idcausa;
+      let real_sujeto = typeOfCause === 'Cobranzas' ? sujento : typeOfCause === 'Civil' ? participante : sujeto;
+      if (`${real_crr_idcausa}`.indexOf(keyWord.toUpperCase()) >= 0
+        || `${nombre_o_razon_social}`.indexOf(keyWord.toUpperCase()) >= 0
+        || `${rut}`.indexOf(keyWord.toUpperCase()) >= 0
+        || `${real_sujeto}`.indexOf(keyWord.toUpperCase()) >= 0
+        || `${persona}`.indexOf(keyWord.toUpperCase()) >= 0) {
+        return { ...el, selected: selectedFlag };
+      }
+      return el;
     });
     const selected = newCases.filter(el => el.selected == true);
     return { ...state, cases: newCases, selected: selected };
