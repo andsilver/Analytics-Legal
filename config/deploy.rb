@@ -5,6 +5,7 @@ set :repo_url, "git@github.com:storrealba-dl/deeplegal.git"
 set :user, "linakirsanova"
 
 set :deploy_to, "/var/www/deeplegal"
+set :rails_env, 'production'
 
 # Default value for :linked_files is []
 append :linked_files, "config/database.yml", "config/secrets.yml", "config/laboral_database.yml",

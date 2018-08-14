@@ -18,7 +18,7 @@ class Admin::UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         create_litigators(@user.id)
-        format.html { redirect_to edit_admin_user_path(@user), notice: t('notices.user_create_success') }
+        format.html { redirect_to laboral_rut_selection_admin_users_path, notice: t('notices.user_create_success') }
       else
         format.html { render :new }
       end
