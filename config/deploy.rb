@@ -4,8 +4,6 @@ set :application, "deeplegal"
 set :repo_url, "git@github.com:storrealba-dl/deeplegal.git"
 set :user, "linakirsanova"
 
-# Default branch is :master
-ask :branch, 'master'
 set :deploy_to, "/var/www/deeplegal"
 
 # Default value for :linked_files is []
