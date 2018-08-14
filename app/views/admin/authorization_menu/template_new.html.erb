@@ -1,0 +1,22 @@
+<div class="template-menu container-fluid">
+  <div class="header">
+    <h4>Create a new template</h4>
+  </div>
+
+  <div class="template–content">
+  	<%= form_for @template, :url => admin_authorization_menu_template_create_path do |f| %>
+  		<%= f.label :name %>
+  		<%= f.text_field :name, :class => 'form-control col-sm-4 col-xs-12' %>
+  		<h5 class="m-t-20">Please select available menus below:</h5>
+  		<div class="row">
+	  		<% MenuTemplate::DEFAULT_MENUS.each do |menu| %>
+	  			<div class="col-sm-3 col-xs-6">
+		  			<%= check_box_tag 'menu_template[menu_items][]', menu, true %>
+		  			<%= menu.camelize %>
+		  		</div>
+	  		<% end %>
+	  	</div>
+  		<%= f.submit "Create", :class => 'btn btn-primary m-t-20' %>
+  	<% end %>
+  </div>
+</div>

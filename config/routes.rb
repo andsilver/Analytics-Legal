@@ -12,6 +12,13 @@ Rails.application.routes.draw do
         get 'laboral_rut_selection'
       end
     end
+
+    namespace :authorization_menu do
+      get 'template_index'
+      get 'template_new'
+      post 'template_create'
+      delete 'template_destroy'
+    end
   end
 
   namespace :cases do

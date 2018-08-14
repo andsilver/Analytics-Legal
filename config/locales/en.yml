@@ -3,6 +3,7 @@ en:
     user: 'User'
     users: 'Users'
     create_user: 'Create user'
+    edit_user: 'Edit user'
     list_users: 'List users'
     admin: 'Admin'
     client: 'Client'

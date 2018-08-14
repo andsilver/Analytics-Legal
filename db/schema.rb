@@ -10,11 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_03_203432) do
+ActiveRecord::Schema.define(version: 2018_08_14_005336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "plpgsql"
+
+  create_table "menu_templates", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "menus", force: :cascade do |t|
+    t.string "label"
+    t.integer "menu_template_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "selected_cases", force: :cascade do |t|
     t.bigint "user_id"
@@ -47,6 +60,7 @@ ActiveRecord::Schema.define(version: 2018_08_03_203432) do
     t.string "phone_number"
     t.string "position"
     t.string "unique_session_id", limit: 20
+    t.integer "menu_template_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

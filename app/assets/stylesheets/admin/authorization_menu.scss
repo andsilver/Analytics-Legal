@@ -1,0 +1,28 @@
+// Place all the styles related to the admin/authorization_menu controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.template-menu {
+  .header {
+    margin-top: 20px;
+  }
+
+  .template–content {
+    margin-top: 20px;
+  }
+
+  .template-title {
+    font-weight: bold;
+    color: #3bafda;
+  }
+
+  .template-options {
+    padding-left: 20px;
+  }
+
+  .template-option-title {
+    text-transform: capitalize;
+    margin-left: 20px;
+    margin-bottom: 10px;
+  }
+}
