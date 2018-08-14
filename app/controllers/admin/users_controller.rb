@@ -1,5 +1,7 @@
 class Admin::UsersController < ApplicationController
   include Pundit
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
   after_action :verify_authorized
   before_action :set_user, only: [:edit, :update, :destroy]
   before_action :authorize_user
@@ -76,6 +78,11 @@ class Admin::UsersController < ApplicationController
 
   def authorize_user
     authorize current_user
+  end
+
+  def user_not_authorized
+    flash[:alert] = "You are not authorized."
+    redirect_to root_path
   end
 
   def user_params
