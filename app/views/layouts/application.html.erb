@@ -119,117 +119,115 @@
                   </li>
                 </ul>
               </li>
+							<li class="has-submenu">
+								<%= link_to '#' do %>
+									<%= t('menu.cases')%>
+								<% end %>
+								<ul class="submenu">
+									<li class="has-submenu">
+										<%= link_to '#' do %>
+											<%= t('menu.laboral')%>
+										<% end %>
+										<ul class="submenu">
+											<li>
+												<%= link_to cases_laborals_my_cases_path do %>
+													<%= t('menu.my_cases') %>
+												<% end %>
+											</li>
+											<li>
+												<%= link_to '#' do %>
+													<%= t('menu.top_10_matters') %>
+												<% end %>
+											</li>
+											<li>
+												<%= link_to '#' do %>
+													<%= t('menu.top_demanded_ruts') %>
+												<% end %>
+											</li>
+											<li>
+												<%= link_to '#' do %>
+													<%= t('menu.attorney') %>
+												<% end %>
+											</li>
+											<li>
+												<%= link_to '#' do %>
+													<%= t('menu.durations') %>
+												<% end %>
+											</li>
+											<li>
+												<%= link_to '#' do %>
+													<%= t('menu.movements') %>
+												<% end %>
+											</li>
+										</ul>
+									</li>
+									<li class="has-submenu">
+										<%= link_to '#' do %>
+											<%= t('menu.civil')%>
+										<% end %>
+										<ul class="submenu">
+											<li>
+												<%= link_to cases_civil_my_cases_path do %>
+													<%= t('menu.my_cases') %>
+												<% end %>
+											</li>
+											<li>
+												<%= link_to '#' do %>
+													<%= t('menu.top_demanded_ruts') %>
+												<% end %>
+											</li>
+											<li>
+												<%= link_to '#' do %>
+													<%= t('menu.attorney') %>
+												<% end %>
+											</li>
+											<li>
+												<%= link_to '#' do %>
+													<%= t('menu.durations') %>
+												<% end %>
+											</li>
+											<li>
+												<%= link_to '#' do %>
+													<%= t('menu.movements') %>
+												<% end %>
+											</li>
+										</ul>
+									</li>
 
-              <li class="has-submenu">
-                <%= link_to '#' do %>
-                  <%= t('menu.cases')%>
-                <% end %>
-                <ul class="submenu">
-                  <li class="has-submenu">
-                    <%= link_to '#' do %>
-                      <%= t('menu.laboral')%>
-                    <% end %>
-                    <ul class="submenu">
-                      <li>
-                        <%= link_to cases_laborals_my_cases_path do %>
-                          <%= t('menu.my_cases') %>
-                        <% end %>
-                      </li>
-                      <li>
-                        <%= link_to '#' do %>
-                          <%= t('menu.top_10_matters') %>
-                        <% end %>
-                      </li>
-                      <li>
-                        <%= link_to '#' do %>
-                          <%= t('menu.top_demanded_ruts') %>
-                        <% end %>
-                      </li>
-                      <li>
-                        <%= link_to '#' do %>
-                          <%= t('menu.attorney') %>
-                        <% end %>
-                      </li>
-                      <li>
-                        <%= link_to '#' do %>
-                          <%= t('menu.durations') %>
-                        <% end %>
-                      </li>
-                      <li>
-                        <%= link_to '#' do %>
-                          <%= t('menu.movements') %>
-                        <% end %>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="has-submenu">
-                    <%= link_to '#' do %>
-                      <%= t('menu.civil')%>
-                    <% end %>
-                    <ul class="submenu">
-                      <li>
-                        <%= link_to '#' do %>
-                          <%= t('menu.my_cases') %>
-                        <% end %>
-                      </li>
-                      <li>
-                        <%= link_to '#' do %>
-                          <%= t('menu.top_demanded_ruts') %>
-                        <% end %>
-                      </li>
-                      <li>
-                        <%= link_to '#' do %>
-                          <%= t('menu.attorney') %>
-                        <% end %>
-                      </li>
-                      <li>
-                        <%= link_to '#' do %>
-                          <%= t('menu.durations') %>
-                        <% end %>
-                      </li>
-                      <li>
-                        <%= link_to '#' do %>
-                          <%= t('menu.movements') %>
-                        <% end %>
-                      </li>
-                    </ul>
-                  </li>
-
-                  <li class="has-submenu">
-                    <%= link_to '#' do %>
-                      <%= t('menu.collections')%>
-                    <% end %>
-                    <ul class="submenu">
-                      <li>
-                        <%= link_to '#' do %>
-                          <%= t('menu.my_cases') %>
-                        <% end %>
-                      </li>
-                      <li>
-                        <%= link_to '#' do %>
-                          <%= t('menu.top_demanded_ruts') %>
-                        <% end %>
-                      </li>
-                      <li>
-                        <%= link_to '#' do %>
-                          <%= t('menu.attorney') %>
-                        <% end %>
-                      </li>
-                      <li>
-                        <%= link_to '#' do %>
-                          <%= t('menu.durations') %>
-                        <% end %>
-                      </li>
-                      <li>
-                        <%= link_to '#' do %>
-                          <%= t('menu.movements') %>
-                        <% end %>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-
+									<li class="has-submenu">
+										<%= link_to '#' do %>
+											<%= t('menu.collections')%>
+										<% end %>
+										<ul class="submenu">
+											<li>
+												<%= link_to cases_cobranzas_my_cases_path do %>
+													<%= t('menu.my_cases') %>
+												<% end %>
+											</li>
+											<li>
+												<%= link_to '#' do %>
+													<%= t('menu.top_demanded_ruts') %>
+												<% end %>
+											</li>
+											<li>
+												<%= link_to '#' do %>
+													<%= t('menu.attorney') %>
+												<% end %>
+											</li>
+											<li>
+												<%= link_to '#' do %>
+													<%= t('menu.durations') %>
+												<% end %>
+											</li>
+											<li>
+												<%= link_to '#' do %>
+													<%= t('menu.movements') %>
+												<% end %>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
               <li>
                 <%= link_to '#' do %>
                   <%= t('menu.notifications')%>

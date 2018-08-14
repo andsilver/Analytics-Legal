@@ -51,12 +51,13 @@ export const searchLaboralMyCases = (cases_per_page, offset = 0, selectedIdCausa
         "sort": [
           { "inc_idx": "asc" }
         ],
-        "query": { "terms": { "crr_idcausa": selectedIdCausas } },
+        "query": { "terms": { "crr_idcausa": Array.from(new Set(selectedIdCausas)) } },
         "size": cases_per_page,
         "from": offset
       }),
       method: 'POST'
     });
+    
     const response = await httpResponse.json();
     dispatch(updatePaginationLaboralMyCases(response.hits.total > cases_per_page));
     dispatch(saveTotalLaboralMyCases(response.hits.total));

@@ -1,0 +1,7 @@
+<script>
+  var emails = JSON.parse('<%= User.all.order(:email).pluck(:email, :id).to_json.html_safe %>');
+  var currentUser = JSON.parse('<%= current_user.to_json.html_safe %>');
+  var selectedCases = JSON.parse('<%= SelectedCase.all.where(user_id: current_user.id).where(crr_idcausa_type: "civil").select("crr_idcausa").pluck(:crr_idcausa).to_json.html_safe %>');
+</script>
+
+<%= javascript_pack_tag 'civil_my_cases' %>

@@ -3,14 +3,14 @@ import { handleActions } from 'redux-actions';
 import * as actions from '../actions';
 
 const searchState = handleActions({
-  [actions.searchRequest]() {
-    return 'requested';
+  [actions.searchRequestCobranzasMyCases]() {
+    return 'requestedCobranzasMyCases';
   },
-  [actions.searchSuccess]() {
-    return 'successed';
+  [actions.searchSuccessCobranzasMyCases]() {
+    return 'successedCobranzasMyCases';
   },
-  [actions.searchFailure]() {
-    return 'failed';
+  [actions.searchFailureCobranzasMyCases]() {
+    return 'failedCobranzasMyCases';
   },
 }, 'none');
 
@@ -26,14 +26,14 @@ const initialCasesState = { schema: ['CLIENT_ID', 'CAUSA_ID', 'CAUSA_TYPE'],
                             total: 0 };
 
 const data = handleActions({
-  [actions.searchSuccess](state, { payload: { data } }) {
+  [actions.searchSuccessCobranzasMyCases](state, { payload: { data } }) {
     const newCases = data.map(el => ({ case: el['_source'], selected: true }));
     const selected = newCases.filter(el => el.selected == true);
     return { ...state, cases: state['cases'].concat(newCases),
                        selected: state['selected'].concat(selected)
            };
   },
-  [actions.toggleSelect](state, { payload: id }) {
+  [actions.toggleSelectCobranzasMyCases](state, { payload: id }) {
     const newCases = state.cases.map(el => {
       if (el.case['inc_idx'] == id) {
         return { ...el, selected: !el.selected };
@@ -45,46 +45,35 @@ const data = handleActions({
     const selected = newCases.filter(el => el.selected == true);
     return { ...state, cases: newCases, selected: selected };
   },
-  [actions.toggleSelectAll](state, { payload: data }) {
-    const { selectedFlag, keyWord, typeOfCause } = data;
+  [actions.toggleSelectAllCobranzasMyCases](state, { payload: selectedFlag }) {
     const newCases = state.cases.map(el => {
-      let { crr_idcausa, nombre_o_razon_social, rut, sujeto, persona, sujento, participante, url, inc_idx } = el.case;
-      let real_crr_idcausa = typeOfCause === 'Civil' ? url : crr_idcausa;
-      let real_sujeto = typeOfCause === 'Cobranzas' ? sujento : typeOfCause === 'Civil' ? participante : sujeto;
-      if (`${real_crr_idcausa}`.indexOf(keyWord.toUpperCase()) >= 0
-        || `${nombre_o_razon_social}`.indexOf(keyWord.toUpperCase()) >= 0
-        || `${rut}`.indexOf(keyWord.toUpperCase()) >= 0
-        || `${real_sujeto}`.indexOf(keyWord.toUpperCase()) >= 0
-        || `${persona}`.indexOf(keyWord.toUpperCase()) >= 0) {
-        return { ...el, selected: selectedFlag };
-      }
-      return el;
+      return { ...el, selected: selectedFlag };
     });
     const selected = newCases.filter(el => el.selected == true);
     return { ...state, cases: newCases, selected: selected };
   },
-  [actions.updateCurrentPage](state, { payload: page }) {
+  [actions.updateCurrentPageCobranzasMyCases](state, { payload: page }) {
     return {...state, current_page: page }
   },
-  [actions.updateSearchType](state, { payload: type }) {
+  [actions.updateSearchTypeCobranzasMyCases](state, { payload: type }) {
     return {...state, search_type: type }
   },
-  [actions.clearCases](state) {
+  [actions.clearCasesCobranzasMyCases](state) {
     return { ...state, cases: [], selected: [] }
   },
-  [actions.updateTerm](state, { payload: term }) {
+  [actions.updateTermCobranzasMyCases](state, { payload: term }) {
     return { ...state, term: term }
   },
-  [actions.updatePagination](state, { payload: hasMoreCases }) {
+  [actions.updatePaginationCobranzasMyCases](state, { payload: hasMoreCases }) {
     return { ...state, hasMoreCases: hasMoreCases }
   },
-  [actions.saveUserId](state, { payload: id }) {
+  [actions.saveUserIdCobranzasMyCases](state, { payload: id }) {
     return { ...state, user_id: id }
   },
-  [actions.saveTotal](state, { payload: total }) {
+  [actions.saveTotalCobranzasMyCases](state, { payload: total }) {
     return { ...state, total: total }
   },
-  [actions.saveTookTime](state, { payload: took_time }) {
+  [actions.saveTookTimeCobranzasMyCases](state, { payload: took_time }) {
     return { ...state, took_time }
   }
 }, initialCasesState);

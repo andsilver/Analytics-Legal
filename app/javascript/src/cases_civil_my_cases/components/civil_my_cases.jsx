@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 window.jQuery = $;
 
-export default class LaboralMyCases extends React.Component {
+export default class CivilMyCases extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,7 +18,7 @@ export default class LaboralMyCases extends React.Component {
   }
 
   componentWillMount() {
-    this.props.searchLaboralMyCases(this.props.selectedCases.length, 0, this.props.selectedCases);
+    this.props.searchCivilMyCases(this.props.selectedCases.length, 0, this.props.selectedCases);
   }
 
   componentDidMount() {
@@ -38,7 +38,7 @@ export default class LaboralMyCases extends React.Component {
     this.setState({ search_type: type });
     this.props.clearCases();
     this.props.updateSearchType(type);
-    this.props.searchLaboralMyCases(this.state.cases_number, 0, this.props.selectedCases);
+    this.props.searchCivilMyCases(this.state.cases_number, 0, this.props.selectedCases);
   }
 
   updatePage = (e) => {
@@ -50,7 +50,7 @@ export default class LaboralMyCases extends React.Component {
 
   loadMore = (newPage) => {
     let offset = this.props.cases.length;
-    this.props.searchLaboralMyCases(this.state.cases_number, offset, this.props.selectedCases);
+    this.props.searchCivilMyCases(this.state.cases_number, offset, this.props.selectedCases);
   }
 
   filterSearchField = (e) => {
@@ -63,7 +63,6 @@ export default class LaboralMyCases extends React.Component {
     e.preventDefault();
     let filtering = jQuery(ReactDOM.findDOMNode(this.refs.productstable));
     filtering.trigger('footable_filter', { filter: e.target.value });
-    
   }
 
   render() {
@@ -91,7 +90,7 @@ export default class LaboralMyCases extends React.Component {
                           </div>
                           <div className="col-md-6 text-center text-right">
                             <div className="form-group float-right">
-                              <input id="demo-foo-search" ref="filterSearchField" type="text" placeholder="Search" className="form-control" autoComplete="on" />
+                              <input id="demo-foo-search" type="text" placeholder="Search" className="form-control" autoComplete="on" />
                             </div>
                           </div>
                         </div>
@@ -100,32 +99,30 @@ export default class LaboralMyCases extends React.Component {
                         <thead>
                           <tr>
                             <th data-toggle="true">Nombre Causa</th>
-                            <th>RIT</th>
-                            <th>RUC</th>
+                            <th>ROL</th>
                             <th>Procedimiento</th>
                             <th>Fecha Ingreso</th>
-                            <th>Inicio</th>
                             <th>Estado</th>
                             <th>Etapa</th>
-                            <th>E.Proc</th>
+                            <th>Estado Proc</th>
                             <th>Tribunal</th>
+                            <th>Ubicación</th>
                           </tr>
                         </thead>
                         <tbody>
                           {this.props.cases.map((item, index) => {
-                            let { case: item_case, rit, ruc, proc, f_ing, forma_inicio, est_adm, etapa, estado_proc, tribunal, inc_idx } = item.case;
+                            let { nombre, rol, proc, f_lng, est_adm, etapa, estado_proc, tribunal, ubicacion, inc_idx } = item.case;
                               return (
                                 <tr key={inc_idx}>
-                                  <td>{item_case}</td>
-                                  <td>{rit}</td>
-                                  <td>{ruc}</td>
+                                  <td>{nombre}</td>
+                                  <td>{rol}</td>
                                   <td>{proc}</td>
-                                  <td>{f_ing}</td>
-                                  <td>{forma_inicio}</td>
+                                  <td>{f_lng}</td>
                                   <td>{est_adm}</td>
                                   <td>{etapa}</td>
                                   <td>{estado_proc}</td>
                                   <td>{tribunal}</td>
+                                  <td>{ubicacion}</td>
                                 </tr>
                               );   
                           })}

@@ -61,17 +61,22 @@ export default class RutSelection extends React.Component {
   }
 
   saveRuts = (e) => {
+    const { typeOfCause, filterSearchField } = this.state;
     e.preventDefault();
     const token = document.querySelector('meta[name=csrf-token]').getAttribute("content");
     const cases = this.props.selected.map(el => {
-      return { crr_idcausa: el.case.crr_idcausa, crr_idcausa_type: 'laboral' }
+      return { crr_idcausa: this.state.typeOfCause === 'Civil' ? el.case.url : el.case.crr_idcausa, crr_idcausa_type: this.state.typeOfCause === 'Cobranzas' ? 'cobranza' : this.state.typeOfCause === 'Civil' ? 'civil' : 'laboral' }
     });
-    this.props.saveRuts(this.props.user_id, cases, token);
+    const newCases = cases.filter((oldCase, index, self) => 
+      index === self.findIndex((t) => (
+        t.crr_idcausa === oldCase.crr_idcausa
+    )))
+    this.props.saveRuts(this.props.user_id, newCases, token);
     this.props.clearCases();
   }
 
   toggleSelectAll = () => (e) => {
-    this.props.toggleSelectAll(!this.state.selectAll);
+    this.props.toggleSelectAll({ selectedFlag: !this.state.selectAll, keyWord: this.state.filterSearchField, typeOfCause: this.state.typeOfCause });
     this.setState({ selectAll: !this.state.selectAll });
   }
 
