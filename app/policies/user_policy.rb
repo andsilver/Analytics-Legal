@@ -4,6 +4,7 @@ class UserPolicy
   def initialize(current_user, user)
     @current_user = current_user
     @user = user
+    @menus = current_user.menu_template&.menus&.pluck(:label)
   end
 
   def index?
@@ -48,6 +49,39 @@ class UserPolicy
 
   def cases_cobranzas_my_cases?
     admin_or_commercial?
+  end
+
+  # policy related to the menu authorization
+  def summary_menu_authorized?
+    admin_or_commercial? || @menus.present? && @menus.include?('summary')
+  end
+
+  def cases_menu_authorized?
+    admin_or_commercial? || @menus.present? && @menus.include?('cases')
+  end
+
+  def notifications_menu_authorized?
+    admin_or_commercial? || @menus.present? && @menus.include?('notifications')
+  end
+
+  def zeus_menu_authorized?
+    admin_or_commercial? || @menus.present? && @menus.include?('zeus')
+  end
+
+  def deep_graph_menu_authorized?
+    admin_or_commercial? || @menus.present? && @menus.include?('deep_graph')
+  end
+
+  def deep_search_menu_authorized?
+    admin_or_commercial? || @menus.present? && @menus.include?('deep_search')
+  end
+
+  def predict_menu_authorized?
+    admin_or_commercial? || @menus.present? && @menus.include?('predict')
+  end
+
+  def admin_menu_authorized?
+    admin_or_commercial? || @menus.present? && @menus.include?('admin')
   end
 
   private

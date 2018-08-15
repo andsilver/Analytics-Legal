@@ -111,6 +111,10 @@
 
   <% end %>
 
+  <div class="form-group">
+    <%= f.select :menu_template_id, @templates.all.collect { |template| [template.name, template.id ] }, {include_blank: "Select menu template ..."}, class: "form-control" %>
+  </div>
+
   <div class="form-group text-right m-t-20">
     <div class="col-xs-12">
       <%= f.button t('buttons.save'), class: "btn btn-primary btn-custom waves-effect waves-light w-md",

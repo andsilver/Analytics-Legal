@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :whitelisted_litigators, dependent: :destroy
   has_many :selected_cases
+  belongs_to :menu_template
 
   devise :session_limitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
