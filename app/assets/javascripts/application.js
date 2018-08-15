@@ -22,3 +22,4 @@
 //= require template/plugins/notify/notify.min
 //= require template/plugins/notify/notify-metro
 //= require_tree .
+//= require datatables
