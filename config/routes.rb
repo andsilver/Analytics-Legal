@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   namespace :cases do
     namespace :laborals do
       get 'my_cases'
+      get 'elasticsearch'
     end
     namespace :civil do
       get 'my_cases'
