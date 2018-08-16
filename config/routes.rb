@@ -28,11 +28,9 @@ Rails.application.routes.draw do
     end
     namespace :civil do
       get 'my_cases'
-      get 'elasticsearch'
     end
     namespace :cobranzas do
       get 'my_cases'
-      get 'elasticsearch'
     end
   end
 
