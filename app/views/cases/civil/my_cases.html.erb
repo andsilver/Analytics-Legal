@@ -1,40 +1,7 @@
-<!-- <script>
+<script>
   var emails = JSON.parse('<%= User.all.order(:email).pluck(:email, :id).to_json.html_safe %>');
   var currentUser = JSON.parse('<%= current_user.to_json.html_safe %>');
   var selectedCases = JSON.parse('<%= SelectedCase.all.where(user_id: current_user.id).where(crr_idcausa_type: "civil").select("crr_idcausa").pluck(:crr_idcausa).to_json.html_safe %>');
 </script>
 
-<%= javascript_pack_tag 'civil_my_cases' %> -->
-
-<div id="wrapper">
-  <div class="content-page">
-    <div class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <div class="card-box">
-              <div class="table-responsive">
-                <table id="civil-datatable" class="table table-bordered table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-                    <thead>
-                      <tr>
-                        <th>Nombre Causa</th>
-                        <th>ROL</th>
-                        <th>Procedimiento</th>
-                        <th>Fecha Ingreso</th>
-                        <th>Estado</th>
-                        <th>Etapa</th>
-                        <th>Estado Proc</th>
-                        <th>Tribunal</th>
-                        <th>Ubicación</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-              </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<%= javascript_pack_tag 'civil_my_cases' %>

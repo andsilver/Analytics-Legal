@@ -11,8 +11,8 @@ class Cases::LaboralsController < ApplicationController
         response = {
             :draw => params[:draw],
             :recordsTotal => result["hits"]["total"],
-            :recordsFiltered => result["hits"]["total"],
-            :data => !result["hits"]["total"] ? [] : source.map { |v| extract(v["_source"]) }
+            :recordsFiltered => result["hits"]["hits"].count,
+            :data => source.map { |v| extract(v["_source"]) }
         }
 
         render json: response.to_json
