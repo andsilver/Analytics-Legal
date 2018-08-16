@@ -6,5 +6,4 @@ $(document).ready ->
     'processing': true
     'serverSide': true
     'ajax': '/cases/laborals/elasticsearch'
-    'order': [[ 4, 'desc' ]]
   return
